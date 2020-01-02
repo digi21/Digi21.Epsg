@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Digi21.Epsg</id>
-    <version>17.0.0</version>
+    <version>17.2.0</version>
     <title>Digi21.Epsg</title>
     <authors>José Ángel Martínez Torres</authors>
     <owners>Dreaming With Objects SL</owners>
