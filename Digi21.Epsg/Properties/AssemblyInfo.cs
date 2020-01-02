@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: ReferenceAssembly]
-[assembly: AssemblyTitle("Digi21.OpenGis.Epsg")]
+[assembly: AssemblyTitle("Digi21.Epsg")]
 [assembly: AssemblyDescription("Adds user interface to Digi21.OpenGis")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Digi21.net")]
