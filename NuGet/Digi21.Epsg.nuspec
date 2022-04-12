@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Digi21.Epsg</id>
-    <version>17.2.0</version>
+    <version>22.0.0</version>
     <title>Digi21.Epsg</title>
     <authors>José Ángel Martínez Torres</authors>
     <owners>Dreaming With Objects SL</owners>
@@ -23,7 +23,7 @@
     <tags>Digi3D Digi3D.NET Digi21 Digi DigiNG Epsg OGC OpenGis Transformations</tags>
     <dependencies>
       <group targetFramework=".NETFramework4.6">
-        <dependency id="Digi21.OpenGis" version="17.2.0" />
+        <dependency id="Digi21.OpenGis" version="22.0.0" />
       </group>
     </dependencies>
   </metadata>
