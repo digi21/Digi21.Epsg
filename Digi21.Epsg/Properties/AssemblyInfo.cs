@@ -11,8 +11,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Digi21.net")]
 [assembly: AssemblyProduct("Digi3D.NET")]
-[assembly: AssemblyCopyright("Copyright (c) 2010-2020 Digi21.net")]
-[assembly: AssemblyTrademark("Copyright (c) 2010-2020 José Ángel Martínez Torres")]
+[assembly: AssemblyCopyright("Copyright (c) 2010-2022 Digi21.net")]
+[assembly: AssemblyTrademark("Copyright (c) 2010-2022 José Ángel Martínez Torres")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
@@ -33,5 +33,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("17.0.0.0")]
-[assembly: AssemblyFileVersion("17.0.0.0")]
+[assembly: AssemblyVersion("22.0.0.0")]
+[assembly: AssemblyFileVersion("22.0.0.0")]
