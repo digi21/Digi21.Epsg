@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Digi21.Epsg</id>
-    <version>22.0.0</version>
+    <version>22.0.0.1</version>
     <title>Digi21.Epsg</title>
     <authors>José Ángel Martínez Torres</authors>
     <owners>Dreaming With Objects SL</owners>
@@ -23,12 +23,12 @@
     <tags>Digi3D Digi3D.NET Digi21 Digi DigiNG Epsg OGC OpenGis Transformations</tags>
     <dependencies>
       <group targetFramework=".NETFramework4.6">
-        <dependency id="Digi21.OpenGis" version="22.0.0" />
+        <dependency id="Digi21.OpenGis" version="22.0.0.1" />
       </group>
     </dependencies>
   </metadata>
   <files>
-    <file src="..\Digi21.Epsg\bin\Release\ref\Digi21.Epsg.dll" target="lib\net46\Digi21.Epsg.dll" />
+    <file src="..\Digi21.Epsg\obj\Release\ref\Digi21.Epsg.dll" target="ref\net46\Digi21.Epsg.dll" />
     <file src="install.ps1" target="tools\install.ps1" />
     <file src="IconoDigi21.png" target="IconoDigi21.png" />
   </files>
