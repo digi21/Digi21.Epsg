@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <VERSION_SXS_MAYOR>2023</VERSION_SXS_MAYOR>
+    <VERSION_SXS_MENOR>4</VERSION_SXS_MENOR>
+    <VERSION_SXS_REVISION>0</VERSION_SXS_REVISION>
+    <VERSION_SXS_BUILD>0</VERSION_SXS_BUILD>
+    <FORZAR_HORA_COMPILACION>0</FORZAR_HORA_COMPILACION>
+    <FORZAR_HORA_COMPILACION_ANO>2020</FORZAR_HORA_COMPILACION_ANO>
+    <FORZAR_HORA_COMPILACION_MES>0</FORZAR_HORA_COMPILACION_MES>
+    <FORZAR_HORA_COMPILACION_DIA>31</FORZAR_HORA_COMPILACION_DIA>
+    <FORZAR_HORA_COMPILACION_HORA>1</FORZAR_HORA_COMPILACION_HORA>
+    <FORZAR_HORA_COMPILACION_MINUTO>2</FORZAR_HORA_COMPILACION_MINUTO>
+    <FORZAR_HORA_COMPILACION_SEGUNDO>0</FORZAR_HORA_COMPILACION_SEGUNDO>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)Progsh\interface;$(SolutionDir)Progsh\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>VERSION_SXS_MAJOR=$(VERSION_SXS_MAYOR);VERSION_SXS_MINOR=$(VERSION_SXS_MENOR);VERSION_SXS_REVISION=$(VERSION_SXS_REVISION);VERSION_SXS_BUILD=$(VERSION_SXS_BUILD);FORZAR_HORA_COMPILACION=$(FORZAR_HORA_COMPILACION);FORZAR_HORA_COMPILACION_ANO=$(FORZAR_HORA_COMPILACION_ANO);FORZAR_HORA_COMPILACION_MES=$(FORZAR_HORA_COMPILACION_MES);FORZAR_HORA_COMPILACION_DIA=$(FORZAR_HORA_COMPILACION_DIA);FORZAR_HORA_COMPILACION_HORA=$(FORZAR_HORA_COMPILACION_HORA);FORZAR_HORA_COMPILACION_MINUTO=$(FORZAR_HORA_COMPILACION_MINUTO);FORZAR_HORA_COMPILACION_SEGUNDO=$(FORZAR_HORA_COMPILACION_SEGUNDO);SOLUTIONFILEVERSIONSTRING="$(VERSION_SXS_MAYOR).$(VERSION_SXS_MENOR).$(VERSION_SXS_REVISION).$(VERSION_SXS_BUILD)";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(SolutionDir)Progsh\lib\$(PlatformToolset)\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+    <ResourceCompile>
+      <PreprocessorDefinitions>VERSION_SXS_MAJOR=$(VERSION_SXS_MAYOR);VERSION_SXS_MINOR=$(VERSION_SXS_MENOR);VERSION_SXS_REVISION=$(VERSION_SXS_REVISION);VERSION_SXS_BUILD=$(VERSION_SXS_BUILD);SOLUTIONFILEVERSIONSTRING="$(VERSION_SXS_MAYOR).$(VERSION_SXS_MENOR).$(VERSION_SXS_REVISION).$(VERSION_SXS_BUILD)";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="VERSION_SXS_MAYOR">
+      <Value>$(VERSION_SXS_MAYOR)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="VERSION_SXS_MENOR">
+      <Value>$(VERSION_SXS_MENOR)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="VERSION_SXS_REVISION">
+      <Value>$(VERSION_SXS_REVISION)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="VERSION_SXS_BUILD">
+      <Value>$(VERSION_SXS_BUILD)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="FORZAR_HORA_COMPILACION">
+      <Value>$(FORZAR_HORA_COMPILACION)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="FORZAR_HORA_COMPILACION_ANO">
+      <Value>$(FORZAR_HORA_COMPILACION_ANO)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="FORZAR_HORA_COMPILACION_MES">
+      <Value>$(FORZAR_HORA_COMPILACION_MES)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="FORZAR_HORA_COMPILACION_DIA">
+      <Value>$(FORZAR_HORA_COMPILACION_DIA)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="FORZAR_HORA_COMPILACION_HORA">
+      <Value>$(FORZAR_HORA_COMPILACION_HORA)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="FORZAR_HORA_COMPILACION_MINUTO">
+      <Value>$(FORZAR_HORA_COMPILACION_MINUTO)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+    <BuildMacro Include="FORZAR_HORA_COMPILACION_SEGUNDO">
+      <Value>$(FORZAR_HORA_COMPILACION_SEGUNDO)</Value>
+      <EnvironmentVariable>true</EnvironmentVariable>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ImportGroup Label="PropertySheets" />
+	<PropertyGroup Label="UserMacros" />
+	<PropertyGroup />
+	<ItemDefinitionGroup>
+		<ClCompile>
+			<AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+		</ClCompile>
+		<Link>
+			<AdditionalLibraryDirectories>$(MSBuildThisFileDirectory)bin\$(PlatformName)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+		</Link>
+		<PostBuildEvent>
+			<Command>
+				xcopy /y /d "$(MSBuildThisFileDirectory)bin\$(PlatformName)\$(Configuration)\*.dll" "$(TargetDir)"
+				%(Command)
+			</Command>
+		</PostBuildEvent>
+	</ItemDefinitionGroup>
+	<ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+		<Link>
+			<AdditionalManifestDependencies>name='Digi21.Epsg' type='win32' version='2023.4.0.0' processorArchitecture='amd64' publicKeyToken='6751d7d8a775bb8c' language='*';%(AdditionalManifestDependencies)</AdditionalManifestDependencies>
+		</Link>
+	</ItemDefinitionGroup>
+	<ItemGroup />
+</Project>

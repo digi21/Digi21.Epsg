@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\FirmarConAuthenticodeYSoporteParaStrongNaming.1.0.0\build\native\FirmarConAuthenticodeYSoporteParaStrongNaming.props" Condition="Exists('..\packages\FirmarConAuthenticodeYSoporteParaStrongNaming.1.0.0\build\native\FirmarConAuthenticodeYSoporteParaStrongNaming.props')" />
+  <Import Project="..\packages\OpenGisCoordinateTransformationServices.23.0.0\build\native\OpenGisCoordinateTransformationServices.props" Condition="Exists('..\packages\OpenGisCoordinateTransformationServices.23.0.0\build\native\OpenGisCoordinateTransformationServices.props')" />
+  <Import Project="..\packages\SoporteParaStrongNamingEsEs.1.0.4\build\native\SoporteParaStrongNamingEsEs.props" Condition="Exists('..\packages\SoporteParaStrongNamingEsEs.1.0.4\build\native\SoporteParaStrongNamingEsEs.props')" />
+  <Import Project="..\packages\SoporteParaStrongNamingEnUs.1.0.4\build\native\SoporteParaStrongNamingEnUs.props" Condition="Exists('..\packages\SoporteParaStrongNamingEnUs.1.0.4\build\native\SoporteParaStrongNamingEnUs.props')" />
+  <Import Project="..\packages\Digi21Util.1.1.2.2\build\native\Digi21Util.props" Condition="Exists('..\packages\Digi21Util.1.1.2.2\build\native\Digi21Util.props')" />
+  <Import Project="..\packages\Digi21.Registry.22.0.2.3\build\native\Digi21.Registry.props" Condition="Exists('..\packages\Digi21.Registry.22.0.2.3\build\native\Digi21.Registry.props')" />
+  <Import Project="..\packages\Codejock.20.3.0\build\native\Codejock.props" Condition="Exists('..\packages\Codejock.20.3.0\build\native\Codejock.props')" />
+  <Import Project="..\packages\SoporteMultipleUserInterface.1.0.7\build\native\SoporteMultipleUserInterface.props" Condition="Exists('..\packages\SoporteMultipleUserInterface.1.0.7\build\native\SoporteMultipleUserInterface.props')" />
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{5F507F44-397C-4D90-83E4-C87F9ED352DE}</ProjectGuid>
+    <RootNamespace>Digi21Epsg</RootNamespace>
+    <Keyword>ManagedCProj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CLRSupport>true</CLRSupport>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Version.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Version.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetName>$(ProjectName)D</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg">
+    <VcpkgEnabled>false</VcpkgEnabled>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_CREANDO_DIGI21_EPSG;WIN32;_WINDOWS;_DEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <AdditionalOptions>-Zm133 %(AdditionalOptions)</AdditionalOptions>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ImportLibrary>$(OutDir)$(TargetName).lib</ImportLibrary>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <PostBuildEvent />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PreprocessorDefinitions>_CREANDO_DIGI21_EPSG;WIN32;_WINDOWS;NDEBUG;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <AdditionalOptions>-Zm111 %(AdditionalOptions)</AdditionalOptions>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <WarningLevel>Level4</WarningLevel>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ImportLibrary>$(OutDir)$(TargetName).lib</ImportLibrary>
+    </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <PostBuildEvent />
+    <PostBuildEvent />
+    <Manifest>
+      <EnableDpiAwareness>false</EnableDpiAwareness>
+      <AdditionalManifestFiles>$(IntDir)$(ProjectName)$(Platform).manifest</AdditionalManifestFiles>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Readme.md" />
+    <None Include="res\Version_en_US.rc2" />
+    <None Include="res\Version_es_ES.rc2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DialogoBuscarScr3D.cpp" />
+    <ClCompile Include="DialogoBúsquedaPorCódigoEpsg.cpp" />
+    <ClCompile Include="DialogoMostrarCrsHorizontal.cpp" />
+    <ClCompile Include="DialogoMostrarScrVertical.cpp" />
+    <ClCompile Include="DialogoSeleccionScr.cpp" />
+    <ClCompile Include="PaginaManual.cpp" />
+    <ClCompile Include="PaginaSeleccionsCRGeograficoVertical.cpp" />
+    <ClCompile Include="PaginaSeleccionScr3D.cpp" />
+    <ClCompile Include="PaginaSeleccionScrMemorizados.cpp" />
+    <ClCompile Include="DialogoSeleccionScrHorizontal.cpp" />
+    <ClCompile Include="DialogoBuscarScrHorizontal.cpp" />
+    <ClCompile Include="DialogoBuscarScrVertical.cpp" />
+    <ClCompile Include="DialogoSeleccionScrVertical.cpp" />
+    <ClCompile Include="DialogoSeleccionTransformacionVertical.cpp" />
+    <ClCompile Include="Digi21.Epsg.cpp" />
+    <ClCompile Include="EpsgManager.cpp" />
+    <ClCompile Include="PaginaSeleccionScrDesconocido.cpp" />
+    <ClCompile Include="PaginaSeleccionScrProyectadoYVertical.cpp" />
+    <ClCompile Include="PaginaSeleccionSrcExistente.cpp" />
+    <ClCompile Include="pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DialogoBuscarScr3D.h" />
+    <ClInclude Include="DialogoBúsquedaPorCódigoEpsg.h" />
+    <ClInclude Include="DialogoMostrarCrsHorizontal.h" />
+    <ClInclude Include="DialogoMostrarScrVertical.h" />
+    <ClInclude Include="DialogoSeleccionScr.h" />
+    <ClInclude Include="PaginaManual.h" />
+    <ClInclude Include="PaginaSeleccionScrGeograficoVertical.h" />
+    <ClInclude Include="PaginaSeleccionScr3D.h" />
+    <ClInclude Include="PaginaSeleccionScrMemorizados.h" />
+    <ClInclude Include="DialogoSeleccionScrHorizontal.h" />
+    <ClInclude Include="DialogoBuscarScrHorizontal.h" />
+    <ClInclude Include="DialogoBuscarScrVertical.h" />
+    <ClInclude Include="DialogoSeleccionScrVertical.h" />
+    <ClInclude Include="DialogoSeleccionTransformacionVertical.h" />
+    <ClInclude Include="Digi21.Epsg.h" />
+    <ClInclude Include="EpsgManager.h" />
+    <ClInclude Include="PaginaSeleccionScrDesconocido.h" />
+    <ClInclude Include="PaginaSeleccionScrProyectadoYVertical.h" />
+    <ClInclude Include="PaginaSeleccionSrcExistente.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Digi21.Epsg.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="Digi21.Epsg.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\SoporteMultipleUserInterface.1.0.7\build\native\SoporteMultipleUserInterface.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SoporteMultipleUserInterface.1.0.7\build\native\SoporteMultipleUserInterface.props'))" />
+    <Error Condition="!Exists('..\packages\Codejock.20.3.0\build\native\Codejock.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Codejock.20.3.0\build\native\Codejock.props'))" />
+    <Error Condition="!Exists('..\packages\Digi21.Registry.22.0.2.3\build\native\Digi21.Registry.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Digi21.Registry.22.0.2.3\build\native\Digi21.Registry.props'))" />
+    <Error Condition="!Exists('..\packages\Digi21Util.1.1.2.2\build\native\Digi21Util.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Digi21Util.1.1.2.2\build\native\Digi21Util.props'))" />
+    <Error Condition="!Exists('..\packages\SoporteParaStrongNamingEnUs.1.0.4\build\native\SoporteParaStrongNamingEnUs.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SoporteParaStrongNamingEnUs.1.0.4\build\native\SoporteParaStrongNamingEnUs.props'))" />
+    <Error Condition="!Exists('..\packages\SoporteParaStrongNamingEsEs.1.0.4\build\native\SoporteParaStrongNamingEsEs.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SoporteParaStrongNamingEsEs.1.0.4\build\native\SoporteParaStrongNamingEsEs.props'))" />
+    <Error Condition="!Exists('..\packages\OpenGisCoordinateTransformationServices.23.0.0\build\native\OpenGisCoordinateTransformationServices.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\OpenGisCoordinateTransformationServices.23.0.0\build\native\OpenGisCoordinateTransformationServices.props'))" />
+    <Error Condition="!Exists('..\packages\FirmarConAuthenticodeYSoporteParaStrongNaming.1.0.0\build\native\FirmarConAuthenticodeYSoporteParaStrongNaming.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\FirmarConAuthenticodeYSoporteParaStrongNaming.1.0.0\build\native\FirmarConAuthenticodeYSoporteParaStrongNaming.props'))" />
+  </Target>
+</Project>

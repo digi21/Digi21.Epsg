@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\Version_en_US.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\Version_es_ES.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Readme.md" />
+    <None Include="$(MSBuildThisFileDirectory)bin\v141\$(PlatformName)\$(Configuration)\*.*" />
+    <None Include="$(MSBuildThisFileDirectory)bin\v141\$(PlatformName)\$(Configuration)\*.*" />
+    <None Include="$(MSBuildThisFileDirectory)bin\v141\$(PlatformName)\$(Configuration)\*.*" />
+    <None Include="$(MSBuildThisFileDirectory)bin\v141\$(PlatformName)\$(Configuration)\*.*" />
+    <None Include="$(MSBuildThisFileDirectory)bin\v141\$(PlatformName)\$(Configuration)\*.*" />
+    <None Include="$(MSBuildThisFileDirectory)bin\v141\$(PlatformName)\$(Configuration)\*.*" />
+    <None Include="$(MSBuildThisFileDirectory)bin\v141\$(PlatformName)\$(Configuration)\*.*" />
+    <None Include="$(MSBuildThisFileDirectory)bin\v141\$(PlatformName)\$(Configuration)\*.*" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Digi21.Epsg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EpsgManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogoMostrarCrsHorizontal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogoMostrarScrVertical.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogoBuscarScrVertical.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogoBuscarScrHorizontal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogoSeleccionScrHorizontal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogoSeleccionScrVertical.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogoBúsquedaPorCódigoEpsg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogoSeleccionTransformacionVertical.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PaginaSeleccionScr3D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogoSeleccionScr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PaginaSeleccionScrDesconocido.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogoBuscarScr3D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PaginaSeleccionScrMemorizados.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PaginaSeleccionsCRGeograficoVertical.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PaginaSeleccionScrProyectadoYVertical.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PaginaManual.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PaginaSeleccionSrcExistente.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Digi21.Epsg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EpsgManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogoMostrarCrsHorizontal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogoMostrarScrVertical.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogoBuscarScrVertical.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogoBuscarScrHorizontal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogoSeleccionScrHorizontal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogoSeleccionScrVertical.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogoBúsquedaPorCódigoEpsg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogoSeleccionTransformacionVertical.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PaginaSeleccionScr3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogoSeleccionScr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PaginaSeleccionScrDesconocido.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogoBuscarScr3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PaginaSeleccionScrMemorizados.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PaginaSeleccionScrGeograficoVertical.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PaginaSeleccionScrProyectadoYVertical.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PaginaManual.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PaginaSeleccionSrcExistente.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Digi21.Epsg.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
