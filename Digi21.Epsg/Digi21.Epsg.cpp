@@ -28,10 +28,10 @@ BOOL CDigi21EpsgApp::InitInstance()
 			CStringW(SOLUTIONFILEVERSIONSTRING), 
 			L"Digi21.Epsg.dll.mui");
 	} 
-	catch(Digi21::ExcepcionDigi21& excepción)
+	catch(std::exception& excepción)
 	{
 		CStringW cadena;
-		cadena.Format(L"An exception was detected when loading the resource file for the component %s: %s\0", TITULO_EXCEPCIONES, static_cast<LPCWSTR>(excepción.Descripcion) );
+		cadena.Format(L"An exception was detected when loading the resource file for the component %s", TITULO_EXCEPCIONES);
 		LogEventos2::AlmacenaEventoError(cadena);
 
 		return FALSE;

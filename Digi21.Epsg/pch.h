@@ -81,12 +81,11 @@ constexpr auto CENTE_A_SEXA(T x) -> double { return x * 180.0 / 200.0; }
 template <typename T>
 constexpr auto SIGN(T x) -> double { return (x > 0 ? 1.0 : -1.0); }
 
-#include <Digi21OpenGis.h>
+#include <Digi21.OpenGis/Digi21OpenGis.h>
 
 constexpr auto CARPETA_REGISTRO_APP_CONFIGURATION_DIALOGLAYOUT = L"HKCU\\Software\\Digi21\\Digi3D.NET\\App\\Configuration\\DialogLayout\\Digi21.Epsg";
 constexpr auto CARPETA_REGISTRO_APP_TRANSFORMACIONES_MEMORIZADAS = L"App\\TransformacionesMemorizadas";
 
-#include <Util/ExcepcionDigi21.h> // Excepción
 #include <Util/Registro.h>
 #include <Util/ErroresWindows.h>
 #include <SoporteMUI.h>
