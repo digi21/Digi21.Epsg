@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\OpenGisCoordinateTransformationServices.23.1.0.12\build\native\OpenGisCoordinateTransformationServices.props" Condition="Exists('..\packages\OpenGisCoordinateTransformationServices.23.1.0.12\build\native\OpenGisCoordinateTransformationServices.props')" />
   <Import Project="..\packages\FirmarConAuthenticodeYSoporteParaStrongNaming.1.0.0\build\native\FirmarConAuthenticodeYSoporteParaStrongNaming.props" Condition="Exists('..\packages\FirmarConAuthenticodeYSoporteParaStrongNaming.1.0.0\build\native\FirmarConAuthenticodeYSoporteParaStrongNaming.props')" />
-  <Import Project="..\packages\OpenGisCoordinateTransformationServices.23.0.0\build\native\OpenGisCoordinateTransformationServices.props" Condition="Exists('..\packages\OpenGisCoordinateTransformationServices.23.0.0\build\native\OpenGisCoordinateTransformationServices.props')" />
   <Import Project="..\packages\SoporteParaStrongNamingEsEs.1.0.4\build\native\SoporteParaStrongNamingEsEs.props" Condition="Exists('..\packages\SoporteParaStrongNamingEsEs.1.0.4\build\native\SoporteParaStrongNamingEsEs.props')" />
   <Import Project="..\packages\SoporteParaStrongNamingEnUs.1.0.4\build\native\SoporteParaStrongNamingEnUs.props" Condition="Exists('..\packages\SoporteParaStrongNamingEnUs.1.0.4\build\native\SoporteParaStrongNamingEnUs.props')" />
   <Import Project="..\packages\Digi21Util.1.1.2.2\build\native\Digi21Util.props" Condition="Exists('..\packages\Digi21Util.1.1.2.2\build\native\Digi21Util.props')" />
@@ -188,7 +188,7 @@
     <Error Condition="!Exists('..\packages\Digi21Util.1.1.2.2\build\native\Digi21Util.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Digi21Util.1.1.2.2\build\native\Digi21Util.props'))" />
     <Error Condition="!Exists('..\packages\SoporteParaStrongNamingEnUs.1.0.4\build\native\SoporteParaStrongNamingEnUs.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SoporteParaStrongNamingEnUs.1.0.4\build\native\SoporteParaStrongNamingEnUs.props'))" />
     <Error Condition="!Exists('..\packages\SoporteParaStrongNamingEsEs.1.0.4\build\native\SoporteParaStrongNamingEsEs.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SoporteParaStrongNamingEsEs.1.0.4\build\native\SoporteParaStrongNamingEsEs.props'))" />
-    <Error Condition="!Exists('..\packages\OpenGisCoordinateTransformationServices.23.0.0\build\native\OpenGisCoordinateTransformationServices.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\OpenGisCoordinateTransformationServices.23.0.0\build\native\OpenGisCoordinateTransformationServices.props'))" />
     <Error Condition="!Exists('..\packages\FirmarConAuthenticodeYSoporteParaStrongNaming.1.0.0\build\native\FirmarConAuthenticodeYSoporteParaStrongNaming.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\FirmarConAuthenticodeYSoporteParaStrongNaming.1.0.0\build\native\FirmarConAuthenticodeYSoporteParaStrongNaming.props'))" />
+    <Error Condition="!Exists('..\packages\OpenGisCoordinateTransformationServices.23.1.0.12\build\native\OpenGisCoordinateTransformationServices.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\OpenGisCoordinateTransformationServices.23.1.0.12\build\native\OpenGisCoordinateTransformationServices.props'))" />
   </Target>
 </Project>
