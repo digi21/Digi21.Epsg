@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Digi21.Epsg.Nativo</id>
-    <version>23.0.0.0</version>
+    <version>23.5.0.1</version>
     <title>Digi21.Epsg.Nativo</title>
     <authors>José Ángel Martínez Torres</authors>
     <owners>Dreaming With Objects SL</owners>

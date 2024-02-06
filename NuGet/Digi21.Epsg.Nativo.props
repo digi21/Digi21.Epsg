@@ -19,7 +19,7 @@
 	</ItemDefinitionGroup>
 	<ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
 		<Link>
-			<AdditionalManifestDependencies>name='Digi21.Epsg' type='win32' version='2023.4.0.0' processorArchitecture='amd64' publicKeyToken='6751d7d8a775bb8c' language='*';%(AdditionalManifestDependencies)</AdditionalManifestDependencies>
+			<AdditionalManifestDependencies>name='Digi21.Epsg' type='win32' version='2023.5.0.1' processorArchitecture='amd64' publicKeyToken='6751d7d8a775bb8c' language='*';%(AdditionalManifestDependencies)</AdditionalManifestDependencies>
 		</Link>
 	</ItemDefinitionGroup>
 	<ItemGroup />
