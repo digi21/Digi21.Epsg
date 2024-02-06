@@ -1,61 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Module Id="MergeModuleDigi21Epsg" Language="1033" Version="1.0.0.0">
-		<Package Id="d564931f-4209-457b-b1be-a44e3435bd74" Manufacturer="Digi21" InstallerVersion="200" />
-
-		<Directory Id="TARGETDIR" Name="SourceDir">
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+	<Module Id="MergeModuleDigi21Epsg" Language="1033" Version="2023.5.0.1" Guid="d564931f-4209-457b-b1be-a44e3435bd74" InstallerVersion="200"><SummaryInformation Manufacturer="Digi21" />
 			<Directory Id="MergeRedirectFolder">
 				<Directory Id="WinSxS" Name="WinSxS">
 
-					<Component Id="CMP_Digi21.Epsg.dll"
-					   Guid="{AF5FE4CF-841C-47DF-BAA6-C17F781ED206}">
-						<File Id="FILE_DigiNG.OpenGis.dll"
-							  Source="$(var.SolutionDir)x64\Release\Digi21.Epsg.dll"
-							  KeyPath="yes"
-							  Assembly="win32"
-							  AssemblyManifest="FILE_Digi21.Epsg.dll.manifest"/>
-						<File Id="FILE_Digi21.Epsg.dll.manifest"
-						      Source="$(var.SolutionDir)x64\Release\Digi21.Epsg.dll.manifest"
-						      KeyPath="no"/>
-						<File Id="FILE_Digi21.Epsg.dll.cat"
-						      Source="$(var.SolutionDir)x64\Release\Digi21.Epsg.dll.cat"
-						      KeyPath="no"/>
+					<Component Id="CMP_Digi21.Epsg.dll" Guid="{AF5FE4CF-841C-47DF-BAA6-C17F781ED206}">
+						<File Id="FILE_DigiNG.OpenGis.dll" Source="$(var.SolutionDir)x64\Release\Digi21.Epsg.dll" KeyPath="yes" Assembly="win32" AssemblyManifest="FILE_Digi21.Epsg.dll.manifest" />
+						<File Id="FILE_Digi21.Epsg.dll.manifest" Source="$(var.SolutionDir)x64\Release\Digi21.Epsg.dll.manifest" KeyPath="no" />
+						<File Id="FILE_Digi21.Epsg.dll.cat" Source="$(var.SolutionDir)x64\Release\Digi21.Epsg.dll.cat" KeyPath="no" />
 					</Component>
 
 					<Directory Id="WinSxS_en_US" Name="en-US">
-						<Component Id="CMP_Digi21.Epsg.Resources_en_US_dll"
-						           Guid="{7CC72791-8CFA-4C77-975E-AFE0CAEE42AA}">
-							<File Id="FILE_Digi21.Epsg.Resouces_en_US.dll"
-							      Source="$(var.SolutionDir)x64\Release\en-US\Digi21.Epsg.dll.mui"
-							      KeyPath="yes"
-							      Assembly="win32"
-							      AssemblyManifest="FILE_Digi21.Epsg.Resources_en_US.dll.mui.manifest"/>
-							<File Id="FILE_Digi21.Epsg.Resources_en_US.dll.mui.manifest"
-							      Source="$(var.SolutionDir)x64\Release\en-US\Digi21.Epsg.dll.mui.manifest"
-							      KeyPath="no"/>
-							<File Id="FILE_Digi21.Epsg.Resources_en_US.dll.cat"
-							      Source="$(var.SolutionDir)x64\Release\en-US\Digi21.Epsg.dll.mui.cat"
-							      KeyPath="no"/>
+						<Component Id="CMP_Digi21.Epsg.Resources_en_US_dll" Guid="{7CC72791-8CFA-4C77-975E-AFE0CAEE42AA}">
+							<File Id="FILE_Digi21.Epsg.Resouces_en_US.dll" Source="$(var.SolutionDir)x64\Release\en-US\Digi21.Epsg.dll.mui" KeyPath="yes" Assembly="win32" AssemblyManifest="FILE_Digi21.Epsg.Resources_en_US.dll.mui.manifest" />
+							<File Id="FILE_Digi21.Epsg.Resources_en_US.dll.mui.manifest" Source="$(var.SolutionDir)x64\Release\en-US\Digi21.Epsg.dll.mui.manifest" KeyPath="no" />
+							<File Id="FILE_Digi21.Epsg.Resources_en_US.dll.cat" Source="$(var.SolutionDir)x64\Release\en-US\Digi21.Epsg.dll.mui.cat" KeyPath="no" />
 						</Component>
 					</Directory>
 					<Directory Id="WinSxS_es_ES" Name="es-ES">
-						<Component Id="CMP_Digi21.Epsg.Resources_es_ES_dll"
-						           Guid="{693EB999-31C9-4FE2-B3C3-995149DFD8F7}">
-							<File Id="FILE_Digi21.Epsg.Resouces_es_ES.dll"
-							      Source="$(var.SolutionDir)x64\Release\es-ES\Digi21.Epsg.dll.mui"
-							      KeyPath="yes"
-							      Assembly="win32"
-							      AssemblyManifest="FILE_Digi21.Epsg.Resources_es_ES.dll.mui.manifest"/>
-							<File Id="FILE_Digi21.Epsg.Resources_es_ES.dll.mui.manifest"
-							      Source="$(var.SolutionDir)x64\Release\es-ES\Digi21.Epsg.dll.mui.manifest"
-							      KeyPath="no"/>
-							<File Id="FILE_Digi21.Epsg.Resources_es_ES.dll.cat"
-							      Source="$(var.SolutionDir)x64\Release\es-ES\Digi21.Epsg.dll.mui.cat"
-							      KeyPath="no"/>
+						<Component Id="CMP_Digi21.Epsg.Resources_es_ES_dll" Guid="{693EB999-31C9-4FE2-B3C3-995149DFD8F7}">
+							<File Id="FILE_Digi21.Epsg.Resouces_es_ES.dll" Source="$(var.SolutionDir)x64\Release\es-ES\Digi21.Epsg.dll.mui" KeyPath="yes" Assembly="win32" AssemblyManifest="FILE_Digi21.Epsg.Resources_es_ES.dll.mui.manifest" />
+							<File Id="FILE_Digi21.Epsg.Resources_es_ES.dll.mui.manifest" Source="$(var.SolutionDir)x64\Release\es-ES\Digi21.Epsg.dll.mui.manifest" KeyPath="no" />
+							<File Id="FILE_Digi21.Epsg.Resources_es_ES.dll.cat" Source="$(var.SolutionDir)x64\Release\es-ES\Digi21.Epsg.dll.mui.cat" KeyPath="no" />
 						</Component>
 					</Directory>
 				</Directory>
 			</Directory>
-		</Directory>
-	</Module>
+		</Module>
 </Wix>
