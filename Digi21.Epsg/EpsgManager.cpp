@@ -246,9 +246,9 @@ namespace Digi21::OpenGis::Epsg
 			cadena.Format(_G(IDS_STRING2011),
 				static_cast<LPCWSTR>(operación.Name),
 				static_cast<LPCWSTR>(GetCoordinateSystemAuthorityFactory()->GetNameOfAlgorithm(operación.MethodCode)),
-				static_cast<LPCWSTR>(CStringW(operación.Version)),
+				operación.Version.has_value() ? operación.Version.value() : CStringW{},
 				operación.Accuracy.has_value() ? static_cast<LPCWSTR>(Utilidades::UtilidadesString::Format(L"%f", operación.Accuracy.value())) : static_cast<LPCWSTR>(_G(IDS_STRING2012)),
-				static_cast<LPCWSTR>(CStringW(operación.InformationSource)));
+				operación.InformationSource.has_value() ? operación.InformationSource.value() : CStringW{});
 
 			taskDlg.AddButton(cadena, static_cast<int>(i++));
 			opciones.push_back(operación.Code);
