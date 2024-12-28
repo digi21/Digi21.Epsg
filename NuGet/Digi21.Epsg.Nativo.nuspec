@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Digi21.Epsg.Nativo</id>
-    <version>23.5.1.1</version>
+    <version>23.5.2.8</version>
     <title>Digi21.Epsg.Nativo</title>
     <authors>José Ángel Martínez Torres</authors>
     <owners>Dreaming With Objects SL</owners>
@@ -18,7 +18,7 @@
     </description>
     <summary>This package contains runtime assemblies for creating Digi3D.NET extensions.</summary>
     <releaseNotes>Please visit https://www.digi21.net/Digi3D/Download to read the release notes.</releaseNotes>
-    <copyright>(c) 2000-2023 Dreaming With Objects S.L.</copyright>
+    <copyright>(c) 2000-2024 Dreaming With Objects S.L.</copyright>
     <language>en-US</language>
     <tags>native nativepackage Digi3D Digi3D.NET Digi21 Digi DigiNG Epsg OGC OpenGis Transformations</tags>
   </metadata>
