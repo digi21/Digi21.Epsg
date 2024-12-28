@@ -4,17 +4,17 @@
 
 IMPLEMENT_DYNAMIC(PaginaSeleccionSrcExistente, CXTPPropertyPage)
 
-PaginaSeleccionSrcExistente::PaginaSeleccionSrcExistente(CXTPPropertyPage*& _current, CStringW const& título)
-	: CXTPPropertyPage(IDD)
-	, current{ _current }
-	, _titulo{ título }
+PaginaSeleccionSrcExistente::PaginaSeleccionSrcExistente(CXTPPropertyPage*& current, int idTemplate, CStringW const& nombreSistema)
+	: CXTPPropertyPage(idTemplate)
+	, _current{ current }
+	, _nombreSistema{ nombreSistema }
 {
 }
 
 void PaginaSeleccionSrcExistente::DoDataExchange(CDataExchange* pDX)
 {
 	CXTPPropertyPage::DoDataExchange(pDX);
-	DDX_Text(pDX, IDC_STATIC_TITULO_SRC_EXISTENTE, _titulo);
+	DDX_Text(pDX, IDC_STATIC_TITULO_SRC_EXISTENTE, _nombreSistema);
 }
 
 BEGIN_MESSAGE_MAP(PaginaSeleccionSrcExistente, CXTPPropertyPage)
@@ -22,6 +22,6 @@ END_MESSAGE_MAP()
 
 BOOL PaginaSeleccionSrcExistente::OnSetActive()
 {
-	current = this;
+	_current = this;
 	return TRUE;
 }

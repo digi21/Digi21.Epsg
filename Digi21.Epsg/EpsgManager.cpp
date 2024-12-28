@@ -58,8 +58,7 @@ namespace Digi21::OpenGis::Epsg
 
 		return DialogoSeleccionScr::DialogSeleccionaScr(
 			title,
-			titleUnknownCoordinateSystemCheckbox,
-			GetCoordinateSystemFactory()->CreateCompoundUnknown());
+			titleUnknownCoordinateSystemCheckbox);
 	}
 
 	CStringW EpsgManager::DialogSelectCrs(CStringW const& title, shared_ptr<CoordinateSystem> const& coordinateSystem)
@@ -100,6 +99,18 @@ namespace Digi21::OpenGis::Epsg
 			CStringW(titleUnknownCoordinateSystemCheckbox),
 			coordinateSystem);
 	}
+
+	CStringW EpsgManager::DialogSelectCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox, std::shared_ptr<CoordinateSystems::CoordinateSystem> const& ventanaDibujo, std::shared_ptr<CoordinateSystems::CoordinateSystem> const& ventanaFotogrametrica)
+	{
+		AFX_MANAGE_STATE(AfxGetStaticModuleState());
+
+		return DialogoSeleccionScr::DialogSeleccionaScr(
+			title,
+			CStringW(titleUnknownCoordinateSystemCheckbox),
+			ventanaDibujo,
+			ventanaFotogrametrica);
+	}
+
 
 	CStringW EpsgManager::DialogSelectHorizontalCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox, shared_ptr<CoordinateSystem> const& coordinateSystem)
 	{
@@ -246,9 +257,9 @@ namespace Digi21::OpenGis::Epsg
 			cadena.Format(_G(IDS_STRING2011),
 				static_cast<LPCWSTR>(operación.Name),
 				static_cast<LPCWSTR>(GetCoordinateSystemAuthorityFactory()->GetNameOfAlgorithm(operación.MethodCode)),
-				operación.Version.has_value() ? operación.Version.value() : CStringW{},
+				operación.Version.has_value() ? static_cast<LPCWSTR>(operación.Version.value()) : L"",
 				operación.Accuracy.has_value() ? static_cast<LPCWSTR>(Utilidades::UtilidadesString::Format(L"%f", operación.Accuracy.value())) : static_cast<LPCWSTR>(_G(IDS_STRING2012)),
-				operación.InformationSource.has_value() ? operación.InformationSource.value() : CStringW{});
+				operación.InformationSource.has_value() ? static_cast<LPCWSTR>(operación.InformationSource.value()) : L"");
 
 			taskDlg.AddButton(cadena, static_cast<int>(i++));
 			opciones.push_back(operación.Code);

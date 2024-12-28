@@ -4,21 +4,18 @@ class PaginaSeleccionSrcExistente final : public CXTPPropertyPage
 {
 #pragma region Campos privados
 	DECLARE_DYNAMIC(PaginaSeleccionSrcExistente)
-	CXTPPropertyPage*& current;
-	CStringW _titulo;
+	CXTPPropertyPage*& _current;
+	CStringW _nombreSistema;
 #pragma endregion
 
 #pragma region Constructores y destructor
 public:
-	PaginaSeleccionSrcExistente(CXTPPropertyPage*& current, CStringW const& título);
+	PaginaSeleccionSrcExistente(CXTPPropertyPage*& current, int idTemplate, CStringW const& nombreSistema);
 #pragma endregion
 
 #pragma region Métodos
 protected:
 	BOOL OnSetActive() override;
-
-	// Dialog Data
-	enum { IDD = IDD_PAGINA_SCR_EXISTENTE};
 
 protected:
 	void DoDataExchange(CDataExchange* pDX) override;

@@ -31,7 +31,7 @@ BOOL CDigi21EpsgApp::InitInstance()
 	catch(std::exception& excepción)
 	{
 		CStringW cadena;
-		cadena.Format(L"An exception was detected when loading the resource file for the component %s", TITULO_EXCEPCIONES);
+		cadena.Format(L"An exception was detected when loading the resource file for the component %s", static_cast<LPCWSTR>(UtilidadesString::UTF82String(excepción.what())));
 		LogEventos2::AlmacenaEventoError(cadena);
 
 		return FALSE;
