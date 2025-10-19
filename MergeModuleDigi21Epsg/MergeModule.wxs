@@ -1,5 +1,5 @@
 ﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
-	<Module Id="MergeModuleDigi21Epsg" Language="1033" Version="2023.5.2.8" Guid="d564931f-4209-457b-b1be-a44e3435bd74" InstallerVersion="200"><SummaryInformation Manufacturer="Digi21" />
+	<Module Id="MergeModuleDigi21Epsg" Language="1033" Version="2025.0.0.1" Guid="d564931f-4209-457b-b1be-a44e3435bd74" InstallerVersion="200"><SummaryInformation Manufacturer="Digi21" />
 			<Directory Id="MergeRedirectFolder">
 				<Directory Id="WinSxS" Name="WinSxS">
 
