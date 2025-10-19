@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "EpsgManager.h"
 #include "Resource.h"
+#include "DialogoBuscarScrHorizontal.h"
 #include "DialogoSeleccionScrHorizontal.h"
 #include "DialogoSeleccionScrVertical.h"
 #include "DialogoMostrarCrsHorizontal.h"
@@ -109,6 +110,19 @@ namespace Digi21::OpenGis::Epsg
 			CStringW(titleUnknownCoordinateSystemCheckbox),
 			ventanaDibujo,
 			ventanaFotogrametrica);
+	}
+
+	std::optional<int> EpsgManager::DialogSearchHorizontalCrs(CStringW const& title, int defaultCrs)
+	{
+		AFX_MANAGE_STATE(AfxGetStaticModuleState());
+
+		AsignadorRecursosDLL ar{ G_HINSTRECURSOS };
+
+		CDialogoBuscarScrHorizontal dlg{ defaultCrs };
+		if (IDOK == dlg.DoModal())
+			return dlg.GetSCR();
+
+		return {};
 	}
 
 

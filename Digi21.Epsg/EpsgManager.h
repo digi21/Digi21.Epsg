@@ -24,7 +24,9 @@ namespace Digi21::OpenGis::Epsg
 		static CStringW DialogSelectCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox, std::shared_ptr<CoordinateSystems::CoordinateSystem> const& coordinateSystem);
 		static CStringW DialogSelectCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox, std::shared_ptr<CoordinateSystems::CoordinateSystem> const& ventanaDibujo, std::shared_ptr<CoordinateSystems::CoordinateSystem> const& ventanaFotogrametrica);
 #pragma endregion
-
+#pragma region Búsqueda de Sistema de referencia de coordenadas
+		static std::optional<int> DialogSearchHorizontalCrs(CStringW const& title, int defaultCrs);
+#pragma endregion
 #pragma region Selección de Sistema de referencia de coordenadas horizontal
 	public:
 		static CStringW DialogSelectHorizontalCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox);
