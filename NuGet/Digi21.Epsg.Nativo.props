@@ -12,7 +12,7 @@
 		</Link>
 		<PostBuildEvent>
 			<Command>
-				xcopy /y /d "$(MSBuildThisFileDirectory)bin\$(PlatformName)\$(Configuration)\*.dll" "$(TargetDir)"
+				xcopy /y /s "$(MSBuildThisFileDirectory)bin\$(PlatformName)\$(Configuration)\*.dll" "$(TargetDir)"
 				%(Command)
 			</Command>
 		</PostBuildEvent>
