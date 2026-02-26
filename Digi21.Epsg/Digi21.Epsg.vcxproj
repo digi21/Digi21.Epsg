@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Digi21Util.1.1.3.8\build\native\Digi21Util.props" Condition="Exists('..\packages\Digi21Util.1.1.3.8\build\native\Digi21Util.props')" />
+  <Import Project="..\packages\Digi21.Registry.26.0.0.4\build\native\Digi21.Registry.props" Condition="Exists('..\packages\Digi21.Registry.26.0.0.4\build\native\Digi21.Registry.props')" />
+  <Import Project="..\packages\Codejock.20.3.1\build\native\Codejock.props" Condition="Exists('..\packages\Codejock.20.3.1\build\native\Codejock.props')" />
   <Import Project="..\packages\OpenGisCoordinateTransformationServices.23.2.0.13\build\native\OpenGisCoordinateTransformationServices.props" Condition="Exists('..\packages\OpenGisCoordinateTransformationServices.23.2.0.13\build\native\OpenGisCoordinateTransformationServices.props')" />
   <Import Project="..\packages\FirmarConAuthenticodeYSoporteParaStrongNaming.2.0.0\build\native\FirmarConAuthenticodeYSoporteParaStrongNaming.props" Condition="Exists('..\packages\FirmarConAuthenticodeYSoporteParaStrongNaming.2.0.0\build\native\FirmarConAuthenticodeYSoporteParaStrongNaming.props')" />
   <Import Project="..\packages\Microsoft.Windows.SDK.BuildTools.10.0.26100.1\build\Microsoft.Windows.SDK.BuildTools.props" Condition="Exists('..\packages\Microsoft.Windows.SDK.BuildTools.10.0.26100.1\build\Microsoft.Windows.SDK.BuildTools.props')" />
   <Import Project="..\packages\Microsoft.Trusted.Signing.Client.1.0.60\build\Microsoft.Trusted.Signing.Client.props" Condition="Exists('..\packages\Microsoft.Trusted.Signing.Client.1.0.60\build\Microsoft.Trusted.Signing.Client.props')" />
-  <Import Project="..\packages\Digi21Util.1.1.2.3\build\native\Digi21Util.props" Condition="Exists('..\packages\Digi21Util.1.1.2.3\build\native\Digi21Util.props')" />
   <Import Project="..\packages\SoporteParaStrongNamingEsEs.1.0.4\build\native\SoporteParaStrongNamingEsEs.props" Condition="Exists('..\packages\SoporteParaStrongNamingEsEs.1.0.4\build\native\SoporteParaStrongNamingEsEs.props')" />
   <Import Project="..\packages\SoporteParaStrongNamingEnUs.1.0.4\build\native\SoporteParaStrongNamingEnUs.props" Condition="Exists('..\packages\SoporteParaStrongNamingEnUs.1.0.4\build\native\SoporteParaStrongNamingEnUs.props')" />
-  <Import Project="..\packages\Digi21.Registry.22.0.2.3\build\native\Digi21.Registry.props" Condition="Exists('..\packages\Digi21.Registry.22.0.2.3\build\native\Digi21.Registry.props')" />
-  <Import Project="..\packages\Codejock.20.3.0\build\native\Codejock.props" Condition="Exists('..\packages\Codejock.20.3.0\build\native\Codejock.props')" />
   <Import Project="..\packages\SoporteMultipleUserInterface.1.0.7\build\native\SoporteMultipleUserInterface.props" Condition="Exists('..\packages\SoporteMultipleUserInterface.1.0.7\build\native\SoporteMultipleUserInterface.props')" />
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
@@ -188,16 +188,16 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\SoporteMultipleUserInterface.1.0.7\build\native\SoporteMultipleUserInterface.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SoporteMultipleUserInterface.1.0.7\build\native\SoporteMultipleUserInterface.props'))" />
-    <Error Condition="!Exists('..\packages\Codejock.20.3.0\build\native\Codejock.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Codejock.20.3.0\build\native\Codejock.props'))" />
-    <Error Condition="!Exists('..\packages\Digi21.Registry.22.0.2.3\build\native\Digi21.Registry.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Digi21.Registry.22.0.2.3\build\native\Digi21.Registry.props'))" />
     <Error Condition="!Exists('..\packages\SoporteParaStrongNamingEnUs.1.0.4\build\native\SoporteParaStrongNamingEnUs.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SoporteParaStrongNamingEnUs.1.0.4\build\native\SoporteParaStrongNamingEnUs.props'))" />
     <Error Condition="!Exists('..\packages\SoporteParaStrongNamingEsEs.1.0.4\build\native\SoporteParaStrongNamingEsEs.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SoporteParaStrongNamingEsEs.1.0.4\build\native\SoporteParaStrongNamingEsEs.props'))" />
-    <Error Condition="!Exists('..\packages\Digi21Util.1.1.2.3\build\native\Digi21Util.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Digi21Util.1.1.2.3\build\native\Digi21Util.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Trusted.Signing.Client.1.0.60\build\Microsoft.Trusted.Signing.Client.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Trusted.Signing.Client.1.0.60\build\Microsoft.Trusted.Signing.Client.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Trusted.Signing.Client.1.0.60\build\Microsoft.Trusted.Signing.Client.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Trusted.Signing.Client.1.0.60\build\Microsoft.Trusted.Signing.Client.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Windows.SDK.BuildTools.10.0.26100.1\build\Microsoft.Windows.SDK.BuildTools.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Windows.SDK.BuildTools.10.0.26100.1\build\Microsoft.Windows.SDK.BuildTools.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Windows.SDK.BuildTools.10.0.26100.1\build\Microsoft.Windows.SDK.BuildTools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Windows.SDK.BuildTools.10.0.26100.1\build\Microsoft.Windows.SDK.BuildTools.targets'))" />
     <Error Condition="!Exists('..\packages\FirmarConAuthenticodeYSoporteParaStrongNaming.2.0.0\build\native\FirmarConAuthenticodeYSoporteParaStrongNaming.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\FirmarConAuthenticodeYSoporteParaStrongNaming.2.0.0\build\native\FirmarConAuthenticodeYSoporteParaStrongNaming.props'))" />
     <Error Condition="!Exists('..\packages\OpenGisCoordinateTransformationServices.23.2.0.13\build\native\OpenGisCoordinateTransformationServices.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\OpenGisCoordinateTransformationServices.23.2.0.13\build\native\OpenGisCoordinateTransformationServices.props'))" />
+    <Error Condition="!Exists('..\packages\Codejock.20.3.1\build\native\Codejock.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Codejock.20.3.1\build\native\Codejock.props'))" />
+    <Error Condition="!Exists('..\packages\Digi21.Registry.26.0.0.4\build\native\Digi21.Registry.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Digi21.Registry.26.0.0.4\build\native\Digi21.Registry.props'))" />
+    <Error Condition="!Exists('..\packages\Digi21Util.1.1.3.8\build\native\Digi21Util.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Digi21Util.1.1.3.8\build\native\Digi21Util.props'))" />
   </Target>
 </Project>
