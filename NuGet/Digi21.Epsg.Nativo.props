@@ -13,6 +13,7 @@
 		<PostBuildEvent>
 			<Command>
 				xcopy /y /s "$(MSBuildThisFileDirectory)bin\$(PlatformName)\$(Configuration)\*.dll" "$(TargetDir)"
+				xcopy /y /s /i "$(MSBuildThisFileDirectory)bin\$(PlatformName)\$(Configuration)\*.mui" "$(TargetDir)"
 				%(Command)
 			</Command>
 		</PostBuildEvent>
