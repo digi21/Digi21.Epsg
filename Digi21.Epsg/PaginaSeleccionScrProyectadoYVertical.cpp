@@ -14,24 +14,24 @@ constexpr auto ORIENTACION_EJES_NORTE_ESTE = 2;
 
 namespace Digi21::Geodesia::EPSG
 {
-	IMPLEMENT_DYNAMIC(CPaginaSeleccionScrProyectadoYVertical, CXTPPropertyPage)
+	IMPLEMENT_DYNAMIC(CPaginaSeleccionScrProyectadoYVertical, PaginaAdaptadaAlTema)
 
 	CPaginaSeleccionScrProyectadoYVertical::CPaginaSeleccionScrProyectadoYVertical(CXTPPropertyPage*& _current)
-		: CXTPPropertyPage(IDD)
+		: PaginaAdaptadaAlTema(IDD)
 		, current{ _current }
 	{
 	}
 
 	void CPaginaSeleccionScrProyectadoYVertical::DoDataExchange(CDataExchange* pDX)
 	{
-		CXTPPropertyPage::DoDataExchange(pDX);
+		PaginaAdaptadaAlTema::DoDataExchange(pDX);
 		DDX_Control(pDX, IDC_COMBO_CRS_HORIZONTAL, m_wndCrsHorizontal);
 		DDX_Control(pDX, IDC_COMBO_CRS_VERTICAL, m_wndCrsVertical);
 		DDX_Check(pDX, IDC_CHECK_VERTICAL_DESCONOCIDO, m_bVerticalDesconocido);
 		DDX_CBIndex(pDX, IDC_COMBO_ORIENTACION_EJES, m_nOrientaciónEjes);
 	}
 
-	BEGIN_MESSAGE_MAP(CPaginaSeleccionScrProyectadoYVertical, CXTPPropertyPage)
+	BEGIN_MESSAGE_MAP(CPaginaSeleccionScrProyectadoYVertical, PaginaAdaptadaAlTema)
 		ON_CBN_SELCHANGE(IDC_COMBO_CRS_HORIZONTAL, &CPaginaSeleccionScrProyectadoYVertical::OnCbnSelchangeComboCrsHorizontal)
 		ON_BN_CLICKED(IDC_BUTTON_BUSCAR_EPSG_HORIZONTAL, &CPaginaSeleccionScrProyectadoYVertical::OnBnClickedBuscarHorizontalEpsg)
 		ON_CBN_SELCHANGE(IDC_COMBO_CRS_VERTICAL, &CPaginaSeleccionScrProyectadoYVertical::OnCbnSelchangeComboCrsVertical)
@@ -50,7 +50,7 @@ namespace Digi21::Geodesia::EPSG
 
 	BOOL CPaginaSeleccionScrProyectadoYVertical::OnInitDialog()
 	{
-		CXTPPropertyPage::OnInitDialog();
+		PaginaAdaptadaAlTema::OnInitDialog();
 
 		SetResize(IDC_COMBO_CRS_HORIZONTAL, XTP_ANCHOR_TOPLEFT, XTP_ANCHOR_TOPRIGHT);
 		SetResize(IDC_BUTTON_BUSCAR_EPSG_HORIZONTAL, XTP_ANCHOR_TOPRIGHT, XTP_ANCHOR_TOPRIGHT);

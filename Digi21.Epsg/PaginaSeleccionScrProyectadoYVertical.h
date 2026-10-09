@@ -1,9 +1,11 @@
 #pragma once
 
+#include "PaginaAdaptadaAlTema.h"
+
 namespace Digi21::Geodesia::EPSG
 {
 
-	class CPaginaSeleccionScrProyectadoYVertical final : public CXTPPropertyPage
+	class CPaginaSeleccionScrProyectadoYVertical final : public PaginaAdaptadaAlTema
 	{
 		DECLARE_DYNAMIC(CPaginaSeleccionScrProyectadoYVertical)
 

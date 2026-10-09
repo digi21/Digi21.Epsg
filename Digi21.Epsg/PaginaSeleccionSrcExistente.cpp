@@ -2,10 +2,10 @@
 #include "Digi21.Epsg.h"
 #include "PaginaSeleccionSrcExistente.h"
 
-IMPLEMENT_DYNAMIC(PaginaSeleccionSrcExistente, CXTPPropertyPage)
+IMPLEMENT_DYNAMIC(PaginaSeleccionSrcExistente, PaginaAdaptadaAlTema)
 
 PaginaSeleccionSrcExistente::PaginaSeleccionSrcExistente(CXTPPropertyPage*& current, int idTemplate, CStringW const& nombreSistema)
-	: CXTPPropertyPage(idTemplate)
+	: PaginaAdaptadaAlTema(idTemplate)
 	, _current{ current }
 	, _nombreSistema{ nombreSistema }
 {
@@ -13,11 +13,11 @@ PaginaSeleccionSrcExistente::PaginaSeleccionSrcExistente(CXTPPropertyPage*& curr
 
 void PaginaSeleccionSrcExistente::DoDataExchange(CDataExchange* pDX)
 {
-	CXTPPropertyPage::DoDataExchange(pDX);
+	PaginaAdaptadaAlTema::DoDataExchange(pDX);
 	DDX_Text(pDX, IDC_STATIC_TITULO_SRC_EXISTENTE, _nombreSistema);
 }
 
-BEGIN_MESSAGE_MAP(PaginaSeleccionSrcExistente, CXTPPropertyPage)
+BEGIN_MESSAGE_MAP(PaginaSeleccionSrcExistente, PaginaAdaptadaAlTema)
 END_MESSAGE_MAP()
 
 BOOL PaginaSeleccionSrcExistente::OnSetActive()

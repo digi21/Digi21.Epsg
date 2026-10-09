@@ -7,10 +7,10 @@ using namespace Digi21::OpenGis::CoordinateSystems;
 using namespace Digi21::OpenGis;
 using namespace std;
 
-IMPLEMENT_DYNAMIC(PaginaManual, CXTPPropertyPage)
+IMPLEMENT_DYNAMIC(PaginaManual, PaginaAdaptadaAlTema)
 
 PaginaManual::PaginaManual(CXTPPropertyPage*& current)
-	: CXTPPropertyPage(IDD_PAGINA_MANUAL)
+	: PaginaAdaptadaAlTema(IDD_PAGINA_MANUAL)
 	, current{ current }
 {
 }
@@ -21,7 +21,7 @@ void PaginaManual::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_EDIT_WKT, _wkt);
 }
 
-BEGIN_MESSAGE_MAP(PaginaManual, CXTPPropertyPage)
+BEGIN_MESSAGE_MAP(PaginaManual, PaginaAdaptadaAlTema)
 	ON_BN_CLICKED(IDC_BUTTON_IMPORTAR, &PaginaManual::OnBnClickedButtonBuscarArchivo)
 	ON_BN_CLICKED(IDC_BOTON_MEMORIZAR_SISTEMA_COORDENADAS_HORIZONTAL, &PaginaManual::OnBnClickedBotonMemorizarSistemaCoordenadas)
 END_MESSAGE_MAP()
@@ -34,7 +34,7 @@ BOOL PaginaManual::OnSetActive()
 
 BOOL PaginaManual::OnInitDialog()
 {
-	CXTPPropertyPage::OnInitDialog();
+	PaginaAdaptadaAlTema::OnInitDialog();
 
 	SetResize(IDC_EDIT_WKT, XTP_ANCHOR_TOPLEFT, XTP_ANCHOR_BOTTOMRIGHT);
 	SetResize(IDC_BUTTON_IMPORTAR, XTP_ANCHOR_BOTTOMRIGHT, XTP_ANCHOR_BOTTOMRIGHT);

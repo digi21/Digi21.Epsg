@@ -15,22 +15,22 @@ constexpr auto ORIENTACION_EJES_LONGITUD_LATITUD = 2;
 namespace Digi21::Geodesia::EPSG
 {
 
-	IMPLEMENT_DYNAMIC(CPaginaSeleccionScr3D, CXTPPropertyPage)
+	IMPLEMENT_DYNAMIC(CPaginaSeleccionScr3D, PaginaAdaptadaAlTema)
 
 	CPaginaSeleccionScr3D::CPaginaSeleccionScr3D(CXTPPropertyPage*& _current)
-		: CXTPPropertyPage(IDD)
+		: PaginaAdaptadaAlTema(IDD)
 		, current{ _current }
 	{
 	}
 
 	void CPaginaSeleccionScr3D::DoDataExchange(CDataExchange* pDX)
 	{
-		CXTPPropertyPage::DoDataExchange(pDX);
+		PaginaAdaptadaAlTema::DoDataExchange(pDX);
 		DDX_Control(pDX, IDC_COMBO_CRS, m_wndCRS);
 		DDX_CBIndex(pDX, IDC_COMBO_ORIENTACION_EJES, m_nOrientaciónEjes);
 	}
 
-	BEGIN_MESSAGE_MAP(CPaginaSeleccionScr3D, CXTPPropertyPage)
+	BEGIN_MESSAGE_MAP(CPaginaSeleccionScr3D, PaginaAdaptadaAlTema)
 		ON_CBN_SELCHANGE(IDC_COMBO_CRS, &CPaginaSeleccionScr3D::OnCbnSelchangeComboCrs)
 		ON_BN_CLICKED(IDC_BUTTON_BUSCAR_EPSG, &CPaginaSeleccionScr3D::OnBnClickedBuscarEpsg)
 		ON_BN_CLICKED(IDC_BOTON_EXPORTAR_SISTEMA_COORDENADAS_HORIZONTAL, &CPaginaSeleccionScr3D::OnBnClickedBotonExportarSistemaCoordenadas)
@@ -46,7 +46,7 @@ namespace Digi21::Geodesia::EPSG
 
 	BOOL CPaginaSeleccionScr3D::OnInitDialog()
 	{
-		CXTPPropertyPage::OnInitDialog();
+		PaginaAdaptadaAlTema::OnInitDialog();
 
 		SetResize(IDC_COMBO_CRS, XTP_ANCHOR_TOPLEFT, XTP_ANCHOR_TOPRIGHT);
 		SetResize(IDC_COMBO_ORIENTACION_EJES, XTP_ANCHOR_TOPLEFT, XTP_ANCHOR_TOPRIGHT);

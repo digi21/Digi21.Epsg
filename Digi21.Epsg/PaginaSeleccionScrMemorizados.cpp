@@ -7,10 +7,10 @@ using namespace Digi21::OpenGis;
 
 namespace Digi21::Geodesia::EPSG
 {
-	IMPLEMENT_DYNAMIC(CPaginaSeleccionScrMemorizados, CXTPPropertyPage)
+	IMPLEMENT_DYNAMIC(CPaginaSeleccionScrMemorizados, PaginaAdaptadaAlTema)
 
 	CPaginaSeleccionScrMemorizados::CPaginaSeleccionScrMemorizados(CXTPPropertyPage*& _current)
-		: CXTPPropertyPage(IDD)
+		: PaginaAdaptadaAlTema(IDD)
 		, current{ _current }
 	{
 	}
@@ -24,11 +24,11 @@ namespace Digi21::Geodesia::EPSG
 
 	void CPaginaSeleccionScrMemorizados::DoDataExchange(CDataExchange* pDX)
 	{
-		CXTPPropertyPage::DoDataExchange(pDX);
+		PaginaAdaptadaAlTema::DoDataExchange(pDX);
 		DDX_Control(pDX, IDC_LISTA_SISTEMAS_COORDENADAS_MEMORIZADOS_HORIZONTAL, m_wndListaSistemasReferenciaMemorizados);
 	}
 
-	BEGIN_MESSAGE_MAP(CPaginaSeleccionScrMemorizados, CXTPPropertyPage)
+	BEGIN_MESSAGE_MAP(CPaginaSeleccionScrMemorizados, PaginaAdaptadaAlTema)
 		ON_BN_CLICKED(IDC_BUTTON_ELIMINAR_SISTEMA_COORDENADAS_HORIZONTAL, &CPaginaSeleccionScrMemorizados::OnBnClickedButtonEliminarSistemaCoordenadas)
 		ON_LBN_SELCHANGE(IDC_LISTA_SISTEMAS_COORDENADAS_MEMORIZADOS_HORIZONTAL, &CPaginaSeleccionScrMemorizados::OnSelchangeListaSistemasCoordenadasMemorizados)
 		ON_BN_CLICKED(IDC_BOTON_EXPORTAR_SISTEMA_COORDENADAS_HORIZONTAL, &CPaginaSeleccionScrMemorizados::OnBnClickedBotonExportarSistemaCoordenadas)
@@ -36,7 +36,7 @@ namespace Digi21::Geodesia::EPSG
 
 	BOOL CPaginaSeleccionScrMemorizados::OnInitDialog()
 	{
-		CXTPPropertyPage::OnInitDialog();
+		PaginaAdaptadaAlTema::OnInitDialog();
 
 		SetResize(IDC_STATIC_TITULO_SISTEMA_COORDENADAS_DE_REFERENCIA_MEMORIZADOS_HORIZONTAL, XTP_ANCHOR_TOPLEFT, XTP_ANCHOR_TOPRIGHT);
 		SetResize(IDC_LISTA_SISTEMAS_COORDENADAS_MEMORIZADOS_HORIZONTAL, XTP_ANCHOR_TOPLEFT, XTP_ANCHOR_BOTTOMRIGHT);

@@ -1,9 +1,11 @@
 #pragma once
 
+#include "PaginaAdaptadaAlTema.h"
+
 namespace Digi21::Geodesia::EPSG
 {
 
-	class CPaginaSeleccionScrMemorizados final : public CXTPPropertyPage
+	class CPaginaSeleccionScrMemorizados final : public PaginaAdaptadaAlTema
 	{
 		DECLARE_DYNAMIC(CPaginaSeleccionScrMemorizados)
 

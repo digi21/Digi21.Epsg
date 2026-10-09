@@ -87,6 +87,12 @@
     <ClCompile Include="HojaPropiedadesAdaptadaAlTema.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PaginaAdaptadaAlTema.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TemaAnfitrion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="PaginaManual.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -156,6 +162,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HojaPropiedadesAdaptadaAlTema.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PaginaAdaptadaAlTema.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TemaAnfitrion.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PaginaManual.h">

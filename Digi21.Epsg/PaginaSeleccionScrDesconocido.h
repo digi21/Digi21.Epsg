@@ -1,6 +1,8 @@
 #pragma once
 
-class CPaginaSeleccionScrDesconocido final : public CXTPPropertyPage
+#include "PaginaAdaptadaAlTema.h"
+
+class CPaginaSeleccionScrDesconocido final : public PaginaAdaptadaAlTema
 {
 #pragma region Campos privados
 	DECLARE_DYNAMIC(CPaginaSeleccionScrDesconocido)

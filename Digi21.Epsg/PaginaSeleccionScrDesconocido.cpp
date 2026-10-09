@@ -2,10 +2,10 @@
 #include "Digi21.Epsg.h"
 #include "PaginaSeleccionScrDesconocido.h"
 
-IMPLEMENT_DYNAMIC(CPaginaSeleccionScrDesconocido, CXTPPropertyPage)
+IMPLEMENT_DYNAMIC(CPaginaSeleccionScrDesconocido, PaginaAdaptadaAlTema)
 
 CPaginaSeleccionScrDesconocido::CPaginaSeleccionScrDesconocido(CXTPPropertyPage*& _current, CStringW const& título)
-	: CXTPPropertyPage(IDD)
+	: PaginaAdaptadaAlTema(IDD)
 	, current{ _current }
 	, m_sTituloDesconocido{ título }
 {
@@ -13,11 +13,11 @@ CPaginaSeleccionScrDesconocido::CPaginaSeleccionScrDesconocido(CXTPPropertyPage*
 
 void CPaginaSeleccionScrDesconocido::DoDataExchange(CDataExchange* pDX)
 {
-	CXTPPropertyPage::DoDataExchange(pDX);
+	PaginaAdaptadaAlTema::DoDataExchange(pDX);
 	DDX_Text(pDX, IDC_STATIC_TITULO_DESCONOCIDO, m_sTituloDesconocido);
 }
 
-BEGIN_MESSAGE_MAP(CPaginaSeleccionScrDesconocido, CXTPPropertyPage)
+BEGIN_MESSAGE_MAP(CPaginaSeleccionScrDesconocido, PaginaAdaptadaAlTema)
 END_MESSAGE_MAP()
 
 BOOL CPaginaSeleccionScrDesconocido::OnSetActive()

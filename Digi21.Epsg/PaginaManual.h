@@ -1,6 +1,8 @@
 #pragma once
 
-class PaginaManual : public CXTPPropertyPage
+#include "PaginaAdaptadaAlTema.h"
+
+class PaginaManual : public PaginaAdaptadaAlTema
 {
 	DECLARE_DYNAMIC(PaginaManual)
 
