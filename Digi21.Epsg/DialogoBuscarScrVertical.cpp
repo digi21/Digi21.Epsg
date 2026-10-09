@@ -13,7 +13,7 @@ namespace Digi21::Geodesia::EPSG
 {
 
 	CDialogoBuscarScrVertical::CDialogoBuscarScrVertical(int scrSeleccionadoPorDefecto, CWnd* pParent /*=nullptr*/)
-		: CDialog(IDD, pParent)
+		: DialogoAdaptadoAlTema{IDD, pParent}
 		, m_nSCR(__max(SISTEMA_COORDENADAS_LOCAL, scrSeleccionadoPorDefecto))
 	{
 	}
@@ -29,7 +29,7 @@ namespace Digi21::Geodesia::EPSG
 		DDX_Text(pDX, IDC_EDIT_AMBITO_USO, m_sAmbitoUso);
 	}
 
-	BEGIN_MESSAGE_MAP(CDialogoBuscarScrVertical, CDialog)
+	BEGIN_MESSAGE_MAP(CDialogoBuscarScrVertical, DialogoAdaptadoAlTema<CDialog>)
 		ON_CBN_SELCHANGE(IDC_COMBO_CRS, &CDialogoBuscarScrVertical::OnCbnSelchangeComboCrs)
 		ON_BN_CLICKED(IDOK, &CDialogoBuscarScrVertical::OnBnClickedOk)
 	END_MESSAGE_MAP()
@@ -37,7 +37,7 @@ namespace Digi21::Geodesia::EPSG
 
 	BOOL CDialogoBuscarScrVertical::OnInitDialog()
 	{
-		CDialog::OnInitDialog();
+		DialogoAdaptadoAlTema::OnInitDialog();
 
 		CWaitCursor wc;
 

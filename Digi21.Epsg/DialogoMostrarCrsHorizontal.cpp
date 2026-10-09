@@ -17,7 +17,7 @@ namespace Digi21::Geodesia::EPSG
 
 	// Cuadro de diálogo de CDialogoMostrarCrsHorizontal
 	CDialogoMostrarCrsHorizontal::CDialogoMostrarCrsHorizontal(std::shared_ptr<HorizontalCoordinateSystem> const& sistemaCoordenadas, CWnd* pParent /*=nullptr*/)
-		: CDialog(IDD, pParent)
+		: DialogoAdaptadoAlTema{IDD, pParent}
 		, _sistemaCoordenadas{ sistemaCoordenadas }
 	{
 	}
@@ -36,14 +36,14 @@ namespace Digi21::Geodesia::EPSG
 		DDX_Text(pDX, IDC_EDIT_NOMBRE_ELIPSOIDE, m_sElipsoide);
 	}
 
-	BEGIN_MESSAGE_MAP(CDialogoMostrarCrsHorizontal, CDialog)
+	BEGIN_MESSAGE_MAP(CDialogoMostrarCrsHorizontal, DialogoAdaptadoAlTema<CDialog>)
 		ON_BN_CLICKED(IDOK, &CDialogoMostrarCrsHorizontal::OnBnClickedOk)
 	END_MESSAGE_MAP()
 
 
 	BOOL CDialogoMostrarCrsHorizontal::OnInitDialog()
 	{
-		CDialog::OnInitDialog();
+		DialogoAdaptadoAlTema::OnInitDialog();
 
 		m_wndTiposCRS.AddString(_G(IDS_STRING2004));
 		m_wndTiposCRS.AddString(_G(IDS_STRING2005));

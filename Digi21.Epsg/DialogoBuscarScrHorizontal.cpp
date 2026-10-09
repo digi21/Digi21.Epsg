@@ -17,7 +17,7 @@ namespace Digi21::Geodesia::EPSG
 
 	// Cuadro de diálogo de CDialogoBuscarScrHorizontal
 	CDialogoBuscarScrHorizontal::CDialogoBuscarScrHorizontal(int scrSeleccionadoPorDefecto, CWnd* pParent /*=nullptr*/)
-		: CDialog(IDD, pParent)
+		: DialogoAdaptadoAlTema{IDD, pParent}
 		, m_nSCR{ scrSeleccionadoPorDefecto }
 	{
 	}
@@ -36,7 +36,7 @@ namespace Digi21::Geodesia::EPSG
 		DDX_Text(pDX, IDC_EDIT_NOMBRE_ELIPSOIDE, m_sElipsoide);
 	}
 
-	BEGIN_MESSAGE_MAP(CDialogoBuscarScrHorizontal, CDialog)
+	BEGIN_MESSAGE_MAP(CDialogoBuscarScrHorizontal, DialogoAdaptadoAlTema<CDialog>)
 		ON_CBN_SELCHANGE(IDC_COMBO_TIPOS_CRS, &CDialogoBuscarScrHorizontal::OnCbnSelchangeComboTiposCrs)
 		ON_CBN_SELCHANGE(IDC_COMBO_CRS, &CDialogoBuscarScrHorizontal::OnCbnSelchangeComboCrs)
 		ON_BN_CLICKED(IDC_BUTTON_BUSCAR_EPSG, &CDialogoBuscarScrHorizontal::OnBnClickedBuscarEpsg)
@@ -45,7 +45,7 @@ namespace Digi21::Geodesia::EPSG
 
 	BOOL CDialogoBuscarScrHorizontal::OnInitDialog()
 	{
-		CDialog::OnInitDialog();
+		DialogoAdaptadoAlTema::OnInitDialog();
 
 		m_wndTiposCRS.AddString(_G(IDS_STRING2005));
 		m_wndTiposCRS.AddString(_G(IDS_STRING2006));

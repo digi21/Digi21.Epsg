@@ -1,10 +1,12 @@
 #pragma once
 
+#include "DialogoAdaptadoAlTema.h"
+
 namespace Digi21::Geodesia::EPSG
 {
 
 	// Cuadro de diálogo de CDialogoMostrarCrsHorizontal
-	class CDialogoMostrarCrsHorizontal final : public CDialog
+	class CDialogoMostrarCrsHorizontal final : public DialogoAdaptadoAlTema<CDialog>
 	{
 		enum { IDD = IDD_DIALOGO_MOSTRAR_PARAMETROS_SCR_HORIZONTAL };
 		std::shared_ptr<OpenGis::CoordinateSystems::HorizontalCoordinateSystem> _sistemaCoordenadas;

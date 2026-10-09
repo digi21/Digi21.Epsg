@@ -1,9 +1,11 @@
 #pragma once
 
+#include "DialogoAdaptadoAlTema.h"
+
 namespace Digi21::Geodesia::EPSG
 {
 
-	class CDialogoSeleccionScrHorizontal final : public CXTPResizeDialog
+	class CDialogoSeleccionScrHorizontal final : public DialogoAdaptadoAlTema<CXTPResizeDialog>
 	{
 		DECLARE_DYNAMIC(CDialogoSeleccionScrHorizontal)
 

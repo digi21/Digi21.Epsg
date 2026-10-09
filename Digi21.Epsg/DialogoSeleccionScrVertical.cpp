@@ -12,7 +12,7 @@ namespace Digi21::Geodesia::EPSG
 	IMPLEMENT_DYNAMIC(CDialogoSeleccionScrVertical, CXTPResizeDialog)
 
 	CDialogoSeleccionScrVertical::CDialogoSeleccionScrVertical(CStringW const& título, CStringW const& títuloCheckboxDesconocido, std::shared_ptr<CoordinateSystem> const& sistemaCoordenadasDefecto, CWnd* pParent /*=nullptr*/)
-		: CXTPResizeDialog(IDD, pParent)
+		: DialogoAdaptadoAlTema{IDD, pParent}
 		, m_bDesconocido{}
 		, título{ título }
 		, títuloCheckboxDesconocido{ títuloCheckboxDesconocido }
@@ -29,7 +29,7 @@ namespace Digi21::Geodesia::EPSG
 		DDX_Check(pDX, IDC_CHECK_DESCONOCIDO, m_bDesconocido);
 	}
 
-	BEGIN_MESSAGE_MAP(CDialogoSeleccionScrVertical, CXTPResizeDialog)
+	BEGIN_MESSAGE_MAP(CDialogoSeleccionScrVertical, DialogoAdaptadoAlTema<CXTPResizeDialog>)
 		ON_BN_CLICKED(IDC_BOTON_GUARDAR_SISTEMA_COORDENADAS, &CDialogoSeleccionScrVertical::OnBnClickedBotonGuardarSistemaCoordenadas)
 		ON_BN_CLICKED(IDC_BUTTON_ELIMINAR_SISTEMA_COORDENADAS, &CDialogoSeleccionScrVertical::OnBnClickedButtonEliminarSistemaCoordenadas)
 		ON_BN_CLICKED(IDC_BUTTON_IMPORTAR, &CDialogoSeleccionScrVertical::OnBnClickedButtonImportar)
@@ -46,7 +46,7 @@ namespace Digi21::Geodesia::EPSG
 	// CDialogoSeleccionScrVertical message handlers
 	BOOL CDialogoSeleccionScrVertical::OnInitDialog()
 	{
-		CXTPResizeDialog::OnInitDialog();
+		DialogoAdaptadoAlTema::OnInitDialog();
 
 		SetResize(IDC_CHECK_DESCONOCIDO, XTP_ANCHOR_TOPLEFT, XTP_ANCHOR_TOPRIGHT);
 		SetResize(IDC_STATIC_TITULO_SISTEMA_COORDENADAS_DE_REFERENCIA_MEMORIZADOS, XTP_ANCHOR_TOPLEFT, XTP_ANCHOR_TOPRIGHT);

@@ -1,6 +1,8 @@
 #pragma once
 
-class CDialogoSeleccionTransformacionVertical final : public CDialogEx
+#include "DialogoAdaptadoAlTema.h"
+
+class CDialogoSeleccionTransformacionVertical final : public DialogoAdaptadoAlTema<CDialogEx>
 {
 	DECLARE_DYNAMIC(CDialogoSeleccionTransformacionVertical)
 

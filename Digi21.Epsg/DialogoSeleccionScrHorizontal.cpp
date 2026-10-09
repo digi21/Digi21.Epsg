@@ -13,7 +13,7 @@ namespace Digi21::Geodesia::EPSG
 	IMPLEMENT_DYNAMIC(CDialogoSeleccionScrHorizontal, CXTPResizeDialog)
 
 	CDialogoSeleccionScrHorizontal::CDialogoSeleccionScrHorizontal(CStringW const& _título, CStringW const& _títuloCheckboxDesconocido, shared_ptr<CoordinateSystem> const& sistemaCoordenadasDefecto, CWnd* pParent /*=nullptr*/)
-		: CXTPResizeDialog(IDD, pParent)
+		: DialogoAdaptadoAlTema{IDD, pParent}
 		, m_bDesconocido{}
 		, título{ _título }
 		, títuloCheckboxDesconocido{ _títuloCheckboxDesconocido }
@@ -31,7 +31,7 @@ namespace Digi21::Geodesia::EPSG
 	}
 
 
-	BEGIN_MESSAGE_MAP(CDialogoSeleccionScrHorizontal, CXTPResizeDialog)
+	BEGIN_MESSAGE_MAP(CDialogoSeleccionScrHorizontal, DialogoAdaptadoAlTema<CXTPResizeDialog>)
 		ON_BN_CLICKED(IDC_BOTON_GUARDAR_SISTEMA_COORDENADAS, &CDialogoSeleccionScrHorizontal::OnBnClickedBotonGuardarSistemaCoordenadas)
 		ON_BN_CLICKED(IDC_BUTTON_ELIMINAR_SISTEMA_COORDENADAS, &CDialogoSeleccionScrHorizontal::OnBnClickedButtonEliminarSistemaCoordenadas)
 		ON_BN_CLICKED(IDC_BUTTON_IMPORTAR, &CDialogoSeleccionScrHorizontal::OnBnClickedButtonImportar)
@@ -45,7 +45,7 @@ namespace Digi21::Geodesia::EPSG
 
 	BOOL CDialogoSeleccionScrHorizontal::OnInitDialog()
 	{
-		CXTPResizeDialog::OnInitDialog();
+		DialogoAdaptadoAlTema::OnInitDialog();
 
 		SetResize(IDC_CHECK_DESCONOCIDO, XTP_ANCHOR_TOPLEFT, XTP_ANCHOR_TOPRIGHT);
 		SetResize(IDC_STATIC_TITULO_SISTEMA_COORDENADAS_DE_REFERENCIA_MEMORIZADOS, XTP_ANCHOR_TOPLEFT, XTP_ANCHOR_TOPRIGHT);

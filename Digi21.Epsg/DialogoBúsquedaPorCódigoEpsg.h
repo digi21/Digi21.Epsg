@@ -1,6 +1,8 @@
 #pragma once
 
-class CDialogoBúsquedaPorCódigoEpsg final : public CDialogEx
+#include "DialogoAdaptadoAlTema.h"
+
+class CDialogoBúsquedaPorCódigoEpsg final : public DialogoAdaptadoAlTema<CDialogEx>
 {
 	DECLARE_DYNAMIC(CDialogoBúsquedaPorCódigoEpsg)
 

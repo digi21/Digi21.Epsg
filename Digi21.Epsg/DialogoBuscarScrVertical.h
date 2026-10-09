@@ -1,9 +1,11 @@
 #pragma once
 
+#include "DialogoAdaptadoAlTema.h"
+
 namespace Digi21::Geodesia::EPSG
 {
 
-	class CDialogoBuscarScrVertical final : public CDialog
+	class CDialogoBuscarScrVertical final : public DialogoAdaptadoAlTema<CDialog>
 	{
 		enum {IDD = IDD_DIALOGO_BUSCAR_SCR_VERTICAL};
 

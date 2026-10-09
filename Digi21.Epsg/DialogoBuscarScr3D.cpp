@@ -14,7 +14,7 @@ using namespace Digi21::OpenGis;
 namespace Digi21::Geodesia::EPSG
 {
 	CDialogoBuscarScr3D::CDialogoBuscarScr3D(int scrSeleccionadoPorDefecto, CWnd* pParent /*=nullptr*/)
-		: CDialog(IDD, pParent)
+		: DialogoAdaptadoAlTema{IDD, pParent}
 		, m_nSCR{ scrSeleccionadoPorDefecto }
 	{
 	}
@@ -32,7 +32,7 @@ namespace Digi21::Geodesia::EPSG
 		DDX_Text(pDX, IDC_EDIT_NOMBRE_ELIPSOIDE, m_sElipsoide);
 	}
 
-	BEGIN_MESSAGE_MAP(CDialogoBuscarScr3D, CDialog)
+	BEGIN_MESSAGE_MAP(CDialogoBuscarScr3D, DialogoAdaptadoAlTema<CDialog>)
 		ON_CBN_SELCHANGE(IDC_COMBO_CRS, &CDialogoBuscarScr3D::OnCbnSelchangeComboCrs)
 		ON_BN_CLICKED(IDC_BUTTON_BUSCAR_EPSG, &CDialogoBuscarScr3D::OnBnClickedBuscarEpsg)
 		ON_BN_CLICKED(IDOK, &CDialogoBuscarScr3D::OnBnClickedOk)
@@ -43,7 +43,7 @@ namespace Digi21::Geodesia::EPSG
 
 	BOOL CDialogoBuscarScr3D::OnInitDialog()
 	{
-		CDialog::OnInitDialog();
+		DialogoAdaptadoAlTema::OnInitDialog();
 
 		m_wndCRS.ResetContent();
 		CWaitCursor wc;

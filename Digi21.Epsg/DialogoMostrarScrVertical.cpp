@@ -15,7 +15,7 @@ namespace Digi21::Geodesia::EPSG
 {
 
 	CDialogoMostrarScrVertical::CDialogoMostrarScrVertical(shared_ptr<VerticalCoordinateSystem> const& sistemaCoordenadas, CWnd* pParent /*=nullptr*/)
-		: CDialog(IDD, pParent)
+		: DialogoAdaptadoAlTema{IDD, pParent}
 		, _sistemaCoordenadas{ sistemaCoordenadas }
 	{
 	}
@@ -31,14 +31,14 @@ namespace Digi21::Geodesia::EPSG
 		DDX_Text(pDX, IDC_EDIT_AMBITO_USO, m_sAmbitoUso);
 	}
 
-	BEGIN_MESSAGE_MAP(CDialogoMostrarScrVertical, CDialog)
+	BEGIN_MESSAGE_MAP(CDialogoMostrarScrVertical, DialogoAdaptadoAlTema<CDialog>)
 		ON_CBN_SELCHANGE(IDC_COMBO_CRS, &CDialogoMostrarScrVertical::OnCbnSelchangeComboCrs)
 		ON_BN_CLICKED(IDOK, &CDialogoMostrarScrVertical::OnBnClickedOk)
 	END_MESSAGE_MAP()
 
 	BOOL CDialogoMostrarScrVertical::OnInitDialog()
 	{
-		CDialog::OnInitDialog();
+		DialogoAdaptadoAlTema::OnInitDialog();
 
 		CWaitCursor wc;
 

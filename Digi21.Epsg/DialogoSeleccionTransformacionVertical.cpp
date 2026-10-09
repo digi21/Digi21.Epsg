@@ -6,7 +6,7 @@
 IMPLEMENT_DYNAMIC(CDialogoSeleccionTransformacionVertical, CDialogEx)
 
 CDialogoSeleccionTransformacionVertical::CDialogoSeleccionTransformacionVertical(CWnd* pParent /*=nullptr*/)
-	: CDialogEx(IDD, pParent)
+	: DialogoAdaptadoAlTema{IDD, pParent}
 {
 }
 
@@ -19,7 +19,7 @@ void CDialogoSeleccionTransformacionVertical::DoDataExchange(CDataExchange* pDX)
 	DDX_Check(pDX, IDC_CHECK_UTILIZAR_SIEMPRE_ESTA_TRANSFORMACION, m_bUtilizarSiempreEstaTransf);
 }
 
-BEGIN_MESSAGE_MAP(CDialogoSeleccionTransformacionVertical, CDialogEx)
+BEGIN_MESSAGE_MAP(CDialogoSeleccionTransformacionVertical, DialogoAdaptadoAlTema<CDialogEx>)
 	ON_BN_CLICKED(IDC_RADIO_SCR_VERTICAL_IDENTICOS, &CDialogoSeleccionTransformacionVertical::OnBnClickedRadioScrVerticalIdenticos)
 	ON_BN_CLICKED(IDC_RADIO_DESPLAZAMIENTO_VERTICAL, &CDialogoSeleccionTransformacionVertical::OnBnClickedRadioDesplazamientoVertical)
 	ON_BN_CLICKED(IDOK, &CDialogoSeleccionTransformacionVertical::OnBnClickedOk)
