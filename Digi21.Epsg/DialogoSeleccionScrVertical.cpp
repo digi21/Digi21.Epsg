@@ -72,7 +72,7 @@ namespace Digi21::Geodesia::EPSG
 		auto const fábrica = GetCoordinateSystemFactory();
 
 		for( auto const& memorizado : sistemasCoordenadasMemorizados ) {
-			auto* wkt = new CStringW(
+			auto wkt = std::make_unique<CStringW>(
 				CRegistro::GetStringCurrentUser(
 					CARPETA_DIGI21, 
 					VERSION_DIGI3D, 
@@ -82,7 +82,7 @@ namespace Digi21::Geodesia::EPSG
 			try {
 				auto const nombre = fábrica->CreateFromWkt(*wkt)->GetName();
 				auto const índice = m_wndListaSistemasReferenciaMemorizados.AddString(nombre);
-				m_wndListaSistemasReferenciaMemorizados.SetItemData(índice, reinterpret_cast<DWORD_PTR>(wkt));
+				m_wndListaSistemasReferenciaMemorizados.SetItemData(índice, reinterpret_cast<DWORD_PTR>(wkt.release()));
 			}
 			catch(...)
 			{
@@ -278,6 +278,11 @@ namespace Digi21::Geodesia::EPSG
 	{
 		CXTPWindowPos wndPosition;
 		wndPosition.SaveWindowPos(this, L"DialogoSelecciónCrsVertical", CARPETA_REGISTRO_APP_CONFIGURATION_DIALOGLAYOUT);
+
+		// Cada elemento de la lista guarda en ItemData un CStringW con el WKT.
+		for (auto i = 0; i < m_wndListaSistemasReferenciaMemorizados.GetCount(); i++)
+			delete reinterpret_cast<CStringW*>(m_wndListaSistemasReferenciaMemorizados.GetItemData(i));
+
 		CXTPResizeDialog::OnDestroy();
 	}
 
