@@ -275,7 +275,7 @@ namespace Digi21::Geodesia::EPSG
 	void CDialogoSeleccionScrHorizontal::OnDestroy()
 	{
 		CXTPWindowPos wndPosition;
-		wndPosition.SaveWindowPos(this, L"DialogoSelecciónCrsHoritonzal", CARPETA_REGISTRO_APP_CONFIGURATION_DIALOGLAYOUT);
+		wndPosition.SaveWindowPos(this, L"DialogoSelecciónCrsHorizontal", CARPETA_REGISTRO_APP_CONFIGURATION_DIALOGLAYOUT);
 		CXTPResizeDialog::OnDestroy();
 	}
 
