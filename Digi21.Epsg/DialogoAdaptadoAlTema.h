@@ -11,6 +11,8 @@ class AdaptacionTema
 {
 	std::optional<ColoresTema> _tema;
 	CBrush _brochaFondo;
+	CBrush _brochaLista;
+	COLORREF _colorBrochaLista{};
 
 	// Controles nativos de la plantilla subclasificados como controles de Codejock, que atienden WM_XTP_SETCONTROLTHEME.
 	std::vector<std::unique_ptr<CWnd>> _controlesTema;
