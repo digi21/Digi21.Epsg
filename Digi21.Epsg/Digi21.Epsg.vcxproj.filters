@@ -84,6 +84,9 @@
     <ClCompile Include="PaginaSeleccionScrProyectadoYVertical.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="HojaPropiedadesAdaptadaAlTema.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="PaginaManual.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -150,6 +153,9 @@
       <Filter>Resource Files</Filter>
     </ClInclude>
     <ClInclude Include="PaginaSeleccionScrProyectadoYVertical.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HojaPropiedadesAdaptadaAlTema.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PaginaManual.h">

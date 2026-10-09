@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Resource.h"
 #include "DialogoSeleccionScr.h"
+#include "HojaPropiedadesAdaptadaAlTema.h"
 #include "PaginaSeleccionScrDesconocido.h"
 #include "PaginaSeleccionScr3D.h"
 #include "PaginaSeleccionScrGeograficoVertical.h"
@@ -15,7 +16,7 @@ using namespace std;
 
 CStringW DialogoSeleccionScr::DialogSeleccionaScr(CStringW const& títuloDiálogo, shared_ptr<Digi21::OpenGis::CoordinateSystems::CoordinateSystem> const& sistemaCoordenadasDefecto)
 {
-	CXTPPropertySheet ps(títuloDiálogo);
+	HojaPropiedadesAdaptadaAlTema ps(títuloDiálogo);
 	auto* pList = new CXTPPropertyPageListNavigator{};
 	pList->SetListStyle(xtpListBoxVisualStudio2015);
 	ps.SetNavigator(pList);
@@ -66,7 +67,7 @@ CStringW DialogoSeleccionScr::DialogSeleccionaScr(CStringW const& títuloDiálogo,
 
 CStringW DialogoSeleccionScr::DialogSeleccionaScr(CStringW const& títuloDiálogo, CStringW const& títuloCheckboxDesconocido, shared_ptr<Digi21::OpenGis::CoordinateSystems::CoordinateSystem> const& sistemaCoordenadasVentanaDibujo, std::shared_ptr<Digi21::OpenGis::CoordinateSystems::CoordinateSystem> const& sistemaCoordenadasVentanaFotogrametrica)
 {
-	CXTPPropertySheet ps(títuloDiálogo);
+	HojaPropiedadesAdaptadaAlTema ps(títuloDiálogo);
 	auto* pList = new CXTPPropertyPageListNavigator{};
 	pList->SetListStyle(xtpListBoxVisualStudio2015);
 	ps.SetNavigator(pList);

@@ -123,6 +123,7 @@
     <ClCompile Include="DialogoMostrarCrsHorizontal.cpp" />
     <ClCompile Include="DialogoMostrarScrVertical.cpp" />
     <ClCompile Include="DialogoSeleccionScr.cpp" />
+    <ClCompile Include="HojaPropiedadesAdaptadaAlTema.cpp" />
     <ClCompile Include="PaginaManual.cpp" />
     <ClCompile Include="PaginaSeleccionsCRGeograficoVertical.cpp" />
     <ClCompile Include="PaginaSeleccionScr3D.cpp" />
@@ -148,6 +149,7 @@
     <ClInclude Include="DialogoMostrarCrsHorizontal.h" />
     <ClInclude Include="DialogoMostrarScrVertical.h" />
     <ClInclude Include="DialogoSeleccionScr.h" />
+    <ClInclude Include="HojaPropiedadesAdaptadaAlTema.h" />
     <ClInclude Include="PaginaManual.h" />
     <ClInclude Include="PaginaSeleccionScrGeograficoVertical.h" />
     <ClInclude Include="PaginaSeleccionScr3D.h" />
