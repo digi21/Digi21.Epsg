@@ -189,14 +189,15 @@ namespace Digi21::Geodesia::EPSG
 		if( -1 == m_wndListaSistemasReferenciaMemorizados.GetCurSel() )
 			return;
 
-		CStringW titulo;
-		m_wndListaSistemasReferenciaMemorizados.GetText(m_wndListaSistemasReferenciaMemorizados.GetCurSel(), titulo);
+		// El valor del registro se llama como el sistema, que es el texto del elemento.
+		CStringW nombre;
+		m_wndListaSistemasReferenciaMemorizados.GetText(m_wndListaSistemasReferenciaMemorizados.GetCurSel(), nombre);
 
 		CRegistro::BorraValorCurrentUser( 
 			CARPETA_DIGI21, 
 			VERSION_DIGI3D, 
 			CARPETA_REGISTRO_DIGI3D_MEMORIZED_HORIZONTAL_COORDINATE_SYSTEMS,
-			título);
+			nombre);
 
 		auto const cadena = reinterpret_cast<CStringW*>(m_wndListaSistemasReferenciaMemorizados.GetItemData(m_wndListaSistemasReferenciaMemorizados.GetCurSel()));
 		delete cadena;
