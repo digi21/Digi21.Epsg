@@ -122,6 +122,7 @@
     <ClCompile Include="DialogoBúsquedaPorCódigoEpsg.cpp" />
     <ClCompile Include="DialogoMostrarCrsHorizontal.cpp" />
     <ClCompile Include="DialogoMostrarScrVertical.cpp" />
+    <ClCompile Include="DialogoAdaptadoAlTema.cpp" />
     <ClCompile Include="DialogoSeleccionScr.cpp" />
     <ClCompile Include="HojaPropiedadesAdaptadaAlTema.cpp" />
     <ClCompile Include="PaginaAdaptadaAlTema.cpp" />
@@ -150,6 +151,7 @@
     <ClInclude Include="DialogoBúsquedaPorCódigoEpsg.h" />
     <ClInclude Include="DialogoMostrarCrsHorizontal.h" />
     <ClInclude Include="DialogoMostrarScrVertical.h" />
+    <ClInclude Include="DialogoAdaptadoAlTema.h" />
     <ClInclude Include="DialogoSeleccionScr.h" />
     <ClInclude Include="HojaPropiedadesAdaptadaAlTema.h" />
     <ClInclude Include="PaginaAdaptadaAlTema.h" />
