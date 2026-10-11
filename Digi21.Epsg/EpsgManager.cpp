@@ -265,8 +265,12 @@ namespace Digi21::OpenGis::Epsg
 		cadena.Format(_G(IDS_STRING2010), static_cast<LPCWSTR>(CStringW(sourceCrs)), static_cast<LPCWSTR>(CStringW(destinationCrs)));
 		taskDlg.SetContent(cadena);
 
+		taskDlg.EnableCancellation();
+
+		// Los IDs de los botones empiezan en 100 para no coincidir con IDOK, IDCANCEL y el resto de IDs de botones comunes.
+		constexpr int primerIdBotón{100};
 		vector<int> opciones;
-		auto i = 1;
+		auto i = primerIdBotón;
 		for(auto const& operación : locatedOperations) {
 			cadena.Format(_G(IDS_STRING2011),
 				static_cast<LPCWSTR>(operación.Name),
@@ -283,10 +287,15 @@ namespace Digi21::OpenGis::Epsg
 
 		auto const opción = taskDlg.DoModal(CRegistro::GetIntLocalMachine(L"Microsoft", L"Windows NT", L"CurrentVersion", L"CurrentVersion", 1) >= 6);
 
-		if (taskDlg.IsVerificiationChecked())
-			TransformacionesMemorizadas::AlmacenaCódigoTransformación(sourceCrs, destinationCrs, opciones[static_cast<int>(opción) - 1]);
+		// 0 si el cuadro no se pudo mostrar; IDCANCEL con Escape, Alt+F4 o el botón de cerrar.
+		auto const índice = static_cast<int>(opción) - primerIdBotón;
+		if (índice < 0 || índice >= static_cast<int>(opciones.size()))
+			throw runtime_error{CStringA{Utilidades::UtilidadesString::Format(_G(IDS_STRING2035), static_cast<LPCWSTR>(sourceCrs), static_cast<LPCWSTR>(destinationCrs))}};
 
-		return opciones[static_cast<int>(opción) - 1];
+		if (taskDlg.IsVerificiationChecked())
+			TransformacionesMemorizadas::AlmacenaCódigoTransformación(sourceCrs, destinationCrs, opciones[índice]);
+
+		return opciones[índice];
 	}
 
 	CreateVerticalTransformationHelper::CreateVerticalTransformationHelper(HWND hwndParent)
