@@ -287,7 +287,7 @@ namespace Digi21::OpenGis::Epsg
 
 		auto const opción = taskDlg.DoModal(CRegistro::GetIntLocalMachine(L"Microsoft", L"Windows NT", L"CurrentVersion", L"CurrentVersion", 1) >= 6);
 
-		// 0 si el cuadro no se pudo mostrar; IDCANCEL con Escape, Alt+F4 o el botón de cerrar.
+		// 0 (comctl32) o -1 (implementación de Codejock) si el cuadro no se pudo mostrar; IDCANCEL con Escape, Alt+F4 o el botón de cerrar.
 		auto const índice = static_cast<int>(opción) - primerIdBotón;
 		if (índice < 0 || índice >= static_cast<int>(opciones.size()))
 			throw runtime_error{CStringA{Utilidades::UtilidadesString::Format(_G(IDS_STRING2035), static_cast<LPCWSTR>(sourceCrs), static_cast<LPCWSTR>(destinationCrs))}};
