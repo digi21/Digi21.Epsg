@@ -41,12 +41,12 @@ void CDialogoSeleccionTransformacionVertical::OnBnClickedRadioDesplazamientoVert
 
 void CDialogoSeleccionTransformacionVertical::OnBnClickedOk()
 {
-	UpdateData();
+	// Con los SRC verticales idénticos el desplazamiento es 0, aunque la caja deshabilitada contenga otro texto.
+	if (static_cast<CButton*>(GetDlgItem(IDC_RADIO_SCR_VERTICAL_IDENTICOS))->GetCheck())
+		SetDlgItemText(IDC_EDIT_DESPLAZAMIENTO_VERTICAL, L"0");
 
-	if( static_cast<CButton*>(GetDlgItem(IDC_RADIO_SCR_VERTICAL_IDENTICOS))->GetCheck() ) {
-		m_dValor = 0.0;
-		UpdateData(FALSE);
-	}
+	if (!UpdateData())
+		return;
 
 	CDialogEx::OnOK();
 }
