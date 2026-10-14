@@ -1,9 +1,9 @@
-#pragma once
+ï»¿#pragma once
 
 #include <optional>
 
-// Colores del tema de Codejock que ha cargado el programa anfitrión con XTPThemeDLL()->SetHandle. ToolkitPro es una DLL
-// compartida: este módulo ve el mismo tema que el anfitrión.
+// Colores del tema de Codejock que ha cargado el programa anfitriÃ³n con XTPThemeDLL()->SetHandle. ToolkitPro es una DLL
+// compartida: este mÃ³dulo ve el mismo tema que el anfitriÃ³n.
 struct ColoresTema
 {
 	COLORREF fondo{};
@@ -11,8 +11,8 @@ struct ColoresTema
 	bool oscuro{};
 };
 
-// Sin valor si el anfitrión no ha cargado ningún tema de Codejock.
+// Sin valor si el anfitriÃ³n no ha cargado ningÃºn tema de Codejock.
 auto LeeColoresTemaAnfitrion() -> std::optional<ColoresTema>;
 
-// Pone la barra de título oscura de DWM si el tema es oscuro.
+// Pone la barra de tÃ­tulo oscura de DWM si el tema es oscuro.
 auto AplicaBarraTituloTema(HWND ventana, ColoresTema const& tema) -> void;

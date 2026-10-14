@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "Resource.h"
 #include "HojaPropiedadesAdaptadaAlTema.h"
 
@@ -8,7 +8,7 @@ HojaPropiedadesAdaptadaAlTema::HojaPropiedadesAdaptadaAlTema(LPCWSTR titulo)
 	: CXTPPropertySheet{titulo}
 	, _tema{LeeColoresTemaAnfitrion()}
 {
-	// Ninguna página llama a SetModified: el botón Aplicar estaría siempre deshabilitado.
+	// Ninguna pÃ¡gina llama a SetModified: el botÃ³n Aplicar estarÃ­a siempre deshabilitado.
 	m_psh.dwFlags |= PSH_NOAPPLYNOW;
 }
 
@@ -16,7 +16,7 @@ BEGIN_MESSAGE_MAP(HojaPropiedadesAdaptadaAlTema, CXTPPropertySheet)
 	ON_WM_CREATE()
 END_MESSAGE_MAP()
 
-// CXTPPropertySheet carga los textos de los botones de los recursos de Codejock, que solo están en inglés.
+// CXTPPropertySheet carga los textos de los botones de los recursos de Codejock, que solo estÃ¡n en inglÃ©s.
 auto HojaPropiedadesAdaptadaAlTema::CreateButtons() -> BOOL
 {
 	if (!CXTPPropertySheet::CreateButtons())
@@ -35,7 +35,7 @@ auto HojaPropiedadesAdaptadaAlTema::OnCreate(LPCREATESTRUCT lpCreateStruct) -> i
 	if (!_tema)
 		return 0;
 
-	// El tema se asigna después de crear la hoja: si el navegador ya lo tiene en CXTPPropertySheet::OnCreate, la hoja
+	// El tema se asigna despuÃ©s de crear la hoja: si el navegador ya lo tiene en CXTPPropertySheet::OnCreate, la hoja
 	// crea barras de comandos y Codejock dibuja el marco de la ventana.
 	m_brBack.CreateSolidBrush(_tema->fondo);
 	GetNavigator()->SetTheme(xtpControlThemeVisualStudio2015);

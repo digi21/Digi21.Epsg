@@ -1,11 +1,11 @@
-#pragma once
+Ôªø#pragma once
 
 #include "DialogoAdaptadoAlTema.h"
 
 namespace Digi21::Geodesia::EPSG
 {
 
-	// Cuadro de di·logo de CDialogoMostrarCrsHorizontal
+	// Cuadro de di√°logo de CDialogoMostrarCrsHorizontal
 	class CDialogoMostrarCrsHorizontal final : public DialogoAdaptadoAlTema<CDialog>
 	{
 		enum { IDD = IDD_DIALOGO_MOSTRAR_PARAMETROS_SCR_HORIZONTAL };
@@ -30,7 +30,7 @@ namespace Digi21::Geodesia::EPSG
 		DECLARE_MESSAGE_MAP()
 
 		afx_msg void OnBnClickedOk();
-		void RellenaCamposEnFunciÛnScrActivo();
+		void RellenaCamposEnFunci√≥nScrActivo();
 		void OnCbnSelchangeComboTiposCrs();
 		void OnCbnSelchangeComboCrs();
 	};

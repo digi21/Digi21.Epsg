@@ -1,4 +1,4 @@
-#include "pch.h"
+Ôªø#include "pch.h"
 #include "Digi21.Epsg.h"
 #include "DialogoSeleccionScrHorizontal.h"
 #include "DialogoBuscarScrHorizontal.h"
@@ -12,11 +12,11 @@ namespace Digi21::Geodesia::EPSG
 
 	IMPLEMENT_DYNAMIC(CDialogoSeleccionScrHorizontal, CXTPResizeDialog)
 
-	CDialogoSeleccionScrHorizontal::CDialogoSeleccionScrHorizontal(CStringW const& _tÌtulo, CStringW const& _tÌtuloCheckboxDesconocido, shared_ptr<CoordinateSystem> const& sistemaCoordenadasDefecto, CWnd* pParent /*=nullptr*/)
+	CDialogoSeleccionScrHorizontal::CDialogoSeleccionScrHorizontal(CStringW const& _t√≠tulo, CStringW const& _t√≠tuloCheckboxDesconocido, shared_ptr<CoordinateSystem> const& sistemaCoordenadasDefecto, CWnd* pParent /*=nullptr*/)
 		: DialogoAdaptadoAlTema{IDD, pParent}
 		, m_bDesconocido{}
-		, tÌtulo{ _tÌtulo }
-		, tÌtuloCheckboxDesconocido{ _tÌtuloCheckboxDesconocido }
+		, t√≠tulo{ _t√≠tulo }
+		, t√≠tuloCheckboxDesconocido{ _t√≠tuloCheckboxDesconocido }
 	{
 		SetFlag(xtpResizeNoSizeIcon);
 		m_sWkt = sistemaCoordenadasDefecto->GetWkt();
@@ -59,8 +59,8 @@ namespace Digi21::Geodesia::EPSG
 		SetResize(IDOK, XTP_ANCHOR_BOTTOMRIGHT, XTP_ANCHOR_BOTTOMRIGHT);
 		SetResize(IDCANCEL, XTP_ANCHOR_BOTTOMRIGHT, XTP_ANCHOR_BOTTOMRIGHT);
 
-		SetWindowText(tÌtulo);
-		GetDlgItem(IDC_CHECK_DESCONOCIDO)->SetWindowText(tÌtuloCheckboxDesconocido);
+		SetWindowText(t√≠tulo);
+		GetDlgItem(IDC_CHECK_DESCONOCIDO)->SetWindowText(t√≠tuloCheckboxDesconocido);
 
 		auto const sistemasCoordenadasMemorizados = CRegistro::EnumeraStringsCurrentUser(
 			CARPETA_DIGI21, 
@@ -68,7 +68,7 @@ namespace Digi21::Geodesia::EPSG
 			CARPETA_REGISTRO_DIGI3D_MEMORIZED_HORIZONTAL_COORDINATE_SYSTEMS);
 
 		CWaitCursor wc;
-		auto const f·brica = GetCoordinateSystemFactory();
+		auto const f√°brica = GetCoordinateSystemFactory();
 
 		for( auto const& memorizado : sistemasCoordenadasMemorizados ) {
 			auto wkt = std::make_unique<CStringW>(
@@ -79,9 +79,9 @@ namespace Digi21::Geodesia::EPSG
 					memorizado));
 
 			try {
-				auto const nombre = f·brica->CreateFromWkt(*wkt)->GetName();
-				auto const Ìndice = m_wndListaSistemasReferenciaMemorizados.AddString(nombre);
-				m_wndListaSistemasReferenciaMemorizados.SetItemData(Ìndice, reinterpret_cast<DWORD_PTR>(wkt.release()));
+				auto const nombre = f√°brica->CreateFromWkt(*wkt)->GetName();
+				auto const √≠ndice = m_wndListaSistemasReferenciaMemorizados.AddString(nombre);
+				m_wndListaSistemasReferenciaMemorizados.SetItemData(√≠ndice, reinterpret_cast<DWORD_PTR>(wkt.release()));
 			}
 			catch(...)
 			{
@@ -89,7 +89,7 @@ namespace Digi21::Geodesia::EPSG
 		}
 
 		try {
-			m_bDesconocido = nullptr != dynamic_pointer_cast<LocalCoordinateSystem>(f·brica->CreateFromWkt(m_sWkt));
+			m_bDesconocido = nullptr != dynamic_pointer_cast<LocalCoordinateSystem>(f√°brica->CreateFromWkt(m_sWkt));
 		}
 		catch(...)
 		{
@@ -99,7 +99,7 @@ namespace Digi21::Geodesia::EPSG
 		OnBnClickedCheckDesconocido();
 
 		CXTPWindowPos wndPosition;
-		wndPosition.LoadWindowPos(this, L"DialogoSelecciÛnCrsHorizontal", CARPETA_REGISTRO_APP_CONFIGURATION_DIALOGLAYOUT);
+		wndPosition.LoadWindowPos(this, L"DialogoSelecci√≥nCrsHorizontal", CARPETA_REGISTRO_APP_CONFIGURATION_DIALOGLAYOUT);
 
 		return TRUE; // Devuelve TRUE  a menos que establezca el foco en un control
 	}
@@ -128,8 +128,8 @@ namespace Digi21::Geodesia::EPSG
 
 		try {
 			CWaitCursor wc;
-			auto const f·brica = GetCoordinateSystemFactory();
-			auto const sistemaCooordenadas = f·brica->CreateFromWkt(m_sWkt);
+			auto const f√°brica = GetCoordinateSystemFactory();
+			auto const sistemaCooordenadas = f√°brica->CreateFromWkt(m_sWkt);
 
 			if( 0 == sistemaCooordenadas->GetAuthority().CompareNoCase(L"EPSG"))
 				defaultCrs = sistemaCooordenadas->GetAuthorityCode();
@@ -156,7 +156,7 @@ namespace Digi21::Geodesia::EPSG
 	{
 		UpdateData();
 
-		// Lo almacenamos si no lo tenÌamos ya almacenado
+		// Lo almacenamos si no lo ten√≠amos ya almacenado
 		for (auto i=0;i<m_wndListaSistemasReferenciaMemorizados.GetCount(); i++ ) 
 			if( 0 == m_sWkt.CompareNoCase(*reinterpret_cast<CStringW*>(m_wndListaSistemasReferenciaMemorizados.GetItemData(i)) ) )
 				return;
@@ -237,11 +237,11 @@ namespace Digi21::Geodesia::EPSG
 		//	auto coordinateSystem = GetCoordinateSystemAuthorityFactory::CreateCoordinateSystem(m_nSCR);
 
 		//	CStdioFile os;
-		//	CFileException excepciÛn;
+		//	CFileException excepci√≥n;
 
-		//	if( !os.Open(dlg.GetPathName(), CFile::modeWrite | CFile::modeCreate, &excepciÛn) ) {
+		//	if( !os.Open(dlg.GetPathName(), CFile::modeWrite | CFile::modeCreate, &excepci√≥n) ) {
 		//		wchar_t szError[1024];
-		//		excepciÛn.GetErrorMessage(szError, _countof(szError));
+		//		excepci√≥n.GetErrorMessage(szError, _countof(szError));
 
 		//		CStringW cadena;
 		//		cadena.Format(_G(IDS_STRING2008), dlg.GetPathName(), szError);
@@ -276,7 +276,7 @@ namespace Digi21::Geodesia::EPSG
 	void CDialogoSeleccionScrHorizontal::OnDestroy()
 	{
 		CXTPWindowPos wndPosition;
-		wndPosition.SaveWindowPos(this, L"DialogoSelecciÛnCrsHorizontal", CARPETA_REGISTRO_APP_CONFIGURATION_DIALOGLAYOUT);
+		wndPosition.SaveWindowPos(this, L"DialogoSelecci√≥nCrsHorizontal", CARPETA_REGISTRO_APP_CONFIGURATION_DIALOGLAYOUT);
 
 		// Cada elemento de la lista guarda en ItemData un CStringW con el WKT.
 		for (auto i = 0; i < m_wndListaSistemasReferenciaMemorizados.GetCount(); i++)

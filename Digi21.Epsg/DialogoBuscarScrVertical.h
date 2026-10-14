@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include "DialogoAdaptadoAlTema.h"
 
@@ -17,7 +17,7 @@ namespace Digi21::Geodesia::EPSG
 		CStringW m_sAmbitoUso;
 		int m_nSCR;
 
-		// Construcción
+		// ConstrucciÃ³n
 	public:
 		explicit CDialogoBuscarScrVertical(int scrSeleccionadoPorDefecto, CWnd* pParent = nullptr);
 
@@ -33,7 +33,7 @@ namespace Digi21::Geodesia::EPSG
 		afx_msg void OnBnClickedOk();
 		afx_msg void OnCbnSelchangeComboCrs();
 
-		void RellenaCamposEnFunciónScrActivo();
+		void RellenaCamposEnFunciÃ³nScrActivo();
 	};
 
 }

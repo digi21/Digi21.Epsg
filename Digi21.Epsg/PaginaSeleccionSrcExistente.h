@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "PaginaAdaptadaAlTema.h"
 
@@ -15,7 +15,7 @@ public:
 	PaginaSeleccionSrcExistente(CXTPPropertyPage*& current, int idTemplate, CStringW const& nombreSistema);
 #pragma endregion
 
-#pragma region M�todos
+#pragma region Métodos
 protected:
 	BOOL OnSetActive() override;
 

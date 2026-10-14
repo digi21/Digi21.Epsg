@@ -1,4 +1,4 @@
-
+Ôªø
 #pragma once
 
 #include "PaginaAdaptadaAlTema.h"
@@ -14,7 +14,7 @@ namespace Digi21::Geodesia::EPSG
 		CXTPPropertyPage*& current;
 		CXTPComboBox m_wndCrsHorizontal;
 		int m_nScrHorizontal{ 4326 };
-		int m_nOrientaciÛnEjes{};
+		int m_nOrientaci√≥nEjes{};
 
 		CXTPComboBox m_wndCrsVertical;
 		int m_nScrVertical{ 3855 };
@@ -34,13 +34,13 @@ namespace Digi21::Geodesia::EPSG
 		__declspec(property(get=GetWkt)) CStringW Wkt;
 #pragma endregion
 
-#pragma region MÈtodos
+#pragma region M√©todos
 	protected:
 		void DoDataExchange(CDataExchange* pDX) override;
 
 		BOOL OnInitDialog() override;
 
-		void RellenaScrGeogr·ficos();
+		void RellenaScrGeogr√°ficos();
 		void RellenaScrVerticales();
 
 		BOOL OnSetActive() override;
@@ -48,13 +48,13 @@ namespace Digi21::Geodesia::EPSG
 		void OnCbnSelchangeComboCrsHorizontal();
 		void OnBnClickedBuscarHorizontalEpsg();
 
-		void SeleccionaHorizontal( int cÛdigo );
+		void SeleccionaHorizontal( int c√≥digo );
 
 		void OnBnClickedCheckVerticalDesconocido();
 		void OnCbnSelchangeComboCrsVertical();
 		void OnBnClickedBuscarVerticalEpsg();
 
-		void SeleccionaVertical( int cÛdigo );
+		void SeleccionaVertical( int c√≥digo );
 
 		void OnBnClickedBotonExportarSistemaCoordenadas();
 		void OnBnClickedBotonMemorizarSistemaCoordenadas();

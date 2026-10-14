@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include "DialogoAdaptadoAlTema.h"
 
@@ -12,11 +12,11 @@ namespace Digi21::Geodesia::EPSG
 		CStringW m_sWkt;
 		CXTPListBox m_wndListaSistemasReferenciaMemorizados;
 		BOOL m_bDesconocido;
-		CStringW título;
-		CStringW títuloCheckboxDesconocido;
+		CStringW tÃ­tulo;
+		CStringW tÃ­tuloCheckboxDesconocido;
 
 	public:
-		explicit CDialogoSeleccionScrHorizontal(CStringW const& título, CStringW const& títuloCheckboxDesconocido, std::shared_ptr<OpenGis::CoordinateSystems::CoordinateSystem> const& sistemaCoordenadasDefecto, CWnd* pParent = nullptr);
+		explicit CDialogoSeleccionScrHorizontal(CStringW const& tÃ­tulo, CStringW const& tÃ­tuloCheckboxDesconocido, std::shared_ptr<OpenGis::CoordinateSystems::CoordinateSystem> const& sistemaCoordenadasDefecto, CWnd* pParent = nullptr);
 
 		// Dialog Data
 		enum { IDD = IDD_DIALOGO_SELECCION_SCR_HORIZONTAL };

@@ -1,4 +1,4 @@
-#pragma once
+Ôªø#pragma once
 
 #include "PaginaAdaptadaAlTema.h"
 
@@ -18,7 +18,7 @@ namespace Digi21::Geodesia::EPSG
 		int m_nScrVertical{ 3855 };
 		BOOL m_bVerticalDesconocido{};
 
-		int m_nOrientaciÛnEjes{};
+		int m_nOrientaci√≥nEjes{};
 #pragma endregion
 
 #pragma region Constructores y destructor
@@ -34,13 +34,13 @@ namespace Digi21::Geodesia::EPSG
 		__declspec(property(get=GetWkt)) CStringW Wkt;
 #pragma endregion
 
-#pragma region MÈtodos
+#pragma region M√©todos
 	protected:
 		void DoDataExchange(CDataExchange* pDX) override;
 
 		BOOL OnInitDialog() override;
 
-		void RellenaScrGeogr·ficos();
+		void RellenaScrGeogr√°ficos();
 		void RellenaScrVerticales();
 
 		BOOL OnSetActive() override;
@@ -53,8 +53,8 @@ namespace Digi21::Geodesia::EPSG
 		void OnBnClickedBuscarVerticalEpsg();
 
 		void OnBnClickedCheckVerticalDesconocido();
-		void SeleccionaVertical( int cÛdigo );
-		void SeleccionaHorizontal( int Ûdigo);
+		void SeleccionaVertical( int c√≥digo );
+		void SeleccionaHorizontal( int √≥digo);
 
 		void OnBnClickedBotonExportarSistemaCoordenadas();
 		void OnBnClickedBotonMemorizarSistemaCoordenadas();

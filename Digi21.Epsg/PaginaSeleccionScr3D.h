@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include "PaginaAdaptadaAlTema.h"
 
@@ -13,7 +13,7 @@ namespace Digi21::Geodesia::EPSG
 		CXTPPropertyPage*& current;
 		CXTPComboBox m_wndCRS;
 		int m_nSCR{4979};
-		int m_nOrientaciónEjes{};
+		int m_nOrientaciÃ³nEjes{};
 #pragma endregion
 
 #pragma region Constructores y destructor
@@ -29,7 +29,7 @@ namespace Digi21::Geodesia::EPSG
 		__declspec(property(get=GetWkt)) CStringW Wkt;
 #pragma endregion
 
-#pragma region Métodos
+#pragma region MÃ©todos
 	protected:
 		void DoDataExchange(CDataExchange* pDX) override;
 
@@ -39,7 +39,7 @@ namespace Digi21::Geodesia::EPSG
 		void OnCbnSelchangeComboCrs();
 		void OnBnClickedBuscarEpsg();
 
-		void SeleccionaCódigo( int código );
+		void SeleccionaCÃ³digo( int cÃ³digo );
 
 		void OnBnClickedBotonExportarSistemaCoordenadas();
 		void OnBnClickedBotonMemorizarSistemaCoordenadas();

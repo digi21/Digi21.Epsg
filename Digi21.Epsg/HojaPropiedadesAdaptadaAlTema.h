@@ -1,11 +1,11 @@
-#pragma once
+ï»¿#pragma once
 
 #include "TemaAnfitrion.h"
 
 #include <optional>
 
-// Hoja de propiedades que sigue el tema de Codejock del anfitrión, con los botones Aceptar y Cancelar en el idioma de la
-// interfaz y sin el botón Aplicar. Sin tema conserva los colores del sistema.
+// Hoja de propiedades que sigue el tema de Codejock del anfitriÃ³n, con los botones Aceptar y Cancelar en el idioma de la
+// interfaz y sin el botÃ³n Aplicar. Sin tema conserva los colores del sistema.
 class HojaPropiedadesAdaptadaAlTema final : public CXTPPropertySheet
 {
 	DECLARE_DYNAMIC(HojaPropiedadesAdaptadaAlTema)

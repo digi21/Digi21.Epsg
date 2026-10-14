@@ -1,4 +1,4 @@
-#include "pch.h"
+Ôªø#include "pch.h"
 #include "TemaAnfitrion.h"
 
 #include <dwmapi.h>
@@ -6,13 +6,13 @@
 
 auto LeeColoresTemaAnfitrion() -> std::optional<ColoresTema>
 {
-	// Los mismos colores que Digi3D.NET usa en sus cuadros de di·logo (PaneColorSet).
+	// Los mismos colores que Digi3D.NET usa en sus cuadros de di√°logo (PaneColorSet).
 	auto const fondo = XTPIniColor(L"DockingPane.Inactive", L"CaptionColor", CLR_INVALID);
 	auto const texto = XTPIniColor(L"DockingPane.Inactive", L"TextColor", CLR_INVALID);
 	if (CLR_INVALID == fondo || CLR_INVALID == texto)
 		return std::nullopt;
 
-	// El fondo de las barras de comandos solo es oscuro en el tema oscuro; en el azul el de los paneles tambiÈn lo es.
+	// El fondo de las barras de comandos solo es oscuro en el tema oscuro; en el azul el de los paneles tambi√©n lo es.
 	auto const fondoBarras = XTPIniColor(L"CommandBars", L"Back", GetSysColor(COLOR_BTNFACE));
 	auto const luminancia = (GetRValue(fondoBarras) * 299 + GetGValue(fondoBarras) * 587 + GetBValue(fondoBarras) * 114) / 1000;
 

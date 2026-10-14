@@ -1,7 +1,7 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "resource.h"
 #include "DialogoBuscarScrHorizontal.h"
-#include "DialogoBúsquedaPorCódigoEpsg.h"
+#include "DialogoBÃºsquedaPorCÃ³digoEpsg.h"
 
 using namespace Digi21::Utilidades;
 using namespace Digi21::OpenGis::CoordinateSystems;
@@ -15,7 +15,7 @@ namespace Digi21::Geodesia::EPSG
 {
 
 
-	// Cuadro de diálogo de CDialogoBuscarScrHorizontal
+	// Cuadro de diÃ¡logo de CDialogoBuscarScrHorizontal
 	CDialogoBuscarScrHorizontal::CDialogoBuscarScrHorizontal(int scrSeleccionadoPorDefecto, CWnd* pParent /*=nullptr*/)
 		: DialogoAdaptadoAlTema{IDD, pParent}
 		, m_nSCR{ scrSeleccionadoPorDefecto }
@@ -50,8 +50,8 @@ namespace Digi21::Geodesia::EPSG
 		m_wndTiposCRS.AddString(_G(IDS_STRING2005));
 		m_wndTiposCRS.AddString(_G(IDS_STRING2006));
 
-		RellenaCamposEnFunciónScrActivo();
-		ActivaDesactivaBotónAceptar();
+		RellenaCamposEnFunciÃ³nScrActivo();
+		ActivaDesactivaBotÃ³nAceptar();
 
 		return TRUE; // Devuelve TRUE  a menos que establezca el foco en un control
 	}
@@ -89,29 +89,29 @@ namespace Digi21::Geodesia::EPSG
 		m_sElipsoide = L"";
 		UpdateData(FALSE);
 
-		ActivaDesactivaBotónAceptar();
+		ActivaDesactivaBotÃ³nAceptar();
 	}
 
 	void CDialogoBuscarScrHorizontal::OnCbnSelchangeComboCrs()
 	{
 		UpdateData();
 
-		auto const códigoCRS = static_cast<int>(m_wndCRS.GetItemData(m_wndCRS.GetCurSel()));
+		auto const cÃ³digoCRS = static_cast<int>(m_wndCRS.GetItemData(m_wndCRS.GetCurSel()));
 
 		auto const fabricaSrc = GetCoordinateSystemAuthorityFactory();
 
-		m_sArea = fabricaSrc->GetDescriptionAreaApplicationCrs(códigoCRS);
-		m_sTipoSistemaCoordenadas = fabricaSrc->GetNameOfCoordinateSystem(fabricaSrc->GetCodeOfCoordinateSystemAssociatedWithCrs(códigoCRS));
+		m_sArea = fabricaSrc->GetDescriptionAreaApplicationCrs(cÃ³digoCRS);
+		m_sTipoSistemaCoordenadas = fabricaSrc->GetNameOfCoordinateSystem(fabricaSrc->GetCodeOfCoordinateSystemAssociatedWithCrs(cÃ³digoCRS));
 
-		auto const códigoDatum = fabricaSrc->GetCodeOfDatumAssociatedWithCrs(códigoCRS);
-		m_sNombreDatum = fabricaSrc->GetNameOfDatum(códigoDatum);
-		m_sOrigenDatum = fabricaSrc->GetOriginDescriptionOfDatum(códigoDatum);
-		m_sMeridiano = fabricaSrc->GetNameOfPrimeMeridian(fabricaSrc->GetCodeOfPrimeMeridianAssociatedWithCrs(códigoDatum));
-		m_sAmbitoUso = fabricaSrc->GetDescriptionAreaApplicationDatum(códigoDatum);
-		m_sElipsoide = fabricaSrc->GetNameOfEllipsoid(fabricaSrc->GetCodeOfEllipsoidAssociatedWithDatum(códigoDatum));
+		auto const cÃ³digoDatum = fabricaSrc->GetCodeOfDatumAssociatedWithCrs(cÃ³digoCRS);
+		m_sNombreDatum = fabricaSrc->GetNameOfDatum(cÃ³digoDatum);
+		m_sOrigenDatum = fabricaSrc->GetOriginDescriptionOfDatum(cÃ³digoDatum);
+		m_sMeridiano = fabricaSrc->GetNameOfPrimeMeridian(fabricaSrc->GetCodeOfPrimeMeridianAssociatedWithCrs(cÃ³digoDatum));
+		m_sAmbitoUso = fabricaSrc->GetDescriptionAreaApplicationDatum(cÃ³digoDatum);
+		m_sElipsoide = fabricaSrc->GetNameOfEllipsoid(fabricaSrc->GetCodeOfEllipsoidAssociatedWithDatum(cÃ³digoDatum));
 		UpdateData(FALSE);
 
-		ActivaDesactivaBotónAceptar();
+		ActivaDesactivaBotÃ³nAceptar();
 	}
 
 	void CDialogoBuscarScrHorizontal::OnBnClickedOk()
@@ -123,22 +123,22 @@ namespace Digi21::Geodesia::EPSG
 
 	void CDialogoBuscarScrHorizontal::OnBnClickedBuscarEpsg()
 	{
-		CDialogoBúsquedaPorCódigoEpsg dlg;
-		dlg.m_nCódigo = m_nSCR;
+		CDialogoBÃºsquedaPorCÃ³digoEpsg dlg;
+		dlg.m_nCÃ³digo = m_nSCR;
 				
 		if( IDOK == dlg.DoModal() ) {
-			m_nSCR = dlg.m_nCódigo;
-			RellenaCamposEnFunciónScrActivo();
-			ActivaDesactivaBotónAceptar();
+			m_nSCR = dlg.m_nCÃ³digo;
+			RellenaCamposEnFunciÃ³nScrActivo();
+			ActivaDesactivaBotÃ³nAceptar();
 		}
 	}
 
-	void CDialogoBuscarScrHorizontal::ActivaDesactivaBotónAceptar() const
+	void CDialogoBuscarScrHorizontal::ActivaDesactivaBotÃ³nAceptar() const
 	{
 		GetDlgItem(IDOK)->EnableWindow(-1 != m_wndCRS.GetCurSel());
 	}
 
-	void CDialogoBuscarScrHorizontal::RellenaCamposEnFunciónScrActivo()
+	void CDialogoBuscarScrHorizontal::RellenaCamposEnFunciÃ³nScrActivo()
 	{
 		auto const fabricaSrc = GetCoordinateSystemAuthorityFactory();
 

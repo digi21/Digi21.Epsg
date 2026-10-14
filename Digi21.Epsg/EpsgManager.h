@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #ifdef _CREANDO_DIGI21_EPSG
 #define _modoDigi21Epsg __declspec(dllexport)
@@ -15,7 +15,7 @@ namespace Digi21::OpenGis::Epsg
 {
 	class _modoDigi21Epsg EpsgManager
 	{
-#pragma region Selección de Sistema de referencia de coordenadas
+#pragma region SelecciÃ³n de Sistema de referencia de coordenadas
 	public:
 		static CStringW DialogSelectCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox);
 		static CStringW DialogSelectCrs(CStringW const& title, std::shared_ptr<CoordinateSystems::CoordinateSystem> const& coordinateSystem);
@@ -24,10 +24,10 @@ namespace Digi21::OpenGis::Epsg
 		static CStringW DialogSelectCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox, std::shared_ptr<CoordinateSystems::CoordinateSystem> const& coordinateSystem);
 		static CStringW DialogSelectCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox, std::shared_ptr<CoordinateSystems::CoordinateSystem> const& ventanaDibujo, std::shared_ptr<CoordinateSystems::CoordinateSystem> const& ventanaFotogrametrica);
 #pragma endregion
-#pragma region Búsqueda de Sistema de referencia de coordenadas
+#pragma region BÃºsqueda de Sistema de referencia de coordenadas
 		static std::optional<int> DialogSearchHorizontalCrs(CStringW const& title, int defaultCrs);
 #pragma endregion
-#pragma region Selección de Sistema de referencia de coordenadas horizontal
+#pragma region SelecciÃ³n de Sistema de referencia de coordenadas horizontal
 	public:
 		static CStringW DialogSelectHorizontalCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox);
 		static CStringW DialogSelectHorizontalCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox, int defaultCrs);
@@ -35,7 +35,7 @@ namespace Digi21::OpenGis::Epsg
 		static CStringW DialogSelectHorizontalCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox, std::shared_ptr<CoordinateSystems::CoordinateSystem> const& coordinateSystem);
 #pragma endregion
 
-#pragma region Selección de Sistema de referencia de coordenadas vertical
+#pragma region SelecciÃ³n de Sistema de referencia de coordenadas vertical
 	public:
 		static CStringW DialogSelectVerticalCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox);
 		static CStringW DialogSelectVerticalCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox, int defaultCrs);
@@ -43,7 +43,7 @@ namespace Digi21::OpenGis::Epsg
 		static CStringW DialogSelectVerticalCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox, std::shared_ptr<CoordinateSystems::CoordinateSystem> const& coordinateSystem);
 #pragma endregion
 
-#pragma region Visualización de Sistemas de coordenadas de referencia
+#pragma region VisualizaciÃ³n de Sistemas de coordenadas de referencia
 	public:
 		static void DialogShowCrs(std::shared_ptr<CoordinateSystems::CoordinateSystem> const& coordinateSystem);
 		static void DialogShowCrs(std::shared_ptr<CoordinateSystems::HorizontalCoordinateSystem> const& coordinateSystem);

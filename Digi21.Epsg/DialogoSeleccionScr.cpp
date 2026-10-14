@@ -1,4 +1,4 @@
-#include "pch.h"
+Ôªø#include "pch.h"
 #include "Resource.h"
 #include "DialogoSeleccionScr.h"
 #include "HojaPropiedadesAdaptadaAlTema.h"
@@ -14,28 +14,28 @@ using namespace Digi21::Geodesia::EPSG;
 using namespace Digi21::Utilidades;
 using namespace std;
 
-CStringW DialogoSeleccionScr::DialogSeleccionaScr(CStringW const& tÌtuloDi·logo, shared_ptr<Digi21::OpenGis::CoordinateSystems::CoordinateSystem> const& sistemaCoordenadasDefecto)
+CStringW DialogoSeleccionScr::DialogSeleccionaScr(CStringW const& t√≠tuloDi√°logo, shared_ptr<Digi21::OpenGis::CoordinateSystems::CoordinateSystem> const& sistemaCoordenadasDefecto)
 {
-	HojaPropiedadesAdaptadaAlTema ps(tÌtuloDi·logo);
+	HojaPropiedadesAdaptadaAlTema ps(t√≠tuloDi√°logo);
 	auto* pList = new CXTPPropertyPageListNavigator{};
 	pList->SetListStyle(xtpListBoxVisualStudio2015);
 	ps.SetNavigator(pList);
 
 	CXTPPropertyPage* activo = nullptr;
 
-	CPaginaSeleccionScr3D p·gina3D(activo);
-	CPaginaSeleccionScrProyectadoYVertical p·ginaProyYVert(activo);
-	CPaginaSeleccionScrGeograficoYVertical p·ginaGeoYVert(activo);
-	CPaginaSeleccionScrMemorizados p·ginaMemorizados(activo);
-	PaginaManual p·ginaManual(activo);
-	PaginaSeleccionSrcExistente p·ginaExistente(activo, IDD_PAGINA_VENTANA_DIBUJO, sistemaCoordenadasDefecto->GetName());
+	CPaginaSeleccionScr3D p√°gina3D(activo);
+	CPaginaSeleccionScrProyectadoYVertical p√°ginaProyYVert(activo);
+	CPaginaSeleccionScrGeograficoYVertical p√°ginaGeoYVert(activo);
+	CPaginaSeleccionScrMemorizados p√°ginaMemorizados(activo);
+	PaginaManual p√°ginaManual(activo);
+	PaginaSeleccionSrcExistente p√°ginaExistente(activo, IDD_PAGINA_VENTANA_DIBUJO, sistemaCoordenadasDefecto->GetName());
 
-	ps.AddPage(&p·gina3D);
-	ps.AddPage(&p·ginaProyYVert);
-	ps.AddPage(&p·ginaGeoYVert);
-	ps.AddPage(&p·ginaManual);
-	ps.AddPage(&p·ginaMemorizados);
-	ps.AddPage(&p·ginaExistente);
+	ps.AddPage(&p√°gina3D);
+	ps.AddPage(&p√°ginaProyYVert);
+	ps.AddPage(&p√°ginaGeoYVert);
+	ps.AddPage(&p√°ginaManual);
+	ps.AddPage(&p√°ginaMemorizados);
+	ps.AddPage(&p√°ginaExistente);
 	ps.SetResizable();
 	ps.SetActivePage(5);
 
@@ -46,58 +46,58 @@ CStringW DialogoSeleccionScr::DialogSeleccionaScr(CStringW const& tÌtuloDi·logo,
 	}
 
 	if( IDOK == resultado ) {
-		if( activo == &p·gina3D )
-			return p·gina3D.Wkt;
+		if( activo == &p√°gina3D )
+			return p√°gina3D.Wkt;
 
-		if( activo == & p·ginaProyYVert)
-			return p·ginaProyYVert.Wkt;
+		if( activo == & p√°ginaProyYVert)
+			return p√°ginaProyYVert.Wkt;
 
-		if( activo == & p·ginaGeoYVert)
-			return p·ginaGeoYVert.Wkt;
+		if( activo == & p√°ginaGeoYVert)
+			return p√°ginaGeoYVert.Wkt;
 
-		if (activo == &p·ginaManual)
-			return p·ginaManual.Wkt;
+		if (activo == &p√°ginaManual)
+			return p√°ginaManual.Wkt;
 
-		if( activo == &p·ginaMemorizados )
-			return p·ginaMemorizados.Wkt;
+		if( activo == &p√°ginaMemorizados )
+			return p√°ginaMemorizados.Wkt;
 	}
 
 	return sistemaCoordenadasDefecto->GetWkt();
 }
 
-CStringW DialogoSeleccionScr::DialogSeleccionaScr(CStringW const& tÌtuloDi·logo, CStringW const& tÌtuloCheckboxDesconocido, shared_ptr<Digi21::OpenGis::CoordinateSystems::CoordinateSystem> const& sistemaCoordenadasVentanaDibujo, std::shared_ptr<Digi21::OpenGis::CoordinateSystems::CoordinateSystem> const& sistemaCoordenadasVentanaFotogrametrica)
+CStringW DialogoSeleccionScr::DialogSeleccionaScr(CStringW const& t√≠tuloDi√°logo, CStringW const& t√≠tuloCheckboxDesconocido, shared_ptr<Digi21::OpenGis::CoordinateSystems::CoordinateSystem> const& sistemaCoordenadasVentanaDibujo, std::shared_ptr<Digi21::OpenGis::CoordinateSystems::CoordinateSystem> const& sistemaCoordenadasVentanaFotogrametrica)
 {
-	HojaPropiedadesAdaptadaAlTema ps(tÌtuloDi·logo);
+	HojaPropiedadesAdaptadaAlTema ps(t√≠tuloDi√°logo);
 	auto* pList = new CXTPPropertyPageListNavigator{};
 	pList->SetListStyle(xtpListBoxVisualStudio2015);
 	ps.SetNavigator(pList);
 	
 	CXTPPropertyPage* activo = nullptr;
 
-	CPaginaSeleccionScrDesconocido p·ginaDesconocido(activo, tÌtuloCheckboxDesconocido);
-	CPaginaSeleccionScr3D p·gina3D(activo);
-	CPaginaSeleccionScrProyectadoYVertical p·ginaProyYVert(activo);
-	CPaginaSeleccionScrGeograficoYVertical p·ginaGeoYVert(activo);
-	CPaginaSeleccionScrMemorizados p·ginaMemorizados(activo);
-	PaginaManual p·ginaManual(activo);
-	std::unique_ptr<PaginaSeleccionSrcExistente> p·ginaVentanaDibujo;
-	std::unique_ptr<PaginaSeleccionSrcExistente> p·ginaVentanaFotogrametrica;
+	CPaginaSeleccionScrDesconocido p√°ginaDesconocido(activo, t√≠tuloCheckboxDesconocido);
+	CPaginaSeleccionScr3D p√°gina3D(activo);
+	CPaginaSeleccionScrProyectadoYVertical p√°ginaProyYVert(activo);
+	CPaginaSeleccionScrGeograficoYVertical p√°ginaGeoYVert(activo);
+	CPaginaSeleccionScrMemorizados p√°ginaMemorizados(activo);
+	PaginaManual p√°ginaManual(activo);
+	std::unique_ptr<PaginaSeleccionSrcExistente> p√°ginaVentanaDibujo;
+	std::unique_ptr<PaginaSeleccionSrcExistente> p√°ginaVentanaFotogrametrica;
 
-	ps.AddPage(&p·ginaDesconocido);
-	ps.AddPage(&p·gina3D);
-	ps.AddPage(&p·ginaProyYVert);
-	ps.AddPage(&p·ginaGeoYVert);
-	ps.AddPage(&p·ginaManual);
-	ps.AddPage(&p·ginaMemorizados);
+	ps.AddPage(&p√°ginaDesconocido);
+	ps.AddPage(&p√°gina3D);
+	ps.AddPage(&p√°ginaProyYVert);
+	ps.AddPage(&p√°ginaGeoYVert);
+	ps.AddPage(&p√°ginaManual);
+	ps.AddPage(&p√°ginaMemorizados);
 
 	if (sistemaCoordenadasVentanaDibujo) {
-		p·ginaVentanaDibujo = std::make_unique<PaginaSeleccionSrcExistente>(activo, IDD_PAGINA_VENTANA_DIBUJO, sistemaCoordenadasVentanaDibujo->GetName());
-		ps.AddPage(p·ginaVentanaDibujo.get());
+		p√°ginaVentanaDibujo = std::make_unique<PaginaSeleccionSrcExistente>(activo, IDD_PAGINA_VENTANA_DIBUJO, sistemaCoordenadasVentanaDibujo->GetName());
+		ps.AddPage(p√°ginaVentanaDibujo.get());
 	}
 
 	if (sistemaCoordenadasVentanaFotogrametrica) {
-		p·ginaVentanaFotogrametrica = std::make_unique<PaginaSeleccionSrcExistente>(activo, IDD_PAGINA_VENTANA_FOTOGRAMETRICA, sistemaCoordenadasVentanaFotogrametrica->GetName());
-		ps.AddPage(p·ginaVentanaFotogrametrica.get());
+		p√°ginaVentanaFotogrametrica = std::make_unique<PaginaSeleccionSrcExistente>(activo, IDD_PAGINA_VENTANA_FOTOGRAMETRICA, sistemaCoordenadasVentanaFotogrametrica->GetName());
+		ps.AddPage(p√°ginaVentanaFotogrametrica.get());
 	}
 
 	ps.SetResizable();
@@ -110,23 +110,23 @@ CStringW DialogoSeleccionScr::DialogSeleccionaScr(CStringW const& tÌtuloDi·logo,
 	}
 
 	if( IDOK == resultado ) {
-		if( activo == & p·ginaDesconocido)
-			return UtilidadesString::Format(_G(IDS_STRING2032), static_cast<LPCWSTR>(tÌtuloCheckboxDesconocido));
+		if( activo == & p√°ginaDesconocido)
+			return UtilidadesString::Format(_G(IDS_STRING2032), static_cast<LPCWSTR>(t√≠tuloCheckboxDesconocido));
 
-		if( activo == &p·gina3D )
-			return p·gina3D.Wkt;
+		if( activo == &p√°gina3D )
+			return p√°gina3D.Wkt;
 
-		if( activo == & p·ginaProyYVert)
-			return p·ginaProyYVert.Wkt;
+		if( activo == & p√°ginaProyYVert)
+			return p√°ginaProyYVert.Wkt;
 
-		if( activo == & p·ginaGeoYVert)
-			return p·ginaGeoYVert.Wkt;
+		if( activo == & p√°ginaGeoYVert)
+			return p√°ginaGeoYVert.Wkt;
 
-		if (activo == &p·ginaManual)
-			return p·ginaManual.Wkt;
+		if (activo == &p√°ginaManual)
+			return p√°ginaManual.Wkt;
 
-		if( activo == &p·ginaMemorizados )
-			return p·ginaMemorizados.Wkt;
+		if( activo == &p√°ginaMemorizados )
+			return p√°ginaMemorizados.Wkt;
 	}
 
 	if (sistemaCoordenadasVentanaDibujo)

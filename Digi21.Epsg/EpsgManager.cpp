@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "EpsgManager.h"
 #include "Resource.h"
 #include "DialogoBuscarScrHorizontal.h"
@@ -21,12 +21,12 @@ namespace Digi21::OpenGis::Epsg
 	class TransformacionesMemorizadas
 	{
 	public:
-		static void AlmacenaTransformación(CStringW const& origen, CStringW const& destino, CStringW const& wkt)
+		static void AlmacenaTransformaciÃ³n(CStringW const& origen, CStringW const& destino, CStringW const& wkt)
 		{
 			CRegistro::SetStringCurrentUser(CARPETA_DIGI21, VERSION_DIGI3D, CARPETA_REGISTRO_TRANSFORMACIONES_MEMORIZADAS + origen + L"\\" + destino, L"wkt", wkt);
 		}
 
-		static std::shared_ptr<IMathTransform> LocalizaTransformación(CStringW const& origen, CStringW const& destino)
+		static std::shared_ptr<IMathTransform> LocalizaTransformaciÃ³n(CStringW const& origen, CStringW const& destino)
 		{
 			auto const wkt = CRegistro::GetStringCurrentUser(CARPETA_DIGI21, VERSION_DIGI3D, CARPETA_REGISTRO_TRANSFORMACIONES_MEMORIZADAS + origen + L"\\" + destino, L"wkt");
 
@@ -42,14 +42,14 @@ namespace Digi21::OpenGis::Epsg
 			}
 		}
 
-		static void AlmacenaCódigoTransformación(CStringW const& origen, CStringW const& destino, int código)
+		static void AlmacenaCÃ³digoTransformaciÃ³n(CStringW const& origen, CStringW const& destino, int cÃ³digo)
 		{
-			CRegistro::SetIntCurrentUser(CARPETA_DIGI21, VERSION_DIGI3D, CARPETA_REGISTRO_TRANSFORMACIONES_MEMORIZADAS + origen + L"\\" + destino, L"Código2", código);
+			CRegistro::SetIntCurrentUser(CARPETA_DIGI21, VERSION_DIGI3D, CARPETA_REGISTRO_TRANSFORMACIONES_MEMORIZADAS + origen + L"\\" + destino, L"CÃ³digo2", cÃ³digo);
 		}
 
-		static int LocalizaCódigoTransformación(CStringW const& origen, CStringW const& destino)
+		static int LocalizaCÃ³digoTransformaciÃ³n(CStringW const& origen, CStringW const& destino)
 		{
-			return CRegistro::GetIntCurrentUser(CARPETA_DIGI21, VERSION_DIGI3D, CARPETA_REGISTRO_TRANSFORMACIONES_MEMORIZADAS + origen + L"\\" + destino, L"Código2");
+			return CRegistro::GetIntCurrentUser(CARPETA_DIGI21, VERSION_DIGI3D, CARPETA_REGISTRO_TRANSFORMACIONES_MEMORIZADAS + origen + L"\\" + destino, L"CÃ³digo2");
 		}
 	};
 
@@ -251,9 +251,9 @@ namespace Digi21::OpenGis::Epsg
 	{
 		AFX_MANAGE_STATE(AfxGetStaticModuleState());
 
-		auto const códigoTransformación = TransformacionesMemorizadas::LocalizaCódigoTransformación(sourceCrs, destinationCrs);
-		if (0 != códigoTransformación)
-			return códigoTransformación;
+		auto const cÃ³digoTransformaciÃ³n = TransformacionesMemorizadas::LocalizaCÃ³digoTransformaciÃ³n(sourceCrs, destinationCrs);
+		if (0 != cÃ³digoTransformaciÃ³n)
+			return cÃ³digoTransformaciÃ³n;
 
 		CXTPTaskDialog taskDlg(CWnd::FromHandle(hWnd));
 		taskDlg.EnableCommandLinks();
@@ -268,34 +268,34 @@ namespace Digi21::OpenGis::Epsg
 		taskDlg.EnableCancellation();
 
 		// Los IDs de los botones empiezan en 100 para no coincidir con IDOK, IDCANCEL y el resto de IDs de botones comunes.
-		constexpr int primerIdBotón{100};
+		constexpr int primerIdBotÃ³n{100};
 		vector<int> opciones;
-		auto i = primerIdBotón;
-		for(auto const& operación : locatedOperations) {
+		auto i = primerIdBotÃ³n;
+		for(auto const& operaciÃ³n : locatedOperations) {
 			cadena.Format(_G(IDS_STRING2011),
-				static_cast<LPCWSTR>(operación.Name),
-				static_cast<LPCWSTR>(GetCoordinateSystemAuthorityFactory()->GetNameOfAlgorithm(operación.MethodCode)),
-				operación.Version.has_value() ? static_cast<LPCWSTR>(operación.Version.value()) : L"",
-				operación.Accuracy.has_value() ? static_cast<LPCWSTR>(Utilidades::UtilidadesString::Format(L"%f", operación.Accuracy.value())) : static_cast<LPCWSTR>(_G(IDS_STRING2012)),
-				operación.InformationSource.has_value() ? static_cast<LPCWSTR>(operación.InformationSource.value()) : L"");
+				static_cast<LPCWSTR>(operaciÃ³n.Name),
+				static_cast<LPCWSTR>(GetCoordinateSystemAuthorityFactory()->GetNameOfAlgorithm(operaciÃ³n.MethodCode)),
+				operaciÃ³n.Version.has_value() ? static_cast<LPCWSTR>(operaciÃ³n.Version.value()) : L"",
+				operaciÃ³n.Accuracy.has_value() ? static_cast<LPCWSTR>(Utilidades::UtilidadesString::Format(L"%f", operaciÃ³n.Accuracy.value())) : static_cast<LPCWSTR>(_G(IDS_STRING2012)),
+				operaciÃ³n.InformationSource.has_value() ? static_cast<LPCWSTR>(operaciÃ³n.InformationSource.value()) : L"");
 
 			taskDlg.AddButton(cadena, static_cast<int>(i++));
-			opciones.push_back(operación.Code);
+			opciones.push_back(operaciÃ³n.Code);
 		}
 
 		taskDlg.SetVerificationText(_G(IDS_STRING2018));
 
-		auto const opción = taskDlg.DoModal(CRegistro::GetIntLocalMachine(L"Microsoft", L"Windows NT", L"CurrentVersion", L"CurrentVersion", 1) >= 6);
+		auto const opciÃ³n = taskDlg.DoModal(CRegistro::GetIntLocalMachine(L"Microsoft", L"Windows NT", L"CurrentVersion", L"CurrentVersion", 1) >= 6);
 
-		// 0 (comctl32) o -1 (implementación de Codejock) si el cuadro no se pudo mostrar; IDCANCEL con Escape, Alt+F4 o el botón de cerrar.
-		auto const índice = static_cast<int>(opción) - primerIdBotón;
-		if (índice < 0 || índice >= static_cast<int>(opciones.size()))
+		// 0 (comctl32) o -1 (implementaciÃ³n de Codejock) si el cuadro no se pudo mostrar; IDCANCEL con Escape, Alt+F4 o el botÃ³n de cerrar.
+		auto const Ã­ndice = static_cast<int>(opciÃ³n) - primerIdBotÃ³n;
+		if (Ã­ndice < 0 || Ã­ndice >= static_cast<int>(opciones.size()))
 			throw runtime_error{CStringA{Utilidades::UtilidadesString::Format(_G(IDS_STRING2035), static_cast<LPCWSTR>(sourceCrs), static_cast<LPCWSTR>(destinationCrs))}};
 
 		if (taskDlg.IsVerificiationChecked())
-			TransformacionesMemorizadas::AlmacenaCódigoTransformación(sourceCrs, destinationCrs, opciones[índice]);
+			TransformacionesMemorizadas::AlmacenaCÃ³digoTransformaciÃ³n(sourceCrs, destinationCrs, opciones[Ã­ndice]);
 
-		return opciones[índice];
+		return opciones[Ã­ndice];
 	}
 
 	CreateVerticalTransformationHelper::CreateVerticalTransformationHelper(HWND hwndParent)
@@ -317,9 +317,9 @@ namespace Digi21::OpenGis::Epsg
 	{
 		AFX_MANAGE_STATE(AfxGetStaticModuleState());
 
-		auto transformación = TransformacionesMemorizadas::LocalizaTransformación(CStringW(sourceCrs), CStringW(destinationCrs));
-		if (nullptr != transformación)
-			return transformación;
+		auto transformaciÃ³n = TransformacionesMemorizadas::LocalizaTransformaciÃ³n(CStringW(sourceCrs), CStringW(destinationCrs));
+		if (nullptr != transformaciÃ³n)
+			return transformaciÃ³n;
 
 		CDialogoSeleccionTransformacionVertical dlg(CWnd::FromHandle(hWnd));
 		dlg.m_sTituloScrOrigen = CStringW(sourceCrs);
@@ -332,12 +332,12 @@ namespace Digi21::OpenGis::Epsg
 		}
 
 		if (IDOK == resultado) {
-			transformación = GetMathTransformFactory()->CreateParameterizedTransform(L"vertical_offset", { Parameter{L"vertical_offset", dlg.m_dValor } });
+			transformaciÃ³n = GetMathTransformFactory()->CreateParameterizedTransform(L"vertical_offset", { Parameter{L"vertical_offset", dlg.m_dValor } });
 
 			if (dlg.m_bUtilizarSiempreEstaTransf)
-				TransformacionesMemorizadas::AlmacenaTransformación(dlg.m_sTituloScrOrigen, dlg.m_sTituloScrDestino, transformación->GetWkt());
+				TransformacionesMemorizadas::AlmacenaTransformaciÃ³n(dlg.m_sTituloScrOrigen, dlg.m_sTituloScrDestino, transformaciÃ³n->GetWkt());
 
-			return transformación;
+			return transformaciÃ³n;
 		}
 
 		return nullptr;

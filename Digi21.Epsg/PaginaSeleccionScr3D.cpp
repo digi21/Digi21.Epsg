@@ -1,7 +1,7 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "Digi21.Epsg.h"
 #include "PaginaSeleccionScr3D.h"
-#include "DialogoBúsquedaPorCódigoEpsg.h"
+#include "DialogoBÃºsquedaPorCÃ³digoEpsg.h"
 
 using namespace Digi21::Utilidades;
 using namespace Digi21::OpenGis::CoordinateSystems;
@@ -27,7 +27,7 @@ namespace Digi21::Geodesia::EPSG
 	{
 		PaginaAdaptadaAlTema::DoDataExchange(pDX);
 		DDX_Control(pDX, IDC_COMBO_CRS, m_wndCRS);
-		DDX_CBIndex(pDX, IDC_COMBO_ORIENTACION_EJES, m_nOrientaciónEjes);
+		DDX_CBIndex(pDX, IDC_COMBO_ORIENTACION_EJES, m_nOrientaciÃ³nEjes);
 	}
 
 	BEGIN_MESSAGE_MAP(CPaginaSeleccionScr3D, PaginaAdaptadaAlTema)
@@ -63,7 +63,7 @@ namespace Digi21::Geodesia::EPSG
 		for (auto const& [codigo, nombre] : listaSistemasCoordenadas)
 			m_wndCRS.SetItemData(m_wndCRS.AddString(nombre), codigo);
 
-		SeleccionaCódigo(m_nSCR);
+		SeleccionaCÃ³digo(m_nSCR);
 
 		m_wndCRS.EnableWindow(TRUE);
 
@@ -74,16 +74,16 @@ namespace Digi21::Geodesia::EPSG
 #pragma region Propiedades
 	CStringW CPaginaSeleccionScr3D::GetWkt() const
 	{
-		auto const geográfico = GetCoordinateSystemAuthorityFactory()->CreateGeographicCoordinateSystem(m_nSCR);
+		auto const geogrÃ¡fico = GetCoordinateSystemAuthorityFactory()->CreateGeographicCoordinateSystem(m_nSCR);
 
-		switch (m_nOrientaciónEjes)
+		switch (m_nOrientaciÃ³nEjes)
 		{
 		case ORIENTACION_EJES_LATITUD_LONGITUD:
-			return GetCoordinateSystemFactory()->ModifyWithAxisNorthEast(geográfico)->GetWkt();
+			return GetCoordinateSystemFactory()->ModifyWithAxisNorthEast(geogrÃ¡fico)->GetWkt();
 		case ORIENTACION_EJES_LONGITUD_LATITUD:
-			return GetCoordinateSystemFactory()->ModifyWithAxisEastNorth(geográfico)->GetWkt();
+			return GetCoordinateSystemFactory()->ModifyWithAxisEastNorth(geogrÃ¡fico)->GetWkt();
 		default:
-			return geográfico->GetWkt();
+			return geogrÃ¡fico->GetWkt();
 		}
 	}
 #pragma endregion
@@ -97,14 +97,14 @@ namespace Digi21::Geodesia::EPSG
 
 	void CPaginaSeleccionScr3D::OnBnClickedBuscarEpsg()
 	{
-		CDialogoBúsquedaPorCódigoEpsg dlg;
-		dlg.m_nCódigo = m_nSCR;
+		CDialogoBÃºsquedaPorCÃ³digoEpsg dlg;
+		dlg.m_nCÃ³digo = m_nSCR;
 
 		if (IDOK == dlg.DoModal()) {
-			if (3 != GetCoordinateSystemAuthorityFactory()->GetAxisOfCoordinateSystem(GetCoordinateSystemAuthorityFactory()->GetCodeOfCoordinateSystemAssociatedWithCrs(dlg.m_nCódigo)).size())
+			if (3 != GetCoordinateSystemAuthorityFactory()->GetAxisOfCoordinateSystem(GetCoordinateSystemAuthorityFactory()->GetCodeOfCoordinateSystemAssociatedWithCrs(dlg.m_nCÃ³digo)).size())
 				AfxMessageBox(_G(IDS_STRING2019));
 			else {
-				SeleccionaCódigo(dlg.m_nCódigo);
+				SeleccionaCÃ³digo(dlg.m_nCÃ³digo);
 			}
 		}
 	}
@@ -154,10 +154,10 @@ namespace Digi21::Geodesia::EPSG
 			sistemaCooordenadas->GetWkt());
 	}
 
-	void CPaginaSeleccionScr3D::SeleccionaCódigo(int código)
+	void CPaginaSeleccionScr3D::SeleccionaCÃ³digo(int cÃ³digo)
 	{
 		for (auto i = 0; i < m_wndCRS.GetCount(); i++) {
-			if (static_cast<int>(m_wndCRS.GetItemData(i)) == código) {
+			if (static_cast<int>(m_wndCRS.GetItemData(i)) == cÃ³digo) {
 				m_wndCRS.SetCurSel(i);
 				OnCbnSelchangeComboCrs();
 				break;

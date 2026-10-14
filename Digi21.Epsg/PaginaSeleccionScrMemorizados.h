@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "PaginaAdaptadaAlTema.h"
 
@@ -29,7 +29,7 @@ namespace Digi21::Geodesia::EPSG
 		__declspec(property(get=GetWkt)) CStringW Wkt;
 #pragma endregion
 
-#pragma region M�todos
+#pragma region Métodos
 	protected:
 		void DoDataExchange(CDataExchange* pDX) override;
 

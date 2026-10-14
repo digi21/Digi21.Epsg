@@ -1,26 +1,26 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "Digi21.Epsg.h"
-#include "DialogoBúsquedaPorCódigoEpsg.h"
+#include "DialogoBÃºsquedaPorCÃ³digoEpsg.h"
 #include "afxdialogex.h"
 
-IMPLEMENT_DYNAMIC(CDialogoBúsquedaPorCódigoEpsg, CDialogEx)
+IMPLEMENT_DYNAMIC(CDialogoBÃºsquedaPorCÃ³digoEpsg, CDialogEx)
 
-CDialogoBúsquedaPorCódigoEpsg::CDialogoBúsquedaPorCódigoEpsg(CWnd* pParent /*=nullptr*/)
+CDialogoBÃºsquedaPorCÃ³digoEpsg::CDialogoBÃºsquedaPorCÃ³digoEpsg(CWnd* pParent /*=nullptr*/)
 	: DialogoAdaptadoAlTema{IDD, pParent}
 {
 }
 
-void CDialogoBúsquedaPorCódigoEpsg::DoDataExchange(CDataExchange* pDX)
+void CDialogoBÃºsquedaPorCÃ³digoEpsg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
-	DDX_Text(pDX, IDC_EDIT1, m_nCódigo);
+	DDX_Text(pDX, IDC_EDIT1, m_nCÃ³digo);
 }
 
-BEGIN_MESSAGE_MAP(CDialogoBúsquedaPorCódigoEpsg, DialogoAdaptadoAlTema<CDialogEx>)
-	ON_BN_CLICKED(IDOK, &CDialogoBúsquedaPorCódigoEpsg::OnBnClickedOk)
+BEGIN_MESSAGE_MAP(CDialogoBÃºsquedaPorCÃ³digoEpsg, DialogoAdaptadoAlTema<CDialogEx>)
+	ON_BN_CLICKED(IDOK, &CDialogoBÃºsquedaPorCÃ³digoEpsg::OnBnClickedOk)
 END_MESSAGE_MAP()
 
-void CDialogoBúsquedaPorCódigoEpsg::OnBnClickedOk()
+void CDialogoBÃºsquedaPorCÃ³digoEpsg::OnBnClickedOk()
 {
 	UpdateData();
 	CDialogEx::OnOK();

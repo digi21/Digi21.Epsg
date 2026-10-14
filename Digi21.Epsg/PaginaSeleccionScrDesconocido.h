@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include "PaginaAdaptadaAlTema.h"
 
@@ -11,10 +11,10 @@ class CPaginaSeleccionScrDesconocido final : public PaginaAdaptadaAlTema
 
 #pragma region Constructores y destructor
 public:
-	CPaginaSeleccionScrDesconocido(CXTPPropertyPage*& current, CStringW const& título);
+	CPaginaSeleccionScrDesconocido(CXTPPropertyPage*& current, CStringW const& tÃ­tulo);
 #pragma endregion
 
-#pragma region Métodos
+#pragma region MÃ©todos
 protected:
 	BOOL OnSetActive() override;
 

@@ -1,4 +1,4 @@
-#include "pch.h"
+Ôªø#include "pch.h"
 #include "resource.h"
 #include "DialogoMostrarCrsHorizontal.h"
 
@@ -15,7 +15,7 @@ namespace Digi21::Geodesia::EPSG
 {
 
 
-	// Cuadro de di·logo de CDialogoMostrarCrsHorizontal
+	// Cuadro de di√°logo de CDialogoMostrarCrsHorizontal
 	CDialogoMostrarCrsHorizontal::CDialogoMostrarCrsHorizontal(std::shared_ptr<HorizontalCoordinateSystem> const& sistemaCoordenadas, CWnd* pParent /*=nullptr*/)
 		: DialogoAdaptadoAlTema{IDD, pParent}
 		, _sistemaCoordenadas{ sistemaCoordenadas }
@@ -50,7 +50,7 @@ namespace Digi21::Geodesia::EPSG
 		m_wndTiposCRS.AddString(_G(IDS_STRING2006));
 		m_wndTiposCRS.SetCurSel(0);
 
-		RellenaCamposEnFunciÛnScrActivo();
+		RellenaCamposEnFunci√≥nScrActivo();
 
 		m_wndCRS.EnableWindow(FALSE);
 		m_wndTiposCRS.EnableWindow(FALSE);
@@ -59,7 +59,7 @@ namespace Digi21::Geodesia::EPSG
 	}
 
 
-	void CDialogoMostrarCrsHorizontal::RellenaCamposEnFunciÛnScrActivo()
+	void CDialogoMostrarCrsHorizontal::RellenaCamposEnFunci√≥nScrActivo()
 	{
 		if( nullptr != dynamic_pointer_cast<LocalCoordinateSystem>(_sistemaCoordenadas))
 			m_wndTiposCRS.SetCurSel(0);
@@ -117,19 +117,19 @@ namespace Digi21::Geodesia::EPSG
 		UpdateData();
 
 		if( 0 == _sistemaCoordenadas->GetAuthority().CompareNoCase(L"EPSG")) {
-			auto const cÛdigoCRS = static_cast<int>(m_wndCRS.GetItemData(m_wndCRS.GetCurSel()));
+			auto const c√≥digoCRS = static_cast<int>(m_wndCRS.GetItemData(m_wndCRS.GetCurSel()));
 
 			auto const fabricaSrc = GetCoordinateSystemAuthorityFactory();
 
-			m_sArea = fabricaSrc->GetDescriptionAreaApplicationCrs(cÛdigoCRS);
-			m_sTipoSistemaCoordenadas = fabricaSrc->GetNameOfCoordinateSystem(fabricaSrc->GetCodeOfCoordinateSystemAssociatedWithCrs(cÛdigoCRS));
+			m_sArea = fabricaSrc->GetDescriptionAreaApplicationCrs(c√≥digoCRS);
+			m_sTipoSistemaCoordenadas = fabricaSrc->GetNameOfCoordinateSystem(fabricaSrc->GetCodeOfCoordinateSystemAssociatedWithCrs(c√≥digoCRS));
 
-			auto const cÛdigoDatum = fabricaSrc->GetCodeOfDatumAssociatedWithCrs(cÛdigoCRS);
-			m_sNombreDatum = fabricaSrc->GetNameOfDatum(cÛdigoDatum);
-			m_sOrigenDatum = fabricaSrc->GetOriginDescriptionOfDatum(cÛdigoDatum);
-			m_sMeridiano = fabricaSrc->GetNameOfPrimeMeridian(fabricaSrc->GetCodeOfPrimeMeridianAssociatedWithCrs(cÛdigoDatum));
-			m_sAmbitoUso = fabricaSrc->GetDescriptionAreaApplicationDatum(cÛdigoDatum);
-			m_sElipsoide = fabricaSrc->GetNameOfEllipsoid(fabricaSrc->GetCodeOfEllipsoidAssociatedWithDatum(cÛdigoDatum));
+			auto const c√≥digoDatum = fabricaSrc->GetCodeOfDatumAssociatedWithCrs(c√≥digoCRS);
+			m_sNombreDatum = fabricaSrc->GetNameOfDatum(c√≥digoDatum);
+			m_sOrigenDatum = fabricaSrc->GetOriginDescriptionOfDatum(c√≥digoDatum);
+			m_sMeridiano = fabricaSrc->GetNameOfPrimeMeridian(fabricaSrc->GetCodeOfPrimeMeridianAssociatedWithCrs(c√≥digoDatum));
+			m_sAmbitoUso = fabricaSrc->GetDescriptionAreaApplicationDatum(c√≥digoDatum);
+			m_sElipsoide = fabricaSrc->GetNameOfEllipsoid(fabricaSrc->GetCodeOfEllipsoidAssociatedWithDatum(c√≥digoDatum));
 		} else {
 			m_sArea = L"";
 			m_sTipoSistemaCoordenadas = L"";

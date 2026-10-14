@@ -1,4 +1,4 @@
-#include "pch.h"
+Ôªø#include "pch.h"
 #include "Digi21.Epsg.h"
 #include "DialogoBuscarScrVertical.h"
 
@@ -47,7 +47,7 @@ namespace Digi21::Geodesia::EPSG
 			m_wndCRS.SetItemData(m_wndCRS.AddString(nombre), codigo);
 
 		if( SISTEMA_COORDENADAS_LOCAL != m_nSCR ) 
-			RellenaCamposEnFunciÛnScrActivo();
+			RellenaCamposEnFunci√≥nScrActivo();
 
 		return TRUE; // Devuelve TRUE  a menos que establezca el foco en un control
 	}
@@ -56,17 +56,17 @@ namespace Digi21::Geodesia::EPSG
 	{
 		UpdateData();
 
-		auto const cÛdigoCrs = static_cast<int>(m_wndCRS.GetItemData(m_wndCRS.GetCurSel()));
+		auto const c√≥digoCrs = static_cast<int>(m_wndCRS.GetItemData(m_wndCRS.GetCurSel()));
 
 		auto const fabricaSrc = GetCoordinateSystemAuthorityFactory();
 
-		m_sArea = fabricaSrc->GetDescriptionAreaApplicationCrs(cÛdigoCrs);
-		m_sTipoSistemaCoordenadas = fabricaSrc->GetNameOfCoordinateSystem(fabricaSrc->GetCodeOfCoordinateSystemAssociatedWithCrs(cÛdigoCrs));
+		m_sArea = fabricaSrc->GetDescriptionAreaApplicationCrs(c√≥digoCrs);
+		m_sTipoSistemaCoordenadas = fabricaSrc->GetNameOfCoordinateSystem(fabricaSrc->GetCodeOfCoordinateSystemAssociatedWithCrs(c√≥digoCrs));
 
-		auto const cÛdigoDatum = fabricaSrc->GetCodeOfDatumAssociatedWithCrs(cÛdigoCrs);
-		m_sNombreDatum = fabricaSrc->GetNameOfDatum(cÛdigoDatum);
-		m_sOrigenDatum = fabricaSrc->GetOriginDescriptionOfDatum(cÛdigoDatum);
-		m_sAmbitoUso = fabricaSrc->GetDescriptionAreaApplicationDatum(cÛdigoDatum);
+		auto const c√≥digoDatum = fabricaSrc->GetCodeOfDatumAssociatedWithCrs(c√≥digoCrs);
+		m_sNombreDatum = fabricaSrc->GetNameOfDatum(c√≥digoDatum);
+		m_sOrigenDatum = fabricaSrc->GetOriginDescriptionOfDatum(c√≥digoDatum);
+		m_sAmbitoUso = fabricaSrc->GetDescriptionAreaApplicationDatum(c√≥digoDatum);
 		UpdateData(FALSE);
 	}
 
@@ -79,7 +79,7 @@ namespace Digi21::Geodesia::EPSG
 		OnOK();
 	}
 
-	void CDialogoBuscarScrVertical::RellenaCamposEnFunciÛnScrActivo()
+	void CDialogoBuscarScrVertical::RellenaCamposEnFunci√≥nScrActivo()
 	{
 		for (auto i=0; i<m_wndCRS.GetCount(); i++ ) {
 			if( static_cast<int>(m_wndCRS.GetItemData(i)) == m_nSCR ) {

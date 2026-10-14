@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include "DialogoAdaptadoAlTema.h"
 
@@ -35,8 +35,8 @@ namespace Digi21::Geodesia::EPSG
 		afx_msg void OnCbnSelchangeComboCrs();
 		afx_msg void OnCbnSelchangeComboTiposCrs();
 		void DoDataExchange(CDataExchange* pDX) override;
-		void ActivaDesactivaBotónAceptar() const;
-		void RellenaCamposEnFunciónScrActivo();
+		void ActivaDesactivaBotÃ³nAceptar() const;
+		void RellenaCamposEnFunciÃ³nScrActivo();
 	};
 
 }

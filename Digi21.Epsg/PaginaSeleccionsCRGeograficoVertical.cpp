@@ -1,7 +1,7 @@
-#include "pch.h"
+Ôªø#include "pch.h"
 #include "Digi21.Epsg.h"
 #include "PaginaSeleccionScrGeograficoVertical.h"
-#include "DialogoB˙squedaPorCÛdigoEpsg.h"
+#include "DialogoB√∫squedaPorC√≥digoEpsg.h"
 
 constexpr auto ORIENTACION_EJES_ESTANDAR = 0;
 constexpr auto ORIENTACION_EJES_LATITUD_LONGITUD = 1;
@@ -26,7 +26,7 @@ namespace Digi21::Geodesia::EPSG
 	{
 		PaginaAdaptadaAlTema::DoDataExchange(pDX);
 		DDX_Control(pDX, IDC_COMBO_CRS_HORIZONTAL, m_wndCrsHorizontal);
-		DDX_CBIndex(pDX, IDC_COMBO_ORIENTACION_EJES, m_nOrientaciÛnEjes );
+		DDX_CBIndex(pDX, IDC_COMBO_ORIENTACION_EJES, m_nOrientaci√≥nEjes );
 		DDX_Control(pDX, IDC_COMBO_CRS_VERTICAL, m_wndCrsVertical);
 		DDX_Check(pDX, IDC_CHECK_VERTICAL_DESCONOCIDO, m_bVerticalDesconocido);
 	}
@@ -63,7 +63,7 @@ namespace Digi21::Geodesia::EPSG
 
 		CWaitCursor wc;
 
-		RellenaScrGeogr·ficos();
+		RellenaScrGeogr√°ficos();
 		RellenaScrVerticales();
 
 		SeleccionaHorizontal(m_nScrHorizontal);
@@ -72,9 +72,9 @@ namespace Digi21::Geodesia::EPSG
 		return TRUE; // Devuelve TRUE  a menos que establezca el foco en un control
 	}
 
-	shared_ptr<CoordinateSystem> CreaSistemaCoordenadas(int nHorizontal, int orientaciÛnEjes, BOOL verticalDesconocido, int nVertical)
+	shared_ptr<CoordinateSystem> CreaSistemaCoordenadas(int nHorizontal, int orientaci√≥nEjes, BOOL verticalDesconocido, int nVertical)
 	{
-		auto const geogr·fico = GetCoordinateSystemAuthorityFactory()->CreateGeographicCoordinateSystem(nHorizontal);
+		auto const geogr√°fico = GetCoordinateSystemAuthorityFactory()->CreateGeographicCoordinateSystem(nHorizontal);
 		shared_ptr<CoordinateSystem> vertical;
 				
 		if( verticalDesconocido ) {
@@ -84,26 +84,26 @@ namespace Digi21::Geodesia::EPSG
 		}
 
 		shared_ptr<CompoundCoordinateSystem> compuesto;
-		auto nombre = UtilidadesString::Format(L"%s + %s", static_cast<LPCWSTR>(geogr·fico->GetName()), static_cast<LPCWSTR>(vertical->GetName()));
+		auto nombre = UtilidadesString::Format(L"%s + %s", static_cast<LPCWSTR>(geogr√°fico->GetName()), static_cast<LPCWSTR>(vertical->GetName()));
 
-		switch(orientaciÛnEjes)
+		switch(orientaci√≥nEjes)
 		{
 		case ORIENTACION_EJES_LATITUD_LONGITUD:
 			compuesto = make_shared<CompoundCoordinateSystem>(
 				nombre,
-				GetCoordinateSystemFactory()->ModifyWithAxisNorthEast(geogr·fico),
+				GetCoordinateSystemFactory()->ModifyWithAxisNorthEast(geogr√°fico),
 				vertical);
 			break;
 		case ORIENTACION_EJES_LONGITUD_LATITUD:
 			compuesto = make_shared<CompoundCoordinateSystem>(
 				nombre,
-				GetCoordinateSystemFactory()->ModifyWithAxisEastNorth(geogr·fico),
+				GetCoordinateSystemFactory()->ModifyWithAxisEastNorth(geogr√°fico),
 				vertical);
 			break;
 		default:
 			compuesto = make_shared<CompoundCoordinateSystem>(
 				nombre,
-				geogr·fico,
+				geogr√°fico,
 				vertical);
 			break;
 		}
@@ -141,7 +141,7 @@ namespace Digi21::Geodesia::EPSG
 		shared_ptr<CoordinateSystem> sistemaCooordenadas;
 		try {
 			CWaitCursor wc;
-			sistemaCooordenadas = CreaSistemaCoordenadas(m_nScrHorizontal, m_nOrientaciÛnEjes, m_bVerticalDesconocido, m_nScrVertical);
+			sistemaCooordenadas = CreaSistemaCoordenadas(m_nScrHorizontal, m_nOrientaci√≥nEjes, m_bVerticalDesconocido, m_nScrVertical);
 		}
 		catch(...)
 		{
@@ -159,7 +159,7 @@ namespace Digi21::Geodesia::EPSG
 #pragma region Propiedades
 	CStringW CPaginaSeleccionScrGeograficoYVertical::GetWkt() const
 	{
-		return CreaSistemaCoordenadas(m_nScrHorizontal, m_nOrientaciÛnEjes, m_bVerticalDesconocido, m_nScrVertical)->GetWkt();
+		return CreaSistemaCoordenadas(m_nScrHorizontal, m_nOrientaci√≥nEjes, m_bVerticalDesconocido, m_nScrVertical)->GetWkt();
 	}
 #pragma endregion
 
@@ -179,33 +179,33 @@ namespace Digi21::Geodesia::EPSG
 
 	void CPaginaSeleccionScrGeograficoYVertical::OnBnClickedBuscarHorizontalEpsg()
 	{
-		CDialogoB˙squedaPorCÛdigoEpsg dlg;
-		dlg.m_nCÛdigo = m_nScrHorizontal;
+		CDialogoB√∫squedaPorC√≥digoEpsg dlg;
+		dlg.m_nC√≥digo = m_nScrHorizontal;
 
 		if( IDOK == dlg.DoModal() ) {
-			if(2 != GetCoordinateSystemAuthorityFactory()->GetAxisOfCoordinateSystem(GetCoordinateSystemAuthorityFactory()->GetCodeOfCoordinateSystemAssociatedWithCrs(dlg.m_nCÛdigo)).size() ) 
+			if(2 != GetCoordinateSystemAuthorityFactory()->GetAxisOfCoordinateSystem(GetCoordinateSystemAuthorityFactory()->GetCodeOfCoordinateSystemAssociatedWithCrs(dlg.m_nC√≥digo)).size() ) 
 				AfxMessageBox(_G(IDS_STRING2022));
 			else {
-				SeleccionaHorizontal(dlg.m_nCÛdigo);
+				SeleccionaHorizontal(dlg.m_nC√≥digo);
 			}
 		}
 	}
 
 	void CPaginaSeleccionScrGeograficoYVertical::OnBnClickedBuscarVerticalEpsg()
 	{
-		CDialogoB˙squedaPorCÛdigoEpsg dlg;
-		dlg.m_nCÛdigo = m_nScrVertical;
+		CDialogoB√∫squedaPorC√≥digoEpsg dlg;
+		dlg.m_nC√≥digo = m_nScrVertical;
 
 		if( IDOK == dlg.DoModal() ) {
-			if(1 != GetCoordinateSystemAuthorityFactory()->GetAxisOfCoordinateSystem(GetCoordinateSystemAuthorityFactory()->GetCodeOfCoordinateSystemAssociatedWithCrs(dlg.m_nCÛdigo)).size())
+			if(1 != GetCoordinateSystemAuthorityFactory()->GetAxisOfCoordinateSystem(GetCoordinateSystemAuthorityFactory()->GetCodeOfCoordinateSystemAssociatedWithCrs(dlg.m_nC√≥digo)).size())
 				AfxMessageBox(_G(IDS_STRING2023));
 			else {
-				SeleccionaVertical(dlg.m_nCÛdigo);
+				SeleccionaVertical(dlg.m_nC√≥digo);
 			}
 		}
 	}
 
-	void CPaginaSeleccionScrGeograficoYVertical::RellenaScrGeogr·ficos()
+	void CPaginaSeleccionScrGeograficoYVertical::RellenaScrGeogr√°ficos()
 	{
 		for (auto const& [codigo, nombre] : GetCoordinateSystemAuthorityFactory()->EnumerateCoordinateSystems(CoordinateSystemKind::Geographic2D))
 			m_wndCrsHorizontal.SetItemData(m_wndCrsHorizontal.AddString(nombre), codigo);
@@ -217,10 +217,10 @@ namespace Digi21::Geodesia::EPSG
 			m_wndCrsVertical.SetItemData(m_wndCrsVertical.AddString(nombre), codigo);
 	}
 
-	void CPaginaSeleccionScrGeograficoYVertical::SeleccionaHorizontal( int cÛdigo )
+	void CPaginaSeleccionScrGeograficoYVertical::SeleccionaHorizontal( int c√≥digo )
 	{
 		for (auto i=0; i<m_wndCrsHorizontal.GetCount(); i++ ) {
-			if( static_cast<int>(m_wndCrsHorizontal.GetItemData(i)) == cÛdigo ) {
+			if( static_cast<int>(m_wndCrsHorizontal.GetItemData(i)) == c√≥digo ) {
 				m_wndCrsHorizontal.SetCurSel(i);
 				OnCbnSelchangeComboCrsHorizontal();
 				break;
@@ -228,10 +228,10 @@ namespace Digi21::Geodesia::EPSG
 		}
 	}
 
-	void CPaginaSeleccionScrGeograficoYVertical::SeleccionaVertical( int cÛdigo )
+	void CPaginaSeleccionScrGeograficoYVertical::SeleccionaVertical( int c√≥digo )
 	{
 		for (auto i=0; i<m_wndCrsVertical.GetCount(); i++ ) {
-			if( static_cast<int>(m_wndCrsVertical.GetItemData(i)) == cÛdigo ) {
+			if( static_cast<int>(m_wndCrsVertical.GetItemData(i)) == c√≥digo ) {
 				m_wndCrsVertical.SetCurSel(i);
 				OnCbnSelchangeComboCrsVertical();
 				break;

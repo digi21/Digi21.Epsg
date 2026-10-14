@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "Digi21.Epsg.h"
 #include "DialogoSeleccionTransformacionVertical.h"
 #include "afxdialogex.h"
@@ -41,7 +41,7 @@ void CDialogoSeleccionTransformacionVertical::OnBnClickedRadioDesplazamientoVert
 
 void CDialogoSeleccionTransformacionVertical::OnBnClickedOk()
 {
-	// Con los SRC verticales id�nticos el desplazamiento es 0, aunque la caja deshabilitada contenga otro texto.
+	// Con los SRC verticales idénticos el desplazamiento es 0, aunque la caja deshabilitada contenga otro texto.
 	if (static_cast<CButton*>(GetDlgItem(IDC_RADIO_SCR_VERTICAL_IDENTICOS))->GetCheck())
 		SetDlgItemText(IDC_EDIT_DESPLAZAMIENTO_VERTICAL, L"0");
 

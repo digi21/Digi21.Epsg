@@ -1,7 +1,7 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "resource.h"
 #include "DialogoBuscarScr3D.h"
-#include "DialogoBúsquedaPorCódigoEpsg.h"
+#include "DialogoBÃºsquedaPorCÃ³digoEpsg.h"
 
 using namespace Digi21::Utilidades;
 using namespace Digi21::OpenGis::CoordinateSystems;
@@ -71,19 +71,19 @@ namespace Digi21::Geodesia::EPSG
 	{
 		UpdateData();
 
-		auto const códigoCRS = static_cast<int>(m_wndCRS.GetItemData(m_wndCRS.GetCurSel()));
+		auto const cÃ³digoCRS = static_cast<int>(m_wndCRS.GetItemData(m_wndCRS.GetCurSel()));
 
 		auto const fabricaSrc = GetCoordinateSystemAuthorityFactory();
 
-		m_sArea = fabricaSrc->GetDescriptionAreaApplicationCrs(códigoCRS);
-		m_sTipoSistemaCoordenadas = fabricaSrc->GetNameOfCoordinateSystem(fabricaSrc->GetCodeOfCoordinateSystemAssociatedWithCrs(códigoCRS));
+		m_sArea = fabricaSrc->GetDescriptionAreaApplicationCrs(cÃ³digoCRS);
+		m_sTipoSistemaCoordenadas = fabricaSrc->GetNameOfCoordinateSystem(fabricaSrc->GetCodeOfCoordinateSystemAssociatedWithCrs(cÃ³digoCRS));
 
-		auto const códigoDatum = fabricaSrc->GetCodeOfDatumAssociatedWithCrs(códigoCRS);
-		m_sNombreDatum = fabricaSrc->GetNameOfDatum(códigoDatum);
-		m_sOrigenDatum = fabricaSrc->GetOriginDescriptionOfDatum(códigoDatum);
-		m_sMeridiano = fabricaSrc->GetNameOfPrimeMeridian(fabricaSrc->GetCodeOfPrimeMeridianAssociatedWithCrs(códigoDatum));
-		m_sAmbitoUso = fabricaSrc->GetDescriptionAreaApplicationDatum(códigoDatum);
-		m_sElipsoide = fabricaSrc->GetNameOfEllipsoid(fabricaSrc->GetCodeOfEllipsoidAssociatedWithDatum(códigoDatum));
+		auto const cÃ³digoDatum = fabricaSrc->GetCodeOfDatumAssociatedWithCrs(cÃ³digoCRS);
+		m_sNombreDatum = fabricaSrc->GetNameOfDatum(cÃ³digoDatum);
+		m_sOrigenDatum = fabricaSrc->GetOriginDescriptionOfDatum(cÃ³digoDatum);
+		m_sMeridiano = fabricaSrc->GetNameOfPrimeMeridian(fabricaSrc->GetCodeOfPrimeMeridianAssociatedWithCrs(cÃ³digoDatum));
+		m_sAmbitoUso = fabricaSrc->GetDescriptionAreaApplicationDatum(cÃ³digoDatum);
+		m_sElipsoide = fabricaSrc->GetNameOfEllipsoid(fabricaSrc->GetCodeOfEllipsoidAssociatedWithDatum(cÃ³digoDatum));
 		UpdateData(FALSE);
 	}
 
@@ -96,17 +96,17 @@ namespace Digi21::Geodesia::EPSG
 
 	void CDialogoBuscarScr3D::OnBnClickedBuscarEpsg()
 	{
-		CDialogoBúsquedaPorCódigoEpsg dlg;
-		dlg.m_nCódigo = m_nSCR;
+		CDialogoBÃºsquedaPorCÃ³digoEpsg dlg;
+		dlg.m_nCÃ³digo = m_nSCR;
 
 		auto const fabricaSrc = GetCoordinateSystemAuthorityFactory();
 
 		if( IDOK == dlg.DoModal() ) {
-			if(3 != fabricaSrc->GetAxisOfCoordinateSystem(fabricaSrc->GetCodeOfCoordinateSystemAssociatedWithCrs(dlg.m_nCódigo)).size() )
+			if(3 != fabricaSrc->GetAxisOfCoordinateSystem(fabricaSrc->GetCodeOfCoordinateSystemAssociatedWithCrs(dlg.m_nCÃ³digo)).size() )
 				AfxMessageBox(_G(IDS_STRING2019));
 			else {
 				for (auto i=0; i<m_wndCRS.GetCount(); i++ ) {
-					if( static_cast<int>(m_wndCRS.GetItemData(i)) == dlg.m_nCódigo ) {
+					if( static_cast<int>(m_wndCRS.GetItemData(i)) == dlg.m_nCÃ³digo ) {
 						m_wndCRS.SetCurSel(i);
 						OnCbnSelchangeComboCrs();
 						break;

@@ -1,4 +1,4 @@
-#include "pch.h"
+Ôªø#include "pch.h"
 #include "Digi21.Epsg.h"
 #include "DialogoMostrarScrVertical.h"
 
@@ -65,17 +65,17 @@ namespace Digi21::Geodesia::EPSG
 		UpdateData();
 
 		if( 0 == _sistemaCoordenadas->GetAuthority().CompareNoCase(L"EPSG")) {
-			auto const cÛdigoCRS = static_cast<int>(m_wndCRS.GetItemData(m_wndCRS.GetCurSel()));
+			auto const c√≥digoCRS = static_cast<int>(m_wndCRS.GetItemData(m_wndCRS.GetCurSel()));
 
 			auto const fabricaSrc = GetCoordinateSystemAuthorityFactory();
 
-			m_sArea = fabricaSrc->GetDescriptionAreaApplicationCrs(cÛdigoCRS);
-			m_sTipoSistemaCoordenadas = fabricaSrc->GetNameOfCoordinateSystem(fabricaSrc->GetCodeOfCoordinateSystemAssociatedWithCrs(cÛdigoCRS));
+			m_sArea = fabricaSrc->GetDescriptionAreaApplicationCrs(c√≥digoCRS);
+			m_sTipoSistemaCoordenadas = fabricaSrc->GetNameOfCoordinateSystem(fabricaSrc->GetCodeOfCoordinateSystemAssociatedWithCrs(c√≥digoCRS));
 
-			auto const cÛdigoDatum = fabricaSrc->GetCodeOfDatumAssociatedWithCrs(cÛdigoCRS);
-			m_sNombreDatum = fabricaSrc->GetNameOfDatum(cÛdigoDatum);
-			m_sOrigenDatum = fabricaSrc->GetOriginDescriptionOfDatum(cÛdigoDatum);
-			m_sAmbitoUso = fabricaSrc->GetDescriptionAreaApplicationDatum(cÛdigoDatum);
+			auto const c√≥digoDatum = fabricaSrc->GetCodeOfDatumAssociatedWithCrs(c√≥digoCRS);
+			m_sNombreDatum = fabricaSrc->GetNameOfDatum(c√≥digoDatum);
+			m_sOrigenDatum = fabricaSrc->GetOriginDescriptionOfDatum(c√≥digoDatum);
+			m_sAmbitoUso = fabricaSrc->GetDescriptionAreaApplicationDatum(c√≥digoDatum);
 		} else {
 			m_sArea = L"";
 			m_sTipoSistemaCoordenadas = L"";

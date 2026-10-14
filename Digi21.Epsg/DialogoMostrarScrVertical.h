@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "DialogoAdaptadoAlTema.h"
 
@@ -17,7 +17,7 @@ namespace Digi21::Geodesia::EPSG
 		CStringW m_sOrigenDatum;
 		CStringW m_sAmbitoUso;
 
-		// Construcci�n
+		// Construcción
 	public:
 		explicit CDialogoMostrarScrVertical(std::shared_ptr<OpenGis::CoordinateSystems::VerticalCoordinateSystem> const& sistemaCoordenadas, CWnd* pParent = nullptr);
 

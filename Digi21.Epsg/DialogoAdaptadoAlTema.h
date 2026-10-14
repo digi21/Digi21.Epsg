@@ -1,4 +1,4 @@
-#pragma once
+Ôªø#pragma once
 
 #include "TemaAnfitrion.h"
 
@@ -6,7 +6,7 @@
 #include <optional>
 #include <vector>
 
-// Aplica el tema de Codejock del anfitriÛn a una ventana creada desde una plantilla de di·logo. Sin tema no hace nada.
+// Aplica el tema de Codejock del anfitri√≥n a una ventana creada desde una plantilla de di√°logo. Sin tema no hace nada.
 class AdaptacionTema
 {
 	std::optional<ColoresTema> _tema;
@@ -20,7 +20,7 @@ class AdaptacionTema
 public:
 	AdaptacionTema();
 
-	// Se llama despuÈs de CDialog::OnInitDialog, cuando DDX_Control ya ha asociado sus controles.
+	// Se llama despu√©s de CDialog::OnInitDialog, cuando DDX_Control ya ha asociado sus controles.
 	auto AplicaAVentana(CWnd& ventana) -> void;
 
 	// false si no hay tema: el fondo lo borra la clase base.
@@ -30,7 +30,7 @@ public:
 	auto ColorControl(CDC& dc, CWnd* control, UINT tipoControl, HBRUSH brochaBase) -> HBRUSH;
 };
 
-// Cuadro de di·logo o p·gina que sigue el tema de Codejock del anfitriÛn. Sin tema se comporta como TBase.
+// Cuadro de di√°logo o p√°gina que sigue el tema de Codejock del anfitri√≥n. Sin tema se comporta como TBase.
 template <class TBase>
 class DialogoAdaptadoAlTema : public TBase
 {

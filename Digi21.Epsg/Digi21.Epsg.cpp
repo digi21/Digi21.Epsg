@@ -1,4 +1,4 @@
-#include "pch.h"
+Ôªø#include "pch.h"
 #include "Digi21.Epsg.h"
 
 using namespace Digi21::Utilidades;
@@ -20,18 +20,18 @@ BOOL CDigi21EpsgApp::InitInstance()
 	G_HINSTRECURSOS = LoadMUILibrary(CargadorWinSxS::GetNombreModulo(AfxGetInstanceHandle()), MUI_LANGUAGE_NAME, 0);
 	ASSERT(nullptr != G_HINSTRECURSOS);
 #else
-	// DespuÈs de mil vueltas con Windows en JaponÈs, he descubierto que hay que cargar el ensamblado MUI manualmente. En EspaÒol no es necesario, ni en inglÈs,
-	// pero las versiones japonesas se ve que no funcionan muy bien con lo relacionado con MUI o no est· suficientemente bien documentado
+	// Despu√©s de mil vueltas con Windows en Japon√©s, he descubierto que hay que cargar el ensamblado MUI manualmente. En Espa√±ol no es necesario, ni en ingl√©s,
+	// pero las versiones japonesas se ve que no funcionan muy bien con lo relacionado con MUI o no est√° suficientemente bien documentado
 	try {
 		G_HINSTRECURSOS = CargadorWinSxS::CargaEnsambladoMUI(
 			L"Digi21.Epsg.Resources", 
 			CStringW(SOLUTIONFILEVERSIONSTRING), 
 			L"Digi21.Epsg.dll.mui");
 	} 
-	catch(std::exception& excepciÛn)
+	catch(std::exception& excepci√≥n)
 	{
 		CStringW cadena;
-		cadena.Format(L"An exception was detected when loading the resource file for the component %s", static_cast<LPCWSTR>(UtilidadesString::UTF82String(excepciÛn.what())));
+		cadena.Format(L"An exception was detected when loading the resource file for the component %s", static_cast<LPCWSTR>(UtilidadesString::UTF82String(excepci√≥n.what())));
 		LogEventos2::AlmacenaEventoError(cadena);
 
 		return FALSE;

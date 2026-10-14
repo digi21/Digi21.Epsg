@@ -1,4 +1,4 @@
-// PaneColorSet.h: interface for the CPaneColorSet class.
+﻿// PaneColorSet.h: interface for the CPaneColorSet class.
 //
 // (c)1998-2016 Codejock Software, All Rights Reserved.
 //

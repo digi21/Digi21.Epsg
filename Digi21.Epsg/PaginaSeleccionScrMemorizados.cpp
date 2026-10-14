@@ -1,4 +1,4 @@
-#include "pch.h"
+Ôªø#include "pch.h"
 #include "Digi21.Epsg.h"
 #include "PaginaSeleccionScrMemorizados.h"
 
@@ -63,7 +63,7 @@ namespace Digi21::Geodesia::EPSG
 			CARPETA_REGISTRO_DIGI3D_MEMORIZED_COORDINATE_SYSTEMS);
 
 		CWaitCursor wc;
-		auto const f·brica = GetCoordinateSystemFactory();
+		auto const f√°brica = GetCoordinateSystemFactory();
 
 		for( size_t i=0; i<sistemasCoordenadasMemorizados.size(); i++ ) {
 			auto* wkt = new CStringW(
@@ -74,9 +74,9 @@ namespace Digi21::Geodesia::EPSG
 					sistemasCoordenadasMemorizados[i]));
 
 			try {
-				auto const nombre = f·brica->CreateFromWkt(*wkt)->GetName();
-				auto const Ìndice = m_wndListaSistemasReferenciaMemorizados.AddString(nombre);
-				m_wndListaSistemasReferenciaMemorizados.SetItemData(Ìndice, reinterpret_cast<DWORD_PTR>(wkt));
+				auto const nombre = f√°brica->CreateFromWkt(*wkt)->GetName();
+				auto const √≠ndice = m_wndListaSistemasReferenciaMemorizados.AddString(nombre);
+				m_wndListaSistemasReferenciaMemorizados.SetItemData(√≠ndice, reinterpret_cast<DWORD_PTR>(wkt));
 			}
 			catch(...)
 			{
@@ -97,14 +97,14 @@ namespace Digi21::Geodesia::EPSG
 		if( -1 == m_wndListaSistemasReferenciaMemorizados.GetCurSel() )
 			return;
 
-		CStringW tÌtulo;
-		m_wndListaSistemasReferenciaMemorizados.GetText(m_wndListaSistemasReferenciaMemorizados.GetCurSel(), tÌtulo);
+		CStringW t√≠tulo;
+		m_wndListaSistemasReferenciaMemorizados.GetText(m_wndListaSistemasReferenciaMemorizados.GetCurSel(), t√≠tulo);
 
 		CRegistro::BorraValorCurrentUser( 
 			CARPETA_DIGI21, 
 			VERSION_DIGI3D, 
 			CARPETA_REGISTRO_DIGI3D_MEMORIZED_COORDINATE_SYSTEMS,
-			tÌtulo);
+			t√≠tulo);
 
 		auto const cadena = reinterpret_cast<CStringW*>(m_wndListaSistemasReferenciaMemorizados.GetItemData(m_wndListaSistemasReferenciaMemorizados.GetCurSel()));
 		delete cadena;

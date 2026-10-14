@@ -1,16 +1,16 @@
-#pragma once
+Ôªø#pragma once
 
 class DialogoSeleccionScr
 {
 public:
 	///	<summary>
-	///		Muestra el cuadro de di·logo de selecciÛn de sistema de referencia de coordenadas sin la posibilidad de seleccionar el sistema desconocido.
+	///		Muestra el cuadro de di√°logo de selecci√≥n de sistema de referencia de coordenadas sin la posibilidad de seleccionar el sistema desconocido.
 	///	</summary>
-	static CStringW DialogSeleccionaScr(CStringW const& tÌtuloDi·logo, std::shared_ptr<Digi21::OpenGis::CoordinateSystems::CoordinateSystem> const& sistemaCoordenadasDefecto);
+	static CStringW DialogSeleccionaScr(CStringW const& t√≠tuloDi√°logo, std::shared_ptr<Digi21::OpenGis::CoordinateSystems::CoordinateSystem> const& sistemaCoordenadasDefecto);
 
 	///	<summary>
-	///		Muestra el cuadro de di·logo de selecciÛn de sistema de referencia de coordenadas con la posibilidad de seleccionar el sistema desconocido.
+	///		Muestra el cuadro de di√°logo de selecci√≥n de sistema de referencia de coordenadas con la posibilidad de seleccionar el sistema desconocido.
 	///	</summary>
-	static CStringW DialogSeleccionaScr(CStringW const& tÌtuloDi·logo, CStringW const& tÌtuloCheckboxDesconocido, std::shared_ptr<Digi21::OpenGis::CoordinateSystems::CoordinateSystem> const& sistemaCoordenadasVentanaDibujo = {}, std::shared_ptr<Digi21::OpenGis::CoordinateSystems::CoordinateSystem> const& sistemaCoordenadasVentanaFotogrametrica = {});
+	static CStringW DialogSeleccionaScr(CStringW const& t√≠tuloDi√°logo, CStringW const& t√≠tuloCheckboxDesconocido, std::shared_ptr<Digi21::OpenGis::CoordinateSystems::CoordinateSystem> const& sistemaCoordenadasVentanaDibujo = {}, std::shared_ptr<Digi21::OpenGis::CoordinateSystems::CoordinateSystem> const& sistemaCoordenadasVentanaFotogrametrica = {});
 };
 

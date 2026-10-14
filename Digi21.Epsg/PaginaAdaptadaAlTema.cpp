@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "PaginaAdaptadaAlTema.h"
 
 IMPLEMENT_DYNAMIC(PaginaAdaptadaAlTema, CXTPPropertyPage)

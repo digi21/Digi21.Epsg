@@ -1,8 +1,8 @@
-#pragma once
+ï»¿#pragma once
 
 #include "DialogoAdaptadoAlTema.h"
 
-// Página de propiedades que sigue el tema de Codejock del anfitrión. Sin tema se comporta como CXTPPropertyPage.
+// PÃ¡gina de propiedades que sigue el tema de Codejock del anfitriÃ³n. Sin tema se comporta como CXTPPropertyPage.
 class PaginaAdaptadaAlTema : public DialogoAdaptadoAlTema<CXTPPropertyPage>
 {
 	DECLARE_DYNAMIC(PaginaAdaptadaAlTema)

@@ -1,13 +1,13 @@
-#pragma once
+ï»¿#pragma once
 
 #include "DialogoAdaptadoAlTema.h"
 
-class CDialogoBúsquedaPorCódigoEpsg final : public DialogoAdaptadoAlTema<CDialogEx>
+class CDialogoBÃºsquedaPorCÃ³digoEpsg final : public DialogoAdaptadoAlTema<CDialogEx>
 {
-	DECLARE_DYNAMIC(CDialogoBúsquedaPorCódigoEpsg)
+	DECLARE_DYNAMIC(CDialogoBÃºsquedaPorCÃ³digoEpsg)
 
 public:
-	explicit CDialogoBúsquedaPorCódigoEpsg(CWnd* pParent = nullptr);
+	explicit CDialogoBÃºsquedaPorCÃ³digoEpsg(CWnd* pParent = nullptr);
 
 // Dialog Data
 	enum { IDD = IDD_DIALOGO_BUSQUEDA_POR_CODIGO_EPSG };
@@ -18,5 +18,5 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	afx_msg void OnBnClickedOk();
-	int m_nCódigo{};
+	int m_nCÃ³digo{};
 };

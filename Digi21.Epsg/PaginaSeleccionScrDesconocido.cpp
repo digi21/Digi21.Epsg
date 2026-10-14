@@ -1,13 +1,13 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "Digi21.Epsg.h"
 #include "PaginaSeleccionScrDesconocido.h"
 
 IMPLEMENT_DYNAMIC(CPaginaSeleccionScrDesconocido, PaginaAdaptadaAlTema)
 
-CPaginaSeleccionScrDesconocido::CPaginaSeleccionScrDesconocido(CXTPPropertyPage*& _current, CStringW const& título)
+CPaginaSeleccionScrDesconocido::CPaginaSeleccionScrDesconocido(CXTPPropertyPage*& _current, CStringW const& tÃ­tulo)
 	: PaginaAdaptadaAlTema(IDD)
 	, current{ _current }
-	, m_sTituloDesconocido{ título }
+	, m_sTituloDesconocido{ tÃ­tulo }
 {
 }
 

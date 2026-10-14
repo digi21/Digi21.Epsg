@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "DialogoAdaptadoAlTema.h"
 
 namespace
@@ -61,7 +61,7 @@ auto AdaptacionTema::AplicaAVentana(CWnd& ventana) -> void
 	if (!_tema)
 		return;
 
-	// Los controles que la ventana ya asocia con DDX_Control se dejan como están.
+	// Los controles que la ventana ya asocia con DDX_Control se dejan como estÃ¡n.
 	for (auto hijo = ::GetWindow(ventana.GetSafeHwnd(), GW_CHILD); hijo; hijo = ::GetWindow(hijo, GW_HWNDNEXT))
 	{
 		if (CWnd::FromHandlePermanent(hijo))
@@ -85,8 +85,8 @@ auto AdaptacionTema::AplicaAVentana(CWnd& ventana) -> void
 		if (auto* const tema = edit ? edit->GetTheme() : nullptr; tema && (edit->GetStyle() & ES_READONLY))
 			tema->m_clrTextReadOnly.SetCustomValue(static_cast<COLORREF>(tema->m_clrText));
 
-		// El texto de un marco de grupo, una casilla o un botón de opción va sobre el fondo de la ventana; el tema lo
-		// pinta con el color del texto de un botón, que en el tema azul es oscuro sobre azul.
+		// El texto de un marco de grupo, una casilla o un botÃ³n de opciÃ³n va sobre el fondo de la ventana; el tema lo
+		// pinta con el color del texto de un botÃ³n, que en el tema azul es oscuro sobre azul.
 		auto* const boton = dynamic_cast<CXTPButton*>(control);
 		auto* const temaBoton = boton ? boton->GetTheme() : nullptr;
 		if (temaBoton && BS_GROUPBOX == (boton->GetStyle() & BS_TYPEMASK))
@@ -95,7 +95,7 @@ auto AdaptacionTema::AplicaAVentana(CWnd& ventana) -> void
 			temaBoton->m_crTextCheck.SetCustomValue(_tema->texto);
 	}
 
-	// Las páginas de una hoja son ventanas hijas: la barra de título es la de la hoja.
+	// Las pÃ¡ginas de una hoja son ventanas hijas: la barra de tÃ­tulo es la de la hoja.
 	if (!(ventana.GetStyle() & WS_CHILD))
 		AplicaBarraTituloTema(ventana.GetSafeHwnd(), *_tema);
 }
@@ -139,7 +139,7 @@ auto AdaptacionTema::ColorControl(CDC& dc, CWnd* control, UINT tipoControl, HBRU
 	if (CTLCOLOR_DLG != tipoControl && CTLCOLOR_STATIC != tipoControl && CTLCOLOR_BTN != tipoControl)
 		return brochaBase;
 
-	// Un Edit deshabilitado o de solo lectura también pide CTLCOLOR_STATIC; sus colores los pone CXTPEdit.
+	// Un Edit deshabilitado o de solo lectura tambiÃ©n pide CTLCOLOR_STATIC; sus colores los pone CXTPEdit.
 	if (control && 0 == ClaseVentana(control->GetSafeHwnd()).CompareNoCase(WC_EDITW))
 		return brochaBase;
 
