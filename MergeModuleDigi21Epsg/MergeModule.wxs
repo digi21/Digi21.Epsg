@@ -4,8 +4,9 @@
 		<Directory Id="MergeRedirectFolder">
 			<Directory Id="WinSxS" Name="WinSxS">
 
+				<!-- crskit.dll no forma parte del ensamblado: lo instala la aplicación en su carpeta. -->
 				<Component Id="CMP_Digi21.Epsg.dll" Guid="{AF5FE4CF-841C-47DF-BAA6-C17F781ED206}">
-					<File Id="FILE_DigiNG.OpenGis.dll" Source="$(var.SolutionDir)x64\Release\Digi21.Epsg.dll" KeyPath="yes" Assembly="win32" AssemblyManifest="FILE_Digi21.Epsg.dll.manifest" />
+					<File Id="FILE_Digi21.Epsg.dll" Source="$(var.SolutionDir)x64\Release\Digi21.Epsg.dll" KeyPath="yes" Assembly="win32" AssemblyManifest="FILE_Digi21.Epsg.dll.manifest" />
 					<File Id="FILE_Digi21.Epsg.dll.manifest" Source="$(var.SolutionDir)x64\Release\Digi21.Epsg.dll.manifest" KeyPath="no" />
 					<File Id="FILE_Digi21.Epsg.dll.cat" Source="$(var.SolutionDir)x64\Release\Digi21.Epsg.dll.cat" KeyPath="no" />
 				</Component>

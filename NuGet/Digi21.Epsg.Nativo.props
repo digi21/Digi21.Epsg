@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<!-- EpsgManager.h incluye <CrsKit.h>: el proyecto consumidor recibe crskit por vcpkg y despliega crskit.dll junto al ejecutable. -->
 	<ImportGroup Label="PropertySheets" />
 	<PropertyGroup Label="UserMacros" />
 	<PropertyGroup />
