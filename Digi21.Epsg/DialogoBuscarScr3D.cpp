@@ -4,8 +4,8 @@
 #include "DialogoBúsquedaPorCódigoEpsg.h"
 
 using namespace Digi21::Utilidades;
-using namespace Digi21::OpenGis::CoordinateSystems;
-using namespace Digi21::OpenGis;
+using namespace CrsKit::CoordinateSystems;
+using namespace CrsKit;
 
 #ifdef _DEBUG
 #define new DEBUG_NEW  // NOLINT
@@ -51,7 +51,7 @@ namespace Digi21::Geodesia::EPSG
 		auto const listaSistemasCoordenadas = GetCoordinateSystemAuthorityFactory()->EnumerateCoordinateSystems(CoordinateSystemKind::Geographic3D);
 
 		for(auto const& [codigo, nombre] : listaSistemasCoordenadas )
-			m_wndCRS.SetItemData(m_wndCRS.AddString(nombre), codigo);
+			m_wndCRS.SetItemData(m_wndCRS.AddString(DeUtf8(nombre)), codigo);
 
 		m_wndCRS.EnableWindow(TRUE);
 
@@ -75,15 +75,15 @@ namespace Digi21::Geodesia::EPSG
 
 		auto const fabricaSrc = GetCoordinateSystemAuthorityFactory();
 
-		m_sArea = fabricaSrc->GetDescriptionAreaApplicationCrs(códigoCRS);
-		m_sTipoSistemaCoordenadas = fabricaSrc->GetNameOfCoordinateSystem(fabricaSrc->GetCodeOfCoordinateSystemAssociatedWithCrs(códigoCRS));
+		m_sArea = DeUtf8(fabricaSrc->GetDescriptionAreaApplicationCrs(códigoCRS));
+		m_sTipoSistemaCoordenadas = DeUtf8(fabricaSrc->GetNameOfCoordinateSystem(fabricaSrc->GetCodeOfCoordinateSystemAssociatedWithCrs(códigoCRS)));
 
 		auto const códigoDatum = fabricaSrc->GetCodeOfDatumAssociatedWithCrs(códigoCRS);
-		m_sNombreDatum = fabricaSrc->GetNameOfDatum(códigoDatum);
-		m_sOrigenDatum = fabricaSrc->GetOriginDescriptionOfDatum(códigoDatum);
-		m_sMeridiano = fabricaSrc->GetNameOfPrimeMeridian(fabricaSrc->GetCodeOfPrimeMeridianAssociatedWithCrs(códigoDatum));
-		m_sAmbitoUso = fabricaSrc->GetDescriptionAreaApplicationDatum(códigoDatum);
-		m_sElipsoide = fabricaSrc->GetNameOfEllipsoid(fabricaSrc->GetCodeOfEllipsoidAssociatedWithDatum(códigoDatum));
+		m_sNombreDatum = DeUtf8(fabricaSrc->GetNameOfDatum(códigoDatum));
+		m_sOrigenDatum = DeUtf8(fabricaSrc->GetOriginDescriptionOfDatum(códigoDatum));
+		m_sMeridiano = DeUtf8(fabricaSrc->GetNameOfPrimeMeridian(fabricaSrc->GetCodeOfPrimeMeridianAssociatedWithCrs(códigoDatum)));
+		m_sAmbitoUso = DeUtf8(fabricaSrc->GetDescriptionAreaApplicationDatum(códigoDatum));
+		m_sElipsoide = DeUtf8(fabricaSrc->GetNameOfEllipsoid(fabricaSrc->GetCodeOfEllipsoidAssociatedWithDatum(códigoDatum)));
 		UpdateData(FALSE);
 	}
 

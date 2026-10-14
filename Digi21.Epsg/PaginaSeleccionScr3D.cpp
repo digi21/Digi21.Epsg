@@ -4,8 +4,8 @@
 #include "DialogoBúsquedaPorCódigoEpsg.h"
 
 using namespace Digi21::Utilidades;
-using namespace Digi21::OpenGis::CoordinateSystems;
-using namespace Digi21::OpenGis;
+using namespace CrsKit::CoordinateSystems;
+using namespace CrsKit;
 using namespace std;
 
 constexpr auto ORIENTACION_EJES_ESTANDAR = 0;
@@ -61,7 +61,7 @@ namespace Digi21::Geodesia::EPSG
 		auto const listaSistemasCoordenadas = GetCoordinateSystemAuthorityFactory()->EnumerateCoordinateSystems(CoordinateSystemKind::Geographic3D);
 
 		for (auto const& [codigo, nombre] : listaSistemasCoordenadas)
-			m_wndCRS.SetItemData(m_wndCRS.AddString(nombre), codigo);
+			m_wndCRS.SetItemData(m_wndCRS.AddString(DeUtf8(nombre)), codigo);
 
 		SeleccionaCódigo(m_nSCR);
 
@@ -79,11 +79,11 @@ namespace Digi21::Geodesia::EPSG
 		switch (m_nOrientaciónEjes)
 		{
 		case ORIENTACION_EJES_LATITUD_LONGITUD:
-			return GetCoordinateSystemFactory()->ModifyWithAxisNorthEast(geográfico)->GetWkt();
+			return DeUtf8(GetCoordinateSystemFactory()->ModifyWithAxisNorthEast(geográfico)->GetWkt());
 		case ORIENTACION_EJES_LONGITUD_LATITUD:
-			return GetCoordinateSystemFactory()->ModifyWithAxisEastNorth(geográfico)->GetWkt();
+			return DeUtf8(GetCoordinateSystemFactory()->ModifyWithAxisEastNorth(geográfico)->GetWkt());
 		default:
-			return geográfico->GetWkt();
+			return DeUtf8(geográfico->GetWkt());
 		}
 	}
 #pragma endregion
@@ -150,8 +150,8 @@ namespace Digi21::Geodesia::EPSG
 			CARPETA_DIGI21,
 			VERSION_DIGI3D,
 			CARPETA_REGISTRO_DIGI3D_MEMORIZED_COORDINATE_SYSTEMS,
-			sistemaCooordenadas->GetName(),
-			sistemaCooordenadas->GetWkt());
+			DeUtf8(sistemaCooordenadas->GetName()),
+			DeUtf8(sistemaCooordenadas->GetWkt()));
 	}
 
 	void CPaginaSeleccionScr3D::SeleccionaCódigo(int código)

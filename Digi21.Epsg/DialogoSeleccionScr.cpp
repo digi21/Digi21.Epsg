@@ -14,7 +14,7 @@ using namespace Digi21::Geodesia::EPSG;
 using namespace Digi21::Utilidades;
 using namespace std;
 
-CStringW DialogoSeleccionScr::DialogSeleccionaScr(CStringW const& títuloDiálogo, shared_ptr<Digi21::OpenGis::CoordinateSystems::CoordinateSystem> const& sistemaCoordenadasDefecto)
+CStringW DialogoSeleccionScr::DialogSeleccionaScr(CStringW const& títuloDiálogo, shared_ptr<CrsKit::CoordinateSystems::CoordinateSystem> const& sistemaCoordenadasDefecto)
 {
 	HojaPropiedadesAdaptadaAlTema ps(títuloDiálogo);
 	auto* pList = new CXTPPropertyPageListNavigator{};
@@ -28,7 +28,7 @@ CStringW DialogoSeleccionScr::DialogSeleccionaScr(CStringW const& títuloDiálog
 	CPaginaSeleccionScrGeograficoYVertical páginaGeoYVert(activo);
 	CPaginaSeleccionScrMemorizados páginaMemorizados(activo);
 	PaginaManual páginaManual(activo);
-	PaginaSeleccionSrcExistente páginaExistente(activo, IDD_PAGINA_VENTANA_DIBUJO, sistemaCoordenadasDefecto->GetName());
+	PaginaSeleccionSrcExistente páginaExistente(activo, IDD_PAGINA_VENTANA_DIBUJO, DeUtf8(sistemaCoordenadasDefecto->GetName()));
 
 	ps.AddPage(&página3D);
 	ps.AddPage(&páginaProyYVert);
@@ -62,10 +62,10 @@ CStringW DialogoSeleccionScr::DialogSeleccionaScr(CStringW const& títuloDiálog
 			return páginaMemorizados.Wkt;
 	}
 
-	return sistemaCoordenadasDefecto->GetWkt();
+	return DeUtf8(sistemaCoordenadasDefecto->GetWkt());
 }
 
-CStringW DialogoSeleccionScr::DialogSeleccionaScr(CStringW const& títuloDiálogo, CStringW const& títuloCheckboxDesconocido, shared_ptr<Digi21::OpenGis::CoordinateSystems::CoordinateSystem> const& sistemaCoordenadasVentanaDibujo, std::shared_ptr<Digi21::OpenGis::CoordinateSystems::CoordinateSystem> const& sistemaCoordenadasVentanaFotogrametrica)
+CStringW DialogoSeleccionScr::DialogSeleccionaScr(CStringW const& títuloDiálogo, CStringW const& títuloCheckboxDesconocido, shared_ptr<CrsKit::CoordinateSystems::CoordinateSystem> const& sistemaCoordenadasVentanaDibujo, std::shared_ptr<CrsKit::CoordinateSystems::CoordinateSystem> const& sistemaCoordenadasVentanaFotogrametrica)
 {
 	HojaPropiedadesAdaptadaAlTema ps(títuloDiálogo);
 	auto* pList = new CXTPPropertyPageListNavigator{};
@@ -91,12 +91,12 @@ CStringW DialogoSeleccionScr::DialogSeleccionaScr(CStringW const& títuloDiálog
 	ps.AddPage(&páginaMemorizados);
 
 	if (sistemaCoordenadasVentanaDibujo) {
-		páginaVentanaDibujo = std::make_unique<PaginaSeleccionSrcExistente>(activo, IDD_PAGINA_VENTANA_DIBUJO, sistemaCoordenadasVentanaDibujo->GetName());
+		páginaVentanaDibujo = std::make_unique<PaginaSeleccionSrcExistente>(activo, IDD_PAGINA_VENTANA_DIBUJO, DeUtf8(sistemaCoordenadasVentanaDibujo->GetName()));
 		ps.AddPage(páginaVentanaDibujo.get());
 	}
 
 	if (sistemaCoordenadasVentanaFotogrametrica) {
-		páginaVentanaFotogrametrica = std::make_unique<PaginaSeleccionSrcExistente>(activo, IDD_PAGINA_VENTANA_FOTOGRAMETRICA, sistemaCoordenadasVentanaFotogrametrica->GetName());
+		páginaVentanaFotogrametrica = std::make_unique<PaginaSeleccionSrcExistente>(activo, IDD_PAGINA_VENTANA_FOTOGRAMETRICA, DeUtf8(sistemaCoordenadasVentanaFotogrametrica->GetName()));
 		ps.AddPage(páginaVentanaFotogrametrica.get());
 	}
 
@@ -130,10 +130,10 @@ CStringW DialogoSeleccionScr::DialogSeleccionaScr(CStringW const& títuloDiálog
 	}
 
 	if (sistemaCoordenadasVentanaDibujo)
-		return sistemaCoordenadasVentanaDibujo->GetWkt();
+		return DeUtf8(sistemaCoordenadasVentanaDibujo->GetWkt());
 
 	if (sistemaCoordenadasVentanaFotogrametrica)
-		return sistemaCoordenadasVentanaFotogrametrica->GetWkt();
+		return DeUtf8(sistemaCoordenadasVentanaFotogrametrica->GetWkt());
 
-	return Digi21::OpenGis::GetCoordinateSystemFactory()->CreateCompoundUnknown()->GetWkt();
+	return DeUtf8(CrsKit::GetCoordinateSystemFactory()->CreateCompoundUnknown()->GetWkt());
 }

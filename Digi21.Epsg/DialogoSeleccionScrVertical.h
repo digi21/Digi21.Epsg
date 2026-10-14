@@ -16,7 +16,7 @@ namespace Digi21::Geodesia::EPSG
 		CStringW títuloCheckboxDesconocido;
 
 	public:
-		explicit CDialogoSeleccionScrVertical(CStringW const& título, CStringW const& títuloCheckboxDesconocido, std::shared_ptr<OpenGis::CoordinateSystems::CoordinateSystem> const& sistemaCoordenadasDefecto, CWnd* pParent = nullptr);
+		explicit CDialogoSeleccionScrVertical(CStringW const& título, CStringW const& títuloCheckboxDesconocido, std::shared_ptr<CrsKit::CoordinateSystems::CoordinateSystem> const& sistemaCoordenadasDefecto, CWnd* pParent = nullptr);
 
 		// Dialog Data
 		enum { IDD = IDD_DIALOGO_SELECCION_SCR_VERTICAL };

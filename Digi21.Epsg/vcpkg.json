@@ -1,0 +1,7 @@
+{
+  "name": "digi21-epsg",
+  "version-string": "26.0.0.0",
+  "dependencies": [
+    "crskit"
+  ]
+}

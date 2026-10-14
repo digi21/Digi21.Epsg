@@ -2,7 +2,7 @@
 #include "Digi21.Epsg.h"
 #include "DialogoBuscarScrVertical.h"
 
-using namespace Digi21::OpenGis;
+using namespace CrsKit;
 using namespace Digi21::Utilidades;
 
 #ifdef _DEBUG
@@ -14,7 +14,7 @@ namespace Digi21::Geodesia::EPSG
 
 	CDialogoBuscarScrVertical::CDialogoBuscarScrVertical(int scrSeleccionadoPorDefecto, CWnd* pParent /*=nullptr*/)
 		: DialogoAdaptadoAlTema{IDD, pParent}
-		, m_nSCR(__max(SISTEMA_COORDENADAS_LOCAL, scrSeleccionadoPorDefecto))
+		, m_nSCR{__max(LOCAL_COORDINATE_SYSTEM, scrSeleccionadoPorDefecto)}
 	{
 	}
 
@@ -41,12 +41,12 @@ namespace Digi21::Geodesia::EPSG
 
 		CWaitCursor wc;
 
-		auto const listaSistemasCoordenadas = GetCoordinateSystemAuthorityFactory()->EnumerateCoordinateSystems(OpenGis::CoordinateSystems::CoordinateSystemKind::Vertical);
+		auto const listaSistemasCoordenadas = GetCoordinateSystemAuthorityFactory()->EnumerateCoordinateSystems(CoordinateSystems::CoordinateSystemKind::Vertical);
 
 		for (auto const& [codigo, nombre] : listaSistemasCoordenadas)
-			m_wndCRS.SetItemData(m_wndCRS.AddString(nombre), codigo);
+			m_wndCRS.SetItemData(m_wndCRS.AddString(DeUtf8(nombre)), codigo);
 
-		if( SISTEMA_COORDENADAS_LOCAL != m_nSCR ) 
+		if( LOCAL_COORDINATE_SYSTEM != m_nSCR )
 			RellenaCamposEnFunciónScrActivo();
 
 		return TRUE; // Devuelve TRUE  a menos que establezca el foco en un control
@@ -60,13 +60,13 @@ namespace Digi21::Geodesia::EPSG
 
 		auto const fabricaSrc = GetCoordinateSystemAuthorityFactory();
 
-		m_sArea = fabricaSrc->GetDescriptionAreaApplicationCrs(códigoCrs);
-		m_sTipoSistemaCoordenadas = fabricaSrc->GetNameOfCoordinateSystem(fabricaSrc->GetCodeOfCoordinateSystemAssociatedWithCrs(códigoCrs));
+		m_sArea = DeUtf8(fabricaSrc->GetDescriptionAreaApplicationCrs(códigoCrs));
+		m_sTipoSistemaCoordenadas = DeUtf8(fabricaSrc->GetNameOfCoordinateSystem(fabricaSrc->GetCodeOfCoordinateSystemAssociatedWithCrs(códigoCrs)));
 
 		auto const códigoDatum = fabricaSrc->GetCodeOfDatumAssociatedWithCrs(códigoCrs);
-		m_sNombreDatum = fabricaSrc->GetNameOfDatum(códigoDatum);
-		m_sOrigenDatum = fabricaSrc->GetOriginDescriptionOfDatum(códigoDatum);
-		m_sAmbitoUso = fabricaSrc->GetDescriptionAreaApplicationDatum(códigoDatum);
+		m_sNombreDatum = DeUtf8(fabricaSrc->GetNameOfDatum(códigoDatum));
+		m_sOrigenDatum = DeUtf8(fabricaSrc->GetOriginDescriptionOfDatum(códigoDatum));
+		m_sAmbitoUso = DeUtf8(fabricaSrc->GetDescriptionAreaApplicationDatum(códigoDatum));
 		UpdateData(FALSE);
 	}
 

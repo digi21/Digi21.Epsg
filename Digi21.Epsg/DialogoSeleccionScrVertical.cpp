@@ -3,8 +3,8 @@
 #include "DialogoSeleccionScrVertical.h"
 #include "DialogoBuscarScrVertical.h"
 
-using namespace Digi21::OpenGis::CoordinateSystems;
-using namespace Digi21::OpenGis;
+using namespace CrsKit::CoordinateSystems;
+using namespace CrsKit;
 using namespace std;
 
 namespace Digi21::Geodesia::EPSG
@@ -18,7 +18,7 @@ namespace Digi21::Geodesia::EPSG
 		, títuloCheckboxDesconocido{ títuloCheckboxDesconocido }
 	{
 		SetFlag(xtpResizeNoSizeIcon);
-		m_sWkt = sistemaCoordenadasDefecto->GetWkt();
+		m_sWkt = DeUtf8(sistemaCoordenadasDefecto->GetWkt());
 	}
 
 	void CDialogoSeleccionScrVertical::DoDataExchange(CDataExchange* pDX)
@@ -80,7 +80,7 @@ namespace Digi21::Geodesia::EPSG
 					memorizado));
 
 			try {
-				auto const nombre = fábrica->CreateFromWkt(*wkt)->GetName();
+				auto const nombre = DeUtf8(fábrica->CreateFromWkt(AUtf8(*wkt))->GetName());
 				auto const índice = m_wndListaSistemasReferenciaMemorizados.AddString(nombre);
 				m_wndListaSistemasReferenciaMemorizados.SetItemData(índice, reinterpret_cast<DWORD_PTR>(wkt.release()));
 			}
@@ -91,7 +91,7 @@ namespace Digi21::Geodesia::EPSG
 		}
 
 		try {
-			m_bDesconocido = nullptr != dynamic_pointer_cast<LocalCoordinateSystem>(fábrica->CreateFromWkt(m_sWkt));
+			m_bDesconocido = nullptr != dynamic_pointer_cast<LocalCoordinateSystem>(fábrica->CreateFromWkt(AUtf8(m_sWkt)));
 		}
 		catch(...)
 		{
@@ -129,9 +129,9 @@ namespace Digi21::Geodesia::EPSG
 		try {
 			CWaitCursor wc;
 			auto const fábrica = GetCoordinateSystemFactory();
-			auto const sistemaCooordenadas = fábrica->CreateFromWkt(m_sWkt);
+			auto const sistemaCooordenadas = fábrica->CreateFromWkt(AUtf8(m_sWkt));
 
-			if( 0 == sistemaCooordenadas->GetAuthority().CompareNoCase(L"EPSG") )
+			if( 0 == compareNoCase(sistemaCooordenadas->GetAuthority().c_str(), "EPSG") )
 				defaultCrs = sistemaCooordenadas->GetAuthorityCode();
 		}
 		catch(...)
@@ -141,7 +141,7 @@ namespace Digi21::Geodesia::EPSG
 		CDialogoBuscarScrVertical dlg(defaultCrs, this);
 		if( IDOK == dlg.DoModal() ) {
 			try {
-				m_sWkt = GetCoordinateSystemAuthorityFactory()->CreateCoordinateSystem(dlg.SistemaReferenciaCoordenadas)->GetWkt();
+				m_sWkt = DeUtf8(GetCoordinateSystemAuthorityFactory()->CreateCoordinateSystem(dlg.SistemaReferenciaCoordenadas)->GetWkt());
 			}
 			catch(...)
 			{
@@ -164,22 +164,23 @@ namespace Digi21::Geodesia::EPSG
 		shared_ptr<CoordinateSystem> sistemaCooordenadas;
 		try {
 			CWaitCursor wc;
-			sistemaCooordenadas = GetCoordinateSystemFactory()->CreateFromWkt(m_sWkt);
+			sistemaCooordenadas = GetCoordinateSystemFactory()->CreateFromWkt(AUtf8(m_sWkt));
 		}
 		catch(...)
 		{
 			return;
 		}
 
+		auto const nombre = DeUtf8(sistemaCooordenadas->GetName());
 		m_wndListaSistemasReferenciaMemorizados.SetItemData(
-			m_wndListaSistemasReferenciaMemorizados.AddString(sistemaCooordenadas->GetName()), 
+			m_wndListaSistemasReferenciaMemorizados.AddString(nombre),
 			reinterpret_cast<DWORD_PTR>(new CStringW(m_sWkt)));
 
 		CRegistro::SetStringCurrentUser(
-			CARPETA_DIGI21, 
-			VERSION_DIGI3D, 
-			CARPETA_REGISTRO_DIGI3D_MEMORIZED_VERTICAL_COORDINATE_SYSTEMS, 
-			CStringW(sistemaCooordenadas->GetName()),
+			CARPETA_DIGI21,
+			VERSION_DIGI3D,
+			CARPETA_REGISTRO_DIGI3D_MEMORIZED_VERTICAL_COORDINATE_SYSTEMS,
+			nombre,
 			m_sWkt);
 	}
 

@@ -9,7 +9,7 @@ namespace Digi21::Geodesia::EPSG
 	{
 		enum {IDD = IDD_DIALOGO_MOSTRAR_PARAMETROS_SCR_VERTICAL};
 
-		std::shared_ptr<OpenGis::CoordinateSystems::VerticalCoordinateSystem> _sistemaCoordenadas;
+		std::shared_ptr<CrsKit::CoordinateSystems::VerticalCoordinateSystem> _sistemaCoordenadas;
 		CXTPComboBox m_wndCRS;
 		CStringW m_sArea;
 		CStringW m_sTipoSistemaCoordenadas;
@@ -19,7 +19,7 @@ namespace Digi21::Geodesia::EPSG
 
 		// Construcción
 	public:
-		explicit CDialogoMostrarScrVertical(std::shared_ptr<OpenGis::CoordinateSystems::VerticalCoordinateSystem> const& sistemaCoordenadas, CWnd* pParent = nullptr);
+		explicit CDialogoMostrarScrVertical(std::shared_ptr<CrsKit::CoordinateSystems::VerticalCoordinateSystem> const& sistemaCoordenadas, CWnd* pParent = nullptr);
 
 	private:
 		void DoDataExchange(CDataExchange* pDX) override; // Compatibilidad con DDX/DDV

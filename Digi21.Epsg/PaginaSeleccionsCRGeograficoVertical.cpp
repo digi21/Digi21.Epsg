@@ -8,8 +8,8 @@ constexpr auto ORIENTACION_EJES_LATITUD_LONGITUD = 1;
 constexpr auto ORIENTACION_EJES_LONGITUD_LATITUD = 2;
 
 using namespace Digi21::Utilidades;
-using namespace Digi21::OpenGis::CoordinateSystems;
-using namespace Digi21::OpenGis;
+using namespace CrsKit::CoordinateSystems;
+using namespace CrsKit;
 using namespace std;
 
 namespace Digi21::Geodesia::EPSG
@@ -78,13 +78,13 @@ namespace Digi21::Geodesia::EPSG
 		shared_ptr<CoordinateSystem> vertical;
 				
 		if( verticalDesconocido ) {
-			vertical = GetCoordinateSystemFactory()->CreateFromWkt(_G(IDS_STRING2021));
+			vertical = GetCoordinateSystemFactory()->CreateFromWkt(AUtf8(_G(IDS_STRING2021)));
 		} else {
 			vertical = GetCoordinateSystemAuthorityFactory()->CreateVerticalCoordinateSystem(nVertical);
 		}
 
 		shared_ptr<CompoundCoordinateSystem> compuesto;
-		auto nombre = UtilidadesString::Format(L"%s + %s", static_cast<LPCWSTR>(geográfico->GetName()), static_cast<LPCWSTR>(vertical->GetName()));
+		auto const nombre = geográfico->GetName() + " + " + vertical->GetName();
 
 		switch(orientaciónEjes)
 		{
@@ -152,14 +152,14 @@ namespace Digi21::Geodesia::EPSG
 			CARPETA_DIGI21, 
 			VERSION_DIGI3D, 
 			CARPETA_REGISTRO_DIGI3D_MEMORIZED_COORDINATE_SYSTEMS, 
-			sistemaCooordenadas->GetName(),
-			sistemaCooordenadas->GetWkt());
+			DeUtf8(sistemaCooordenadas->GetName()),
+			DeUtf8(sistemaCooordenadas->GetWkt()));
 	}
 
 #pragma region Propiedades
 	CStringW CPaginaSeleccionScrGeograficoYVertical::GetWkt() const
 	{
-		return CreaSistemaCoordenadas(m_nScrHorizontal, m_nOrientaciónEjes, m_bVerticalDesconocido, m_nScrVertical)->GetWkt();
+		return DeUtf8(CreaSistemaCoordenadas(m_nScrHorizontal, m_nOrientaciónEjes, m_bVerticalDesconocido, m_nScrVertical)->GetWkt());
 	}
 #pragma endregion
 
@@ -208,13 +208,13 @@ namespace Digi21::Geodesia::EPSG
 	void CPaginaSeleccionScrGeograficoYVertical::RellenaScrGeográficos()
 	{
 		for (auto const& [codigo, nombre] : GetCoordinateSystemAuthorityFactory()->EnumerateCoordinateSystems(CoordinateSystemKind::Geographic2D))
-			m_wndCrsHorizontal.SetItemData(m_wndCrsHorizontal.AddString(nombre), codigo);
+			m_wndCrsHorizontal.SetItemData(m_wndCrsHorizontal.AddString(DeUtf8(nombre)), codigo);
 	}
 
 	void CPaginaSeleccionScrGeograficoYVertical::RellenaScrVerticales()
 	{
 		for (auto const& [codigo, nombre] : GetCoordinateSystemAuthorityFactory()->EnumerateCoordinateSystems(CoordinateSystemKind::Vertical))
-			m_wndCrsVertical.SetItemData(m_wndCrsVertical.AddString(nombre), codigo);
+			m_wndCrsVertical.SetItemData(m_wndCrsVertical.AddString(DeUtf8(nombre)), codigo);
 	}
 
 	void CPaginaSeleccionScrGeograficoYVertical::SeleccionaHorizontal( int código )

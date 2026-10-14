@@ -11,6 +11,12 @@
 #endif
 #endif
 
+#include <memory>
+#include <optional>
+#include <vector>
+
+#include <CrsKit.h>
+
 namespace Digi21::OpenGis::Epsg
 {
 	class _modoDigi21Epsg EpsgManager
@@ -18,11 +24,11 @@ namespace Digi21::OpenGis::Epsg
 #pragma region Selección de Sistema de referencia de coordenadas
 	public:
 		static CStringW DialogSelectCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox);
-		static CStringW DialogSelectCrs(CStringW const& title, std::shared_ptr<CoordinateSystems::CoordinateSystem> const& coordinateSystem);
+		static CStringW DialogSelectCrs(CStringW const& title, std::shared_ptr<CrsKit::CoordinateSystems::CoordinateSystem> const& coordinateSystem);
 		static CStringW DialogSelectCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox, int defaultHorizontalCrs, int defaultVerticalCrs);
 		static CStringW DialogSelectCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox,CStringW const& wkt);
-		static CStringW DialogSelectCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox, std::shared_ptr<CoordinateSystems::CoordinateSystem> const& coordinateSystem);
-		static CStringW DialogSelectCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox, std::shared_ptr<CoordinateSystems::CoordinateSystem> const& ventanaDibujo, std::shared_ptr<CoordinateSystems::CoordinateSystem> const& ventanaFotogrametrica);
+		static CStringW DialogSelectCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox, std::shared_ptr<CrsKit::CoordinateSystems::CoordinateSystem> const& coordinateSystem);
+		static CStringW DialogSelectCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox, std::shared_ptr<CrsKit::CoordinateSystems::CoordinateSystem> const& ventanaDibujo, std::shared_ptr<CrsKit::CoordinateSystems::CoordinateSystem> const& ventanaFotogrametrica);
 #pragma endregion
 #pragma region Búsqueda de Sistema de referencia de coordenadas
 		static std::optional<int> DialogSearchHorizontalCrs(CStringW const& title, int defaultCrs);
@@ -32,7 +38,7 @@ namespace Digi21::OpenGis::Epsg
 		static CStringW DialogSelectHorizontalCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox);
 		static CStringW DialogSelectHorizontalCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox, int defaultCrs);
 		static CStringW DialogSelectHorizontalCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox,CStringW const& wkt);
-		static CStringW DialogSelectHorizontalCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox, std::shared_ptr<CoordinateSystems::CoordinateSystem> const& coordinateSystem);
+		static CStringW DialogSelectHorizontalCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox, std::shared_ptr<CrsKit::CoordinateSystems::CoordinateSystem> const& coordinateSystem);
 #pragma endregion
 
 #pragma region Selección de Sistema de referencia de coordenadas vertical
@@ -40,14 +46,14 @@ namespace Digi21::OpenGis::Epsg
 		static CStringW DialogSelectVerticalCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox);
 		static CStringW DialogSelectVerticalCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox, int defaultCrs);
 		static CStringW DialogSelectVerticalCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox, CStringW const& wkt);
-		static CStringW DialogSelectVerticalCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox, std::shared_ptr<CoordinateSystems::CoordinateSystem> const& coordinateSystem);
+		static CStringW DialogSelectVerticalCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox, std::shared_ptr<CrsKit::CoordinateSystems::CoordinateSystem> const& coordinateSystem);
 #pragma endregion
 
 #pragma region Visualización de Sistemas de coordenadas de referencia
 	public:
-		static void DialogShowCrs(std::shared_ptr<CoordinateSystems::CoordinateSystem> const& coordinateSystem);
-		static void DialogShowCrs(std::shared_ptr<CoordinateSystems::HorizontalCoordinateSystem> const& coordinateSystem);
-		static void DialogShowCrs(std::shared_ptr<CoordinateSystems::VerticalCoordinateSystem> const& coordinateSystem);
+		static void DialogShowCrs(std::shared_ptr<CrsKit::CoordinateSystems::CoordinateSystem> const& coordinateSystem);
+		static void DialogShowCrs(std::shared_ptr<CrsKit::CoordinateSystems::HorizontalCoordinateSystem> const& coordinateSystem);
+		static void DialogShowCrs(std::shared_ptr<CrsKit::CoordinateSystems::VerticalCoordinateSystem> const& coordinateSystem);
 #pragma endregion
 	};
 
@@ -57,10 +63,10 @@ namespace Digi21::OpenGis::Epsg
 
 	public:
 		SelectTransformationHelper(HWND hwndParent);
-		int DialogSelectTransformationWnd(CStringW const& sourceCrs, CStringW const& destinationCrs, std::vector<CoordinateTransformations::CoordinateOperation> const& locatedOperations) const;
+		int DialogSelectTransformationWnd(CStringW const& sourceCrs, CStringW const& destinationCrs, std::vector<CrsKit::CoordinateTransformations::CoordinateOperation> const& locatedOperations) const;
 
-		static int DialogSelectTransformation(CStringW const& sourceCrs, CStringW const& destinationCrs, std::vector<CoordinateTransformations::CoordinateOperation> const& locatedOperations);
-		static int DialogSelectTransformationWnd(CStringW const& sourceCrs, CStringW const& destinationCrs, std::vector<CoordinateTransformations::CoordinateOperation> const& locatedOperations, HWND hWnd);
+		static int DialogSelectTransformation(CStringW const& sourceCrs, CStringW const& destinationCrs, std::vector<CrsKit::CoordinateTransformations::CoordinateOperation> const& locatedOperations);
+		static int DialogSelectTransformationWnd(CStringW const& sourceCrs, CStringW const& destinationCrs, std::vector<CrsKit::CoordinateTransformations::CoordinateOperation> const& locatedOperations, HWND hWnd);
 	};
 
 	class _modoDigi21Epsg CreateVerticalTransformationHelper
@@ -69,10 +75,10 @@ namespace Digi21::OpenGis::Epsg
 
 	public:
 		CreateVerticalTransformationHelper(HWND hwndParent);
-		std::shared_ptr<CoordinateTransformations::IMathTransform> DialogCreateVerticalTransformationWnd(CStringW const& sourceCrs, CStringW const& destinationCrs) const;
+		std::shared_ptr<CrsKit::CoordinateTransformations::IMathTransform> DialogCreateVerticalTransformationWnd(CStringW const& sourceCrs, CStringW const& destinationCrs) const;
 
-		static std::shared_ptr<CoordinateTransformations::IMathTransform> DialogCreateVerticalTransformation(CStringW const& sourceCrs, CStringW const& destinationCrs);
-		static std::shared_ptr<CoordinateTransformations::IMathTransform> DialogCreateVerticalTransformationWnd(CStringW const& sourceCrs, CStringW const& destinationCrs, HWND hWnd);
+		static std::shared_ptr<CrsKit::CoordinateTransformations::IMathTransform> DialogCreateVerticalTransformation(CStringW const& sourceCrs, CStringW const& destinationCrs);
+		static std::shared_ptr<CrsKit::CoordinateTransformations::IMathTransform> DialogCreateVerticalTransformationWnd(CStringW const& sourceCrs, CStringW const& destinationCrs, HWND hWnd);
 	};
 			 
 }

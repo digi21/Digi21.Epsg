@@ -23,6 +23,8 @@
     </None>
     <None Include="packages.config" />
     <None Include="Readme.md" />
+    <None Include="vcpkg.json" />
+    <None Include="vcpkg-configuration.json" />
     <None Include="$(MSBuildThisFileDirectory)bin\v141\$(PlatformName)\$(Configuration)\*.*" />
     <None Include="$(MSBuildThisFileDirectory)bin\v141\$(PlatformName)\$(Configuration)\*.*" />
     <None Include="$(MSBuildThisFileDirectory)bin\v141\$(PlatformName)\$(Configuration)\*.*" />
@@ -114,6 +116,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="EpsgManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ConversionUtf8.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DialogoMostrarCrsHorizontal.h">

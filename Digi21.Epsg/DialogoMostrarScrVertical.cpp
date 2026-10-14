@@ -2,8 +2,8 @@
 #include "Digi21.Epsg.h"
 #include "DialogoMostrarScrVertical.h"
 
-using namespace Digi21::OpenGis::CoordinateSystems;
-using namespace Digi21::OpenGis;
+using namespace CrsKit::CoordinateSystems;
+using namespace CrsKit;
 using namespace Digi21::Utilidades;
 using namespace std;
 
@@ -45,7 +45,7 @@ namespace Digi21::Geodesia::EPSG
 		auto const listaSistemasCoordenadas = GetCoordinateSystemAuthorityFactory()->EnumerateCoordinateSystems(CoordinateSystemKind::Vertical);
 
 		for (auto const& [codigo, nombre] : listaSistemasCoordenadas)
-			m_wndCRS.SetItemData(m_wndCRS.AddString(nombre), codigo);
+			m_wndCRS.SetItemData(m_wndCRS.AddString(DeUtf8(nombre)), codigo);
 
 		for (auto i=0; i<m_wndCRS.GetCount(); i++ ) {
 			if( static_cast<int>(m_wndCRS.GetItemData(i)) == _sistemaCoordenadas->GetAuthorityCode()) {
@@ -64,22 +64,22 @@ namespace Digi21::Geodesia::EPSG
 	{
 		UpdateData();
 
-		if( 0 == _sistemaCoordenadas->GetAuthority().CompareNoCase(L"EPSG")) {
+		if( 0 == compareNoCase(_sistemaCoordenadas->GetAuthority().c_str(), "EPSG")) {
 			auto const códigoCRS = static_cast<int>(m_wndCRS.GetItemData(m_wndCRS.GetCurSel()));
 
 			auto const fabricaSrc = GetCoordinateSystemAuthorityFactory();
 
-			m_sArea = fabricaSrc->GetDescriptionAreaApplicationCrs(códigoCRS);
-			m_sTipoSistemaCoordenadas = fabricaSrc->GetNameOfCoordinateSystem(fabricaSrc->GetCodeOfCoordinateSystemAssociatedWithCrs(códigoCRS));
+			m_sArea = DeUtf8(fabricaSrc->GetDescriptionAreaApplicationCrs(códigoCRS));
+			m_sTipoSistemaCoordenadas = DeUtf8(fabricaSrc->GetNameOfCoordinateSystem(fabricaSrc->GetCodeOfCoordinateSystemAssociatedWithCrs(códigoCRS)));
 
 			auto const códigoDatum = fabricaSrc->GetCodeOfDatumAssociatedWithCrs(códigoCRS);
-			m_sNombreDatum = fabricaSrc->GetNameOfDatum(códigoDatum);
-			m_sOrigenDatum = fabricaSrc->GetOriginDescriptionOfDatum(códigoDatum);
-			m_sAmbitoUso = fabricaSrc->GetDescriptionAreaApplicationDatum(códigoDatum);
+			m_sNombreDatum = DeUtf8(fabricaSrc->GetNameOfDatum(códigoDatum));
+			m_sOrigenDatum = DeUtf8(fabricaSrc->GetOriginDescriptionOfDatum(códigoDatum));
+			m_sAmbitoUso = DeUtf8(fabricaSrc->GetDescriptionAreaApplicationDatum(códigoDatum));
 		} else {
 			m_sArea = L"";
 			m_sTipoSistemaCoordenadas = L"";
-			m_sNombreDatum = dynamic_pointer_cast<IInfo>(_sistemaCoordenadas->GetVerticalDatum())->GetName();
+			m_sNombreDatum = DeUtf8(dynamic_pointer_cast<IInfo>(_sistemaCoordenadas->GetVerticalDatum())->GetName());
 			m_sOrigenDatum = L"";
 			m_sAmbitoUso = L"";
 		}

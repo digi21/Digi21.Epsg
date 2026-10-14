@@ -3,8 +3,8 @@
 #include "PaginaManual.h"
 
 using namespace Digi21::Utilidades;
-using namespace Digi21::OpenGis::CoordinateSystems;
-using namespace Digi21::OpenGis;
+using namespace CrsKit::CoordinateSystems;
+using namespace CrsKit;
 using namespace std;
 
 IMPLEMENT_DYNAMIC(PaginaManual, PaginaAdaptadaAlTema)
@@ -66,11 +66,11 @@ void PaginaManual::OnBnClickedButtonBuscarArchivo()
 
 		try {
 			CWaitCursor wc;
-			GetCoordinateSystemFactory()->CreateFromWkt(wkt);
+			std::ignore = GetCoordinateSystemFactory()->CreateFromWkt(AUtf8(wkt));
 		}
 		catch (runtime_error& e)
 		{
-			AfxMessageBox(CStringW(e.what()));
+			AfxMessageBox(DeUtf8(e.what()));
 			return;
 		}
 
@@ -86,7 +86,7 @@ void PaginaManual::OnBnClickedBotonMemorizarSistemaCoordenadas()
 	shared_ptr<CoordinateSystem> sistemaCooordenadas;
 	try {
 		CWaitCursor wc;
-		sistemaCooordenadas = GetCoordinateSystemFactory()->CreateFromWkt(_wkt);
+		sistemaCooordenadas = GetCoordinateSystemFactory()->CreateFromWkt(AUtf8(_wkt));
 	}
 	catch (...)
 	{
@@ -97,6 +97,6 @@ void PaginaManual::OnBnClickedBotonMemorizarSistemaCoordenadas()
 		CARPETA_DIGI21,
 		VERSION_DIGI3D,
 		CARPETA_REGISTRO_DIGI3D_MEMORIZED_COORDINATE_SYSTEMS,
-		sistemaCooordenadas->GetName(),
-		sistemaCooordenadas->GetWkt());
+		DeUtf8(sistemaCooordenadas->GetName()),
+		DeUtf8(sistemaCooordenadas->GetWkt()));
 }

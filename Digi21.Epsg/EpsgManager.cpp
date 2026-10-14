@@ -9,8 +9,9 @@
 #include "DialogoSeleccionTransformacionVertical.h"
 #include "DialogoSeleccionScr.h"
 
-using namespace Digi21::OpenGis::CoordinateSystems;
-using namespace Digi21::OpenGis::CoordinateTransformations;
+using namespace CrsKit;
+using namespace CrsKit::CoordinateSystems;
+using namespace CrsKit::CoordinateTransformations;
 using namespace Digi21::Geodesia::EPSG;
 using namespace std;
 
@@ -34,7 +35,7 @@ namespace Digi21::OpenGis::Epsg
 				return nullptr;
 
 			try {
-				return GetMathTransformFactory()->CreateFromWkt(wkt);
+				return GetMathTransformFactory()->CreateFromWkt(AUtf8(wkt));
 			}
 			catch (...)
 			{
@@ -88,7 +89,7 @@ namespace Digi21::OpenGis::Epsg
 		return DialogoSeleccionScr::DialogSeleccionaScr(
 			title,
 			CStringW(titleUnknownCoordinateSystemCheckbox),
-			GetCoordinateSystemFactory()->CreateFromWkt(wkt));
+			GetCoordinateSystemFactory()->CreateFromWkt(AUtf8(wkt)));
 	}
 
 	CStringW EpsgManager::DialogSelectCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox, shared_ptr<CoordinateSystem> const& coordinateSystem)
@@ -137,7 +138,7 @@ namespace Digi21::OpenGis::Epsg
 		if (IDOK == dlg.DoModal())
 			return dlg.m_sWkt;
 
-		return coordinateSystem->GetWkt();
+		return DeUtf8(coordinateSystem->GetWkt());
 	}
 
 	CStringW EpsgManager::DialogSelectHorizontalCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox)
@@ -161,7 +162,7 @@ namespace Digi21::OpenGis::Epsg
 		return DialogSelectHorizontalCrs(
 			title,
 			titleUnknownCoordinateSystemCheckbox,
-			GetCoordinateSystemFactory()->CreateFromWkt(wkt));
+			GetCoordinateSystemFactory()->CreateFromWkt(AUtf8(wkt)));
 	}
 
 	void EpsgManager::DialogShowCrs(shared_ptr<CoordinateSystem> const& coordinateSystem)
@@ -217,7 +218,7 @@ namespace Digi21::OpenGis::Epsg
 		return DialogSelectVerticalCrs(
 			title,
 			titleUnknownCoordinateSystemCheckbox,
-			GetCoordinateSystemFactory()->CreateFromWkt(wkt));
+			GetCoordinateSystemFactory()->CreateFromWkt(AUtf8(wkt)));
 	}
 
 	CStringW EpsgManager::DialogSelectVerticalCrs(CStringW const& title, CStringW const& titleUnknownCoordinateSystemCheckbox, shared_ptr<CoordinateSystem> const& coordinateSystem)
@@ -273,11 +274,11 @@ namespace Digi21::OpenGis::Epsg
 		auto i = primerIdBotón;
 		for(auto const& operación : locatedOperations) {
 			cadena.Format(_G(IDS_STRING2011),
-				static_cast<LPCWSTR>(operación.Name),
-				static_cast<LPCWSTR>(GetCoordinateSystemAuthorityFactory()->GetNameOfAlgorithm(operación.MethodCode)),
-				operación.Version.has_value() ? static_cast<LPCWSTR>(operación.Version.value()) : L"",
+				static_cast<LPCWSTR>(DeUtf8(operación.Name)),
+				static_cast<LPCWSTR>(DeUtf8(GetCoordinateSystemAuthorityFactory()->GetNameOfAlgorithm(operación.MethodCode))),
+				static_cast<LPCWSTR>(DeUtf8(operación.Version.value_or(""))),
 				operación.Accuracy.has_value() ? static_cast<LPCWSTR>(Utilidades::UtilidadesString::Format(L"%f", operación.Accuracy.value())) : static_cast<LPCWSTR>(_G(IDS_STRING2012)),
-				operación.InformationSource.has_value() ? static_cast<LPCWSTR>(operación.InformationSource.value()) : L"");
+				static_cast<LPCWSTR>(DeUtf8(operación.InformationSource.value_or(""))));
 
 			taskDlg.AddButton(cadena, static_cast<int>(i++));
 			opciones.push_back(operación.Code);
@@ -332,10 +333,10 @@ namespace Digi21::OpenGis::Epsg
 		}
 
 		if (IDOK == resultado) {
-			transformación = GetMathTransformFactory()->CreateParameterizedTransform(L"vertical_offset", { Parameter{L"vertical_offset", dlg.m_dValor } });
+			transformación = GetMathTransformFactory()->CreateParameterizedTransform("vertical_offset", { Parameter{"vertical_offset", dlg.m_dValor} });
 
 			if (dlg.m_bUtilizarSiempreEstaTransf)
-				TransformacionesMemorizadas::AlmacenaTransformación(dlg.m_sTituloScrOrigen, dlg.m_sTituloScrDestino, transformación->GetWkt());
+				TransformacionesMemorizadas::AlmacenaTransformación(dlg.m_sTituloScrOrigen, dlg.m_sTituloScrDestino, DeUtf8(transformación->GetWkt()));
 
 			return transformación;
 		}

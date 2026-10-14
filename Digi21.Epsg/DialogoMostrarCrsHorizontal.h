@@ -9,7 +9,7 @@ namespace Digi21::Geodesia::EPSG
 	class CDialogoMostrarCrsHorizontal final : public DialogoAdaptadoAlTema<CDialog>
 	{
 		enum { IDD = IDD_DIALOGO_MOSTRAR_PARAMETROS_SCR_HORIZONTAL };
-		std::shared_ptr<OpenGis::CoordinateSystems::HorizontalCoordinateSystem> _sistemaCoordenadas;
+		std::shared_ptr<CrsKit::CoordinateSystems::HorizontalCoordinateSystem> _sistemaCoordenadas;
 		CXTPComboBox m_wndTiposCRS;
 		CXTPComboBox m_wndCRS;
 		CStringW m_sArea;
@@ -21,7 +21,7 @@ namespace Digi21::Geodesia::EPSG
 		CStringW m_sElipsoide;
 
 	public:
-		explicit CDialogoMostrarCrsHorizontal(std::shared_ptr<OpenGis::CoordinateSystems::HorizontalCoordinateSystem> const& sistemaCoordenadas, CWnd* pParent = nullptr);
+		explicit CDialogoMostrarCrsHorizontal(std::shared_ptr<CrsKit::CoordinateSystems::HorizontalCoordinateSystem> const& sistemaCoordenadas, CWnd* pParent = nullptr);
 
 	private:
 		void DoDataExchange(CDataExchange* pDX) override;

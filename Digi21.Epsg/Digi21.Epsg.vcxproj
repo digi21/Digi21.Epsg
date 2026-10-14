@@ -6,7 +6,6 @@
   <Import Project="..\packages\SoporteParaStrongNamingEnUs.1.0.5\build\native\SoporteParaStrongNamingEnUs.props" Condition="Exists('..\packages\SoporteParaStrongNamingEnUs.1.0.5\build\native\SoporteParaStrongNamingEnUs.props')" />
   <Import Project="..\packages\Digi21.Registry.26.0.0.5\build\native\Digi21.Registry.props" Condition="Exists('..\packages\Digi21.Registry.26.0.0.5\build\native\Digi21.Registry.props')" />
   <Import Project="..\packages\Codejock.20.3.2.1\build\native\Codejock.props" Condition="Exists('..\packages\Codejock.20.3.2.1\build\native\Codejock.props')" />
-  <Import Project="..\packages\OpenGisCoordinateTransformationServices.23.2.0.16\build\native\OpenGisCoordinateTransformationServices.props" Condition="Exists('..\packages\OpenGisCoordinateTransformationServices.23.2.0.16\build\native\OpenGisCoordinateTransformationServices.props')" />
   <Import Project="..\packages\FirmarConAuthenticodeYSoporteParaStrongNaming.2.0.0\build\native\FirmarConAuthenticodeYSoporteParaStrongNaming.props" Condition="Exists('..\packages\FirmarConAuthenticodeYSoporteParaStrongNaming.2.0.0\build\native\FirmarConAuthenticodeYSoporteParaStrongNaming.props')" />
   <Import Project="..\packages\Microsoft.Trusted.Signing.Client.1.0.60\build\Microsoft.Trusted.Signing.Client.props" Condition="Exists('..\packages\Microsoft.Trusted.Signing.Client.1.0.60\build\Microsoft.Trusted.Signing.Client.props')" />
   <Import Project="..\packages\SoporteMultipleUserInterface.1.0.7\build\native\SoporteMultipleUserInterface.props" Condition="Exists('..\packages\SoporteMultipleUserInterface.1.0.7\build\native\SoporteMultipleUserInterface.props')" />
@@ -62,7 +61,8 @@
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg">
-    <VcpkgEnabled>false</VcpkgEnabled>
+    <VcpkgEnabled>true</VcpkgEnabled>
+    <VcpkgEnableManifest>true</VcpkgEnableManifest>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -114,6 +114,8 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Readme.md" />
+    <None Include="vcpkg-configuration.json" />
+    <None Include="vcpkg.json" />
     <None Include="res\Version_en_US.rc2" />
     <None Include="res\Version_es_ES.rc2" />
   </ItemGroup>
@@ -147,6 +149,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ConversionUtf8.h" />
     <ClInclude Include="DialogoBuscarScr3D.h" />
     <ClInclude Include="DialogoBúsquedaPorCódigoEpsg.h" />
     <ClInclude Include="DialogoMostrarCrsHorizontal.h" />
@@ -199,7 +202,6 @@
     <Error Condition="!Exists('..\packages\Microsoft.Trusted.Signing.Client.1.0.60\build\Microsoft.Trusted.Signing.Client.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Trusted.Signing.Client.1.0.60\build\Microsoft.Trusted.Signing.Client.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Trusted.Signing.Client.1.0.60\build\Microsoft.Trusted.Signing.Client.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Trusted.Signing.Client.1.0.60\build\Microsoft.Trusted.Signing.Client.targets'))" />
     <Error Condition="!Exists('..\packages\FirmarConAuthenticodeYSoporteParaStrongNaming.2.0.0\build\native\FirmarConAuthenticodeYSoporteParaStrongNaming.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\FirmarConAuthenticodeYSoporteParaStrongNaming.2.0.0\build\native\FirmarConAuthenticodeYSoporteParaStrongNaming.props'))" />
-    <Error Condition="!Exists('..\packages\OpenGisCoordinateTransformationServices.23.2.0.16\build\native\OpenGisCoordinateTransformationServices.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\OpenGisCoordinateTransformationServices.23.2.0.16\build\native\OpenGisCoordinateTransformationServices.props'))" />
     <Error Condition="!Exists('..\packages\Codejock.20.3.2.1\build\native\Codejock.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Codejock.20.3.2.1\build\native\Codejock.props'))" />
     <Error Condition="!Exists('..\packages\Digi21.Registry.26.0.0.5\build\native\Digi21.Registry.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Digi21.Registry.26.0.0.5\build\native\Digi21.Registry.props'))" />
     <Error Condition="!Exists('..\packages\SoporteParaStrongNamingEnUs.1.0.5\build\native\SoporteParaStrongNamingEnUs.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SoporteParaStrongNamingEnUs.1.0.5\build\native\SoporteParaStrongNamingEnUs.props'))" />

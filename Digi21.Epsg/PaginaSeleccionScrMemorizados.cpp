@@ -2,8 +2,8 @@
 #include "Digi21.Epsg.h"
 #include "PaginaSeleccionScrMemorizados.h"
 
-using namespace Digi21::OpenGis::CoordinateSystems;
-using namespace Digi21::OpenGis;
+using namespace CrsKit::CoordinateSystems;
+using namespace CrsKit;
 
 namespace Digi21::Geodesia::EPSG
 {
@@ -74,7 +74,7 @@ namespace Digi21::Geodesia::EPSG
 					sistemasCoordenadasMemorizados[i]));
 
 			try {
-				auto const nombre = fábrica->CreateFromWkt(*wkt)->GetName();
+				auto const nombre = DeUtf8(fábrica->CreateFromWkt(AUtf8(*wkt))->GetName());
 				auto const índice = m_wndListaSistemasReferenciaMemorizados.AddString(nombre);
 				m_wndListaSistemasReferenciaMemorizados.SetItemData(índice, reinterpret_cast<DWORD_PTR>(wkt));
 			}

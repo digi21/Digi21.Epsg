@@ -4,8 +4,8 @@
 #include "DialogoBúsquedaPorCódigoEpsg.h"
 
 using namespace Digi21::Utilidades;
-using namespace Digi21::OpenGis::CoordinateSystems;
-using namespace Digi21::OpenGis;
+using namespace CrsKit::CoordinateSystems;
+using namespace CrsKit;
 using namespace std;
 
 constexpr auto ORIENTACION_EJES_ESTANDAR = 0;
@@ -102,7 +102,7 @@ namespace Digi21::Geodesia::EPSG
 		try {
 			CWaitCursor wc;
 			CoordinateSystemFactory fábrica;
-			sistemaCooordenadas = fábrica.CreateFromWkt(this->Wkt);
+			sistemaCooordenadas = fábrica.CreateFromWkt(AUtf8(this->Wkt));
 		}
 		catch(...)
 		{
@@ -110,11 +110,11 @@ namespace Digi21::Geodesia::EPSG
 		}
 
 		CRegistro::SetStringCurrentUser(
-			CARPETA_DIGI21, 
-			VERSION_DIGI3D, 
-			CARPETA_REGISTRO_DIGI3D_MEMORIZED_COORDINATE_SYSTEMS, 
-			sistemaCooordenadas->GetName(),
-			sistemaCooordenadas->GetWkt());
+			CARPETA_DIGI21,
+			VERSION_DIGI3D,
+			CARPETA_REGISTRO_DIGI3D_MEMORIZED_COORDINATE_SYSTEMS,
+			DeUtf8(sistemaCooordenadas->GetName()),
+			DeUtf8(sistemaCooordenadas->GetWkt()));
 	}
 #pragma region Propiedades
 	CStringW CPaginaSeleccionScrProyectadoYVertical::GetWkt() const
@@ -123,14 +123,14 @@ namespace Digi21::Geodesia::EPSG
 		shared_ptr<CoordinateSystem> vertical;
 
 		if (m_bVerticalDesconocido) {
-			vertical = GetCoordinateSystemFactory()->CreateFromWkt(_G(IDS_STRING2021));
+			vertical = GetCoordinateSystemFactory()->CreateFromWkt(AUtf8(_G(IDS_STRING2021)));
 		}
 		else {
 			vertical = GetCoordinateSystemAuthorityFactory()->CreateVerticalCoordinateSystem(m_nScrVertical);
 		}
 
 		shared_ptr<CompoundCoordinateSystem> compuesto;
-		auto const nombre = UtilidadesString::Format(L"%s + %s", static_cast<LPCWSTR>(horizontal->GetName()), static_cast<LPCWSTR>(vertical->GetName()));
+		auto const nombre = horizontal->GetName() + " + " + vertical->GetName();
 
 		switch (m_nOrientaciónEjes)
 		{
@@ -143,7 +143,7 @@ namespace Digi21::Geodesia::EPSG
 		case ORIENTACION_EJES_ESTE_NORTE:
 			compuesto = make_shared<CompoundCoordinateSystem>(
 				nombre,
-				CoordinateSystemFactory::ConEjesEsteNorte(horizontal),
+				CoordinateSystemFactory::WithAxesEastNorth(horizontal),
 				vertical);
 			break;
 		default:
@@ -154,7 +154,7 @@ namespace Digi21::Geodesia::EPSG
 			break;
 		}
 
-		return compuesto->GetWkt();
+		return DeUtf8(compuesto->GetWkt());
 	}
 #pragma endregion
 
@@ -203,13 +203,13 @@ namespace Digi21::Geodesia::EPSG
 	void CPaginaSeleccionScrProyectadoYVertical::RellenaScrGeográficos()
 	{
 		for (auto const& [codigo, nombre] : GetCoordinateSystemAuthorityFactory()->EnumerateCoordinateSystems(CoordinateSystemKind::Projected))
-			m_wndCrsHorizontal.SetItemData(m_wndCrsHorizontal.AddString(nombre), codigo);
+			m_wndCrsHorizontal.SetItemData(m_wndCrsHorizontal.AddString(DeUtf8(nombre)), codigo);
 	}
 
 	void CPaginaSeleccionScrProyectadoYVertical::RellenaScrVerticales()
 	{
 		for (auto const& [codigo, nombre] : GetCoordinateSystemAuthorityFactory()->EnumerateCoordinateSystems(CoordinateSystemKind::Vertical))
-			m_wndCrsVertical.SetItemData(m_wndCrsVertical.AddString(nombre), codigo);
+			m_wndCrsVertical.SetItemData(m_wndCrsVertical.AddString(DeUtf8(nombre)), codigo);
 	}
 
 	void CPaginaSeleccionScrProyectadoYVertical::SeleccionaHorizontal( int código )
