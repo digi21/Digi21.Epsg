@@ -313,7 +313,7 @@ namespace Digi21::OpenGis::Epsg
 		// 0 (comctl32) o -1 (implementación de Codejock) si el cuadro no se pudo mostrar; IDCANCEL con Escape, Alt+F4 o el botón de cerrar.
 		auto const índice = static_cast<int>(opción) - primerIdBotón;
 		if (índice < 0 || índice >= static_cast<int>(opciones.size()))
-			throw runtime_error{CStringA{Utilidades::UtilidadesString::Format(_G(IDS_STRING2035), static_cast<LPCWSTR>(sourceCrs), static_cast<LPCWSTR>(destinationCrs))}};
+			throw runtime_error{AUtf8(Utilidades::UtilidadesString::Format(_G(IDS_STRING2035), static_cast<LPCWSTR>(sourceCrs), static_cast<LPCWSTR>(destinationCrs)))};
 
 		if (taskDlg.IsVerificiationChecked())
 			TransformacionesMemorizadas::AlmacenaCódigoTransformación(sourceCrs, destinationCrs, opciones[índice]);
