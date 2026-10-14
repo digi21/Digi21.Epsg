@@ -233,6 +233,28 @@ namespace Digi21::OpenGis::Epsg
 		return L"";
 	}
 
+	auto EpsgManager::CreaOpcionesTransformacion(HWND hWndPadre) -> CoordinateTransformationOptions
+	{
+		CoordinateTransformationOptions opciones{};
+
+		opciones.selectOperation = [hWndPadre](string const& origen, string const& destino, vector<CoordinateOperation> const& operaciones) {
+			return SelectTransformationHelper::DialogSelectTransformationWnd(DeUtf8(origen), DeUtf8(destino), operaciones, hWndPadre);
+		};
+
+		opciones.resolveTransform = [hWndPadre](shared_ptr<CoordinateSystem> const& origen, shared_ptr<CoordinateSystem> const& destino) -> shared_ptr<IMathTransform> {
+			if (nullptr != dynamic_pointer_cast<LocalCoordinateSystem>(origen) || nullptr != dynamic_pointer_cast<LocalCoordinateSystem>(destino))
+				return nullptr;
+
+			// crskit también llama aquí con sistemas desconocidos; solo los casos con un sistema vertical abren el cuadro.
+			if (nullptr == dynamic_pointer_cast<VerticalCoordinateSystem>(origen) && nullptr == dynamic_pointer_cast<VerticalCoordinateSystem>(destino))
+				return nullptr;
+
+			return CreateVerticalTransformationHelper::DialogCreateVerticalTransformationWnd(DeUtf8(origen->GetName()), DeUtf8(destino->GetName()), hWndPadre);
+		};
+
+		return opciones;
+	}
+
 	SelectTransformationHelper::SelectTransformationHelper(HWND hwndParent)
 		: hWnd(hwndParent)
 	{

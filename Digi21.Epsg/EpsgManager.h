@@ -55,6 +55,13 @@ namespace Digi21::OpenGis::Epsg
 		static void DialogShowCrs(std::shared_ptr<CrsKit::CoordinateSystems::HorizontalCoordinateSystem> const& coordinateSystem);
 		static void DialogShowCrs(std::shared_ptr<CrsKit::CoordinateSystems::VerticalCoordinateSystem> const& coordinateSystem);
 #pragma endregion
+
+#pragma region Opciones de transformación
+	public:
+		// Opciones para CreateFromCoordinateSystems: selectOperation muestra el cuadro de selección de operación
+		// y resolveTransform el de transformación vertical; un sistema local o desconocido se rechaza.
+		static auto CreaOpcionesTransformacion(HWND hWndPadre = nullptr) -> CrsKit::CoordinateTransformationOptions;
+#pragma endregion
 	};
 
 	class _modoDigi21Epsg SelectTransformationHelper
