@@ -57,7 +57,9 @@ namespace Digi21::Geodesia::EPSG
 
 		OnCbnSelchangeComboCrs();
 
-		return TRUE; // Devuelve TRUE  a menos que establezca el foco en un control
+		// Con el desplegable deshabilitado, el foco iría al cuadro del área y Windows seleccionaría su texto.
+		GetDlgItem(IDOK)->SetFocus();
+		return FALSE;
 	}
 
 	void CDialogoMostrarScrVertical::OnCbnSelchangeComboCrs()

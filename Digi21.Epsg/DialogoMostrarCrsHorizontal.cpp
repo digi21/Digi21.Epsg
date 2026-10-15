@@ -55,7 +55,9 @@ namespace Digi21::Geodesia::EPSG
 		m_wndCRS.EnableWindow(FALSE);
 		m_wndTiposCRS.EnableWindow(FALSE);
 
-		return TRUE; // Devuelve TRUE  a menos que establezca el foco en un control
+		// Con los desplegables deshabilitados, el foco iría al cuadro del área y Windows seleccionaría su texto.
+		GetDlgItem(IDOK)->SetFocus();
+		return FALSE;
 	}
 
 
