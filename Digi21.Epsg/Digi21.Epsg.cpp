@@ -46,3 +46,14 @@ int CDigi21EpsgApp::ExitInstance()
 
 	return CWinApp::ExitInstance();
 }
+
+// Los AfxMessageBox de la DLL los muestra la aplicación que la carga, con su título y su tema.
+auto CDigi21EpsgApp::DoMessageBox(LPCTSTR texto, UINT tipo, UINT idAyuda) -> int
+{
+	auto* const aplicacion = AfxGetAppModuleState()->m_pCurrentWinApp;
+	if (nullptr == aplicacion || this == aplicacion)
+		return CWinApp::DoMessageBox(texto, tipo, idAyuda);
+
+	AFX_MANAGE_STATE(AfxGetAppModuleState());
+	return aplicacion->DoMessageBox(texto, tipo, idAyuda);
+}

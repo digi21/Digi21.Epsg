@@ -15,6 +15,7 @@ public:
 public:
 	BOOL InitInstance() override;
 	int ExitInstance() override;
+	auto DoMessageBox(LPCTSTR texto, UINT tipo, UINT idAyuda) -> int override;
 
 	DECLARE_MESSAGE_MAP()
 };
