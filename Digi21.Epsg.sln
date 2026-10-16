@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Digi21.Epsg", "Digi21.Epsg\Digi21.Epsg.vcxproj", "{5F507F44-397C-4D90-83E4-C87F9ED352DE}"
 EndProject
 Project("{B7DD6F7E-DEF8-4E67-B5B7-07EF123DB6F0}") = "MergeModuleDigi21Epsg", "MergeModuleDigi21Epsg\MergeModuleDigi21Epsg.wixproj", "{4607984E-E73D-417B-9741-070781DABF86}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5F507F44-397C-4D90-83E4-C87F9ED352DE} = {5F507F44-397C-4D90-83E4-C87F9ED352DE}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
